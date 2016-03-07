@@ -1,22 +1,13 @@
+## 这是什么？
+ > 基于fis3和thinkjs搭建的后台管理系统（cms）
+ > 数据库操作基于golang搭建的restful请求实现
+ 
+## 运行（开发环境）
 
-application created by [ThinkJS](http://www.thinkjs.org)
+```js
 
-## install dependencies
-
-```
 npm install
-```
 
-## start server
-
-```
 npm start
-```
 
-## deploy with pm2
-
-use pm2 to deploy app on production envrioment.
-
-```
-pm2 startOrReload pm2.json
 ```
