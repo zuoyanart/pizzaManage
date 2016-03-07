@@ -1,0 +1,11 @@
+<%for(var i=0; i<30; i++) { %>
+  <% var id = new Date().getTime() + '' + i; %>
+  <li>
+    <label class="checkgroup">
+      <input type="checkbox" id="checkall<%= id%>" name="checkall"><label for="checkall<%= id%>" class="check-all"></label>
+    </label>
+    <a href=""><%= i %>管理员</a>
+    <b>[已冻结]</b>
+    <span><a href="/home/user/edit?id=<%=i%>">编辑</a><i class="pass">取消冻结</i><i class="remove">删除</i></span>
+  </li>
+<%}%>
