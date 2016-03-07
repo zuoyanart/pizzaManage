@@ -11,6 +11,9 @@ npm install
 npm start
 
 ```
+## restful api
+
+[https://github.com/zuoyanart/go-restful](https://github.com/zuoyanart/go-restful "golang restful")
 
 ## fis3 and thinkjs
 
