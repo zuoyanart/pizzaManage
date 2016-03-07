@@ -11,3 +11,9 @@ npm install
 npm start
 
 ```
+
+## fis3 and thinkjs
+
+[http://fis.baidu.com](http://fis.baidu.com "fis3")
+
+[https://thinkjs.org/](https://thinkjs.org/ "thinkjs")
