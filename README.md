@@ -15,6 +15,8 @@ fis3 release -d ../ -wL
 
 ```js
 
+cd pizzaManage
+
 npm install
 
 npm start
