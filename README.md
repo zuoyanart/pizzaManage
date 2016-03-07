@@ -5,6 +5,15 @@
 ## 运行（开发环境）
 
 ```js
+npm install fis3 -g
+
+cd fis-static
+
+fis3 release -d ../ -wL
+
+```
+
+```js
 
 npm install
 
