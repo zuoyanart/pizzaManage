@@ -25,6 +25,11 @@ npm start
 
 ## 相关界面
 ![](http://zuoyanart.github.io/mdimg/mangge1.jpg)
+
+![](http://zuoyanart.github.io/mdimg/20160308111005.jpg)
+
+![](http://zuoyanart.github.io/mdimg/20160308111006.jpg)
+
 ## restful api
 
 [https://github.com/zuoyanart/go-restful](https://github.com/zuoyanart/go-restful "golang restful")
