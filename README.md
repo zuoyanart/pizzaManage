@@ -22,6 +22,9 @@ npm install
 npm start
 
 ```
+
+## 相关界面
+![](http://zuoyanart.github.io/mdimg/mangge1.jpg)
 ## restful api
 
 [https://github.com/zuoyanart/go-restful](https://github.com/zuoyanart/go-restful "golang restful")
