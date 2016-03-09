@@ -68,7 +68,6 @@ fis.match('::packager', {
         obtainScript: true,
         allInOne: true,
         useInlineMap: true, // 资源映射表内嵌
-
     }),
     packager: fis.plugin('map', {
       useTrack: false,

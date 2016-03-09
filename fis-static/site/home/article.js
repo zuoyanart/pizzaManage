@@ -183,7 +183,11 @@ var article = (function() {
       data: 'cp=' + options.cp + '&mp=' + options.mp + '&kw=' + $.trim($('#searchkw').val()) + '&nodeid=' + $('#node').val(),
       success: function(msg) {
         var s = options.tpl({"data":msg.msg});
-        $('#list').append(s);
+        if(cp == 1) {
+            $('#list').html(s);
+        } else {
+          $('#list').append(s);
+        }
         options.cp += 1;
         isScroll = true;
       }
