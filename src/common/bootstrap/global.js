@@ -10,14 +10,18 @@
  *
  * }
  */
-import tools from '../../home/tools/tools.js';
-import config from '../config/config.js';
-
-   global.articles = async function(promises) {
-    let result = await Promise.all(promises);
-    return result;
-  }
-
-  global.pageArticle = (nodeid, kw, cp, mp) => {
-    return tools.httpAgent(config.api + 'article/page', "post", "kw=" + kw + "&cp=" + cp + "&mp=" + mp + "&nodeid=" + nodeid);
-  }
+// import tools from '../../home/tools/tools.js';
+// import config from '../config/config.js';
+//
+// global.art = function(promises) {
+//  return "global.articles(promises)";
+// }
+//    global.articles = async function(promises) {
+//     let result = await Promise.all(promises);
+//     //console.log(result[0].state);
+//     return "a";
+//   }
+//
+//   global.pageArticle = (nodeid, kw, cp, mp) => {
+//     return tools.httpAgent(config.api + 'article/page', "post", "kw=" + kw + "&cp=" + cp + "&mp=" + mp + "&nodeid=" + nodeid);
+//   }
