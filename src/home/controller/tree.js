@@ -19,53 +19,73 @@ export default class extends Base {
      */
   async pageAction() {
     let pid = this.post("pid");
-    var node = await tools.httpAgent(this.config("api") + 'node/page', "post", "pid=" + this.post("pid"));
-
+    let node = await tools.httpAgent(this.config("api") + 'node/page', "post", "pid=" + this.post("pid"));
     return this.json(node);
   }
-
+  /**
+   *  返回所有的节点列表
+   * @method pageallAction
+   * @return {[type]}      [description]
+   */
+  async pageallAction() {
+    let node = await tools.httpAgent(this.config("api") + 'node/pageall', "get");
+    return this.json(node);
+  }
+  //编辑节点
   editAction() {
     return this.display();
   }
 
   /**
-   * 获取文章操作
+   * 获取节点操作
    * @method getAction
    * @return {[type]}  [description]
    */
   async getAction() {
-     var node = await tools.httpAgent(this.config("api") + 'node/' + this.post("id"), "get");
-     return this.json(node);
+    let node = await tools.httpAgent(this.config("api") + 'node/' + this.post("id"), "get");
+    return this.json(node);
   }
 
   /**
-   * 更新文章
+   * 更新节点
    * @method updateAction
    * @return {[type]}     [description]
    */
   async updateAction() {
-    var p = this.post();
-    p.pid = parseInt(p.pid);
-    var node = await tools.httpAgent(this.config("api") + 'node', "put", p);
-    return this.json({
-      "state": true
-    });
+    let p = this.post();
+    p.id = parseInt(p.id);
+    p.weight = parseInt(p.weight);
+    let node = await tools.httpAgent(this.config("api") + 'node', "put", p);
+    if (node.state == true) {
+      return this.json({
+        "state": true
+      });
+    } else {
+      return this.json({
+        "state": false
+      });
+    }
   }
 
   /**
-   * 更新文章
+   * 更新节点
    * @method updateAction
    * @return {[type]}     [description]
    */
   async createAction() {
-    var p = this.post();
+    let p = this.post();
     p.pid = parseInt(p.pid);
-    console.log(p);
-     var node = await tools.httpAgent(this.config("api") + 'node', "post", p);
-     console.log(node);
-    return this.json({
-      "state": true
-    });
+    p.weight = parseInt(p.weight);
+    let node = await tools.httpAgent(this.config("api") + 'node', "post", p);
+    if (node.state == true) {
+      return this.json({
+        "state": true
+      });
+    } else {
+      return this.json({
+        "state": false
+      });
+    }
   }
 
 

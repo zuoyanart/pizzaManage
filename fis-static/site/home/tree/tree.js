@@ -70,6 +70,13 @@ var tree = (function() {
             'maxLength': 150,
             focusMsg: "请输入自定义链接(非必填)",
             errMsg: '自定义链接须在5-150个字符之间'
+          },
+          '#weight': {
+            'must': true,
+            'minLength': 1,
+            'maxLength': 3,
+            focusMsg: "请输入节点权重",
+            errMsg: '请输入节点权重，只能是小于4位的数字'
           }
 
         },
@@ -95,6 +102,16 @@ var tree = (function() {
           });
         }
       });
+    }
+
+    my.pageall = function() {
+      $.ajax({
+        url: options.url + 'pageall',
+        data: '1=1',
+        success: function(msg) {
+           console.log(msg);
+        }
+      })
     }
     /**
      * 获取模块列表

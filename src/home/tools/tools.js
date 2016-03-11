@@ -1,7 +1,8 @@
 'use strict';
 
 import fs from 'fs';
-import superagent from 'superagent'
+import superagent from 'superagent';
+import crypto from 'crypto';
 
 
 export default class {
@@ -67,6 +68,15 @@ export default class {
         });
       });
     }
+  }
+
+  /**
+   * sha1加密
+   * @param str 将加密的字符串
+   * @returns {*}
+   */
+  static sha1(str) {
+    return crypto.createHash('sha1').update(str).digest('hex');
   }
 
 }

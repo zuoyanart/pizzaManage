@@ -20,6 +20,7 @@ export default class extends Base {
      */
   async pageAction() {
       let article =  await tools.httpAgent(this.config("api") + 'article/page', "post", "kw=" + this.post("kw") + "&cp=" + this.post("cp") + "&mp=" + this.post("mp") + "&nodeid=" + this.post("nodeid"));
+      console.log(article);
       return this.json(article);
     }
     /**
