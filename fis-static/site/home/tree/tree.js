@@ -55,69 +55,108 @@ var tree = (function() {
      * @return {[type]}     [description]
      */
   my.edit = function(obj) {
-      $(".form").pizzaValidate({
-        'fields': {
-          '#name': {
-            'must': true,
-            'minLength': 2,
-            'maxLength': 48,
-            focusMsg: "请输入标题",
-            errMsg: '标题不能为空或标题必须在2-48个字符之间'
-          },
-          '#link': {
-            'must': false,
-            'minLength': 5,
-            'maxLength': 150,
-            focusMsg: "请输入自定义链接(非必填)",
-            errMsg: '自定义链接须在5-150个字符之间'
-          },
-          '#weight': {
-            'must': true,
-            'minLength': 1,
-            'maxLength': 3,
-            focusMsg: "请输入节点权重",
-            errMsg: '请输入节点权重，只能是小于4位的数字'
-          }
-
+    $(".form").pizzaValidate({
+      'fields': {
+        '#name': {
+          'must': true,
+          'minLength': 2,
+          'maxLength': 48,
+          focusMsg: "请输入标题",
+          errMsg: '标题不能为空或标题必须在2-48个字符之间'
         },
-        ajaxFun: function(data) {
-          var id = tools.getPara("id");
-          var pid = tools.getPara('pid');
-          var op = "create";
-          if (id != "") {
-            op = "update";
-            data += '&id=' + id;
-          } else {
-            data += '&pid=' + pid;
-          }
-          data += '&brief=' + editor.html()
-          $.ajax({
-            url: options.url + op,
-            data: data,
-            success: function(msg) {
-              if (msg.state == true) {
-                history.back();
-              }
-            }
-          });
+        '#link': {
+          'must': false,
+          'minLength': 5,
+          'maxLength': 150,
+          focusMsg: "请输入自定义链接(非必填)",
+          errMsg: '自定义链接须在5-150个字符之间'
+        },
+        '#weight': {
+          'must': true,
+          'minLength': 1,
+          'maxLength': 3,
+          focusMsg: "请输入节点权重",
+          errMsg: '请输入节点权重，只能是小于4位的数字'
         }
-      });
-    }
 
-    my.pageall = function() {
+      },
+      ajaxFun: function(data) {
+        var id = tools.getPara("id");
+        var pid = tools.getPara('pid');
+        var op = "create";
+        if (id != "") {
+          op = "update";
+          data += '&id=' + id;
+        } else {
+          data += '&pid=' + pid;
+        }
+        data += '&brief=' + editor.html()
+        $.ajax({
+          url: options.url + op,
+          data: data,
+          success: function(msg) {
+            if (msg.state == true) {
+              history.back();
+            }
+          }
+        });
+      }
+    });
+  }
+
+  my.pageall = function(callback) {
       $.ajax({
         url: options.url + 'pageall',
-        data: '1=1',
         success: function(msg) {
-           console.log(msg);
+          if (msg.state == true) {
+            var s = '<option value="1">首页</option>';
+            var data = msg.msg;
+            s += fomatNodeList(1, data);
+            callback(s);
+          }
         }
       })
     }
     /**
-     * 获取模块列表
-     * @method page
-     * @return {[type]} [description]
+     * 递归格式化nodelist
+     * @method fomatNodeList
+     * @param  {[type]}      pid  [description]
+     * @param  {[type]}      data [description]
+     * @return {[type]}           [description]
      */
+  function fomatNodeList(pid, data) {
+    var s = '';
+    for (var i = 0, len = data.length; i < len; i++) {
+      if (data[i].pid == pid + "") {
+        s += '<option value="' + data[i].id + '">' + setNodeListGap(data[i].nodepath) + data[i].name + '</option>';
+        s += fomatNodeList(data[i].id, data);
+      }
+    }
+    return s;
+  }
+  /**
+   * fomat nodelist 添加制表符
+   * @method setNodeListGap
+   * @param  {[type]}       nodepath [description]
+   */
+  function setNodeListGap(nodepath) {
+    var l = nodepath.split(',').length - 3;
+    var s = '';
+    if (l == 0) {
+      return s;
+    } else {
+      s += '├'
+      for (var i = 0; i < l; i++) {
+        s += '─ ';
+      }
+      return s;
+    }
+  }
+  /**
+   * 获取模块列表
+   * @method page
+   * @return {[type]} [description]
+   */
   function page(pid) {
     var o = $('#' + pid);
     $.ajax({
@@ -153,7 +192,7 @@ var tree = (function() {
         }
       } else { //缩回子集
         o.removeClass('icon-sub').addClass('icon-add');
-        displaySubNode(oparent,'hide');
+        displaySubNode(oparent, 'hide');
       }
     });
   }
@@ -179,8 +218,8 @@ var tree = (function() {
 
     node.each(function() {
       subnode = $(this);
-      if($(this).attr('path').indexOf(nodepath) > -1) {
-        action[isdisplay].call(this,subnode);
+      if ($(this).attr('path').indexOf(nodepath) > -1) {
+        action[isdisplay].call(this, subnode);
       }
     });
   }

@@ -35,7 +35,7 @@ var globleConfig = (function() {
             /*if(opt.data === undefined) {
             	opt.data = tools.getCsrf();
             }*/
-            if (opt.data.indexOf('_csrf') === -1) {
+            if (opt.data && opt.data.indexOf('_csrf') === -1) {
               //opt.data += tools.getCsrf();
             }
           }

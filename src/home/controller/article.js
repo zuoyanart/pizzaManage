@@ -19,7 +19,7 @@ export default class extends Base {
      * @return {[type]}   [description]
      */
   async pageAction() {
-      let article =  await tools.httpAgent(this.config("api") + 'article/page', "post", "kw=" + this.post("kw") + "&cp=" + this.post("cp") + "&mp=" + this.post("mp") + "&nodeid=" + this.post("nodeid"));
+      let article = await tools.httpAgent(this.config("api") + 'article/page', "post", "kw=" + this.post("kw") + "&cp=" + this.post("cp") + "&mp=" + this.post("mp") + "&nodeid=" + this.post("nodeid"));
       console.log(article);
       return this.json(article);
     }
@@ -28,21 +28,10 @@ export default class extends Base {
      * @method getAction
      * @return {[type]}  [description]
      */
-  getAction() {
-    return this.json({
-      "state": true,
-      "doc": {
-        "title": "习近平谈\"新常态\":3个特点 4个机遇 1个挑战",
-        "node":1,
-        "timg": "http://img5.cache.netease.com/photo/0001/2016-02-25/BGMBK3PB00AO0001.jpg",
-        "link":"",
-        "source": "网易新闻",
-        "brief": "在十八大之后，习总的公开文章和讲话中，“新常态”被提及了160余次。其中阐述最全面的，应该是在2014年亚太经合组织（APEC）工商领导人峰会上，习总的主旨演讲。这之中，习总讲到了“新常态”的 3个特点、4个机遇和1个挑战。",
-        "content": "在十八大之后，习总的公开文章和讲话中，“新常态”被提及了160余次。其中阐述最全面的，应该是在2014年亚太经合组织（APEC）工商领导人峰会上，习总的主旨演讲。这之中，习总讲到了“新常态”的 3个特点、4个机遇和1个挑战。在十八大之后，习总的公开文章和讲话中，“新常态”被提及了160余次。<br/>其中阐述最全面的，应该是在2014年亚太经合组织（APEC）工商领导人峰会上，习总的主旨演讲。这之中，习总讲到了“新常态”的 3个特点、4个机遇和1个挑战。",
-        "tag":"习近平,网易新闻"
-      }
-    });
-  }
+  async getAction() {
+      let article = await tools.httpAgent(this.config("api") + 'article/' + parseInt(this.post("id")), "get");
+      return this.json(article);
+    }
     /**
      * 编辑文章
      * @method editAction
@@ -56,7 +45,14 @@ export default class extends Base {
      * @method updateAction
      * @return {[type]}     [description]
      */
-  updateAction() {
+  async updateAction() {
+      let up = this.post();
+      up.nodeid = parseInt(up.nodeid);
+      up.pass = parseInt(up.pass);
+      up.reco = parseInt(up.reco);
+      up.id = parseInt(up.id);
+      let article = await tools.httpAgent(this.config("api") + 'article', "put", up);
+      console.log(article);
       return this.json({
         "state": true
       });
@@ -66,7 +62,13 @@ export default class extends Base {
      * @method updateAction
      * @return {[type]}     [description]
      */
-  createAction() {
+  async createAction() {
+      let up = this.post();
+      up.nodeid = parseInt(up.nodeid);
+      up.pass = parseInt(up.pass);
+      up.reco = parseInt(up.reco);
+      up.uid = parseInt(this.cookie("id"));
+      let article = await tools.httpAgent(this.config("api") + 'article', "post", up);
       return this.json({
         "state": true
       });
@@ -87,9 +89,9 @@ export default class extends Base {
      * @return {[type]}   [description]
      */
   passAction() {
-      return this.json({
-        "state": true
-      });
-    }
+    return this.json({
+      "state": true
+    });
+  }
 
 }

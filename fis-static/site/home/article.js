@@ -8,6 +8,7 @@ var article = (function() {
   var $ = require('jquery');
   var tools = require('pizzatools');
   var common = require('common/common');
+  var node = require('home/tree/tree');
   require('pizzaui');
   var my = {};
   var options = {
@@ -25,14 +26,19 @@ var article = (function() {
    */
   my.init = function() {
       eventBind(); //绑定所有交互操作
-      page(1); //
       scrollEvent(); //绑定滚动条事件
       common.checkAll('#checkall'); //checkall
       //绑定节点切换事件
-      $('#node').pizzaSelect({
-        onChange: function(obj) {
-          page(1);
-        }
+
+      node.pageall(function(data) {
+        var no = $('#node')
+        no.html(data);
+        no.pizzaSelect({
+          onChange: function(obj) {
+            page(1);
+          }
+        });
+        page(1); //
       });
 
       common.kwSearch('#searchkw', function() {
@@ -48,20 +54,15 @@ var article = (function() {
      * @return {[type]}     [description]
      */
   my.get = function() {
-      $('#node').pizzaSelect({
-        onChange: function(obj) {
-        //   var value = parseInt(obj.attr('data'));
-        //   var s = '';
-        //   for (var i = value; i < 30; i++) {
-        //     s += '<li data="' + i + '">' + i + '</li>';
-        //   }
-        //   $('#age1').parent().find('ul').html(s);
-         }
-      });
-      $('.select').pizzaSelect();
 
       var id = tools.getPara("id");
       if (id == "") {
+        node.pageall(function(data) {
+          var no = $('#nodeid');
+          no.html(data);
+          no.pizzaSelect({});
+          my.edit();
+        });
         return;
       }
       $.ajax({
@@ -69,10 +70,21 @@ var article = (function() {
         data: 'id=' + id,
         success: function(msg) {
           if (msg.state == true) {
-            for (var key in msg.doc) {
-              $('#' + key).val(msg.doc[key]);
+            for (var key in msg.msg) {
+              $('#' + key).val(msg.msg[key]);
             }
-            editor.html(msg.doc.content);
+            $('#pass').attr("val", msg.msg.pass);
+            $('#reco').attr("val", msg.msg.reco);
+            $('.select').pizzaSelect();
+
+            node.pageall(function(data) {
+              var no = $('#nodeid');
+              no.attr('val', msg.msg.nodeid);
+              no.html(data);
+              no.pizzaSelect({});
+              my.edit();
+            });
+            editor.html(msg.msg.content);
           }
         }
       });
@@ -83,7 +95,7 @@ var article = (function() {
      * @param  {[type]} obj [description]
      * @return {[type]}     [description]
      */
-  my.edit = function(obj) {
+  my.edit = function() {
       $(".form").pizzaValidate({
         'fields': {
           '#title': {
@@ -93,7 +105,7 @@ var article = (function() {
             focusMsg: "请输入标题",
             errMsg: '标题不能为空或标题必须在5-48个字符之间'
           },
-          '#node': {
+          '#nodeid': {
             'must': true,
             'minLength': 1,
             'maxLength': 12,
@@ -128,7 +140,7 @@ var article = (function() {
             focusMsg: "请输入文章描述(非必填)",
             errMsg: '文章描述须在2-300个字符之间'
           },
-          '#tag': {
+          '#tags': {
             'must': false,
             'minLength': 2,
             'maxLength': 30,
@@ -139,15 +151,15 @@ var article = (function() {
             'must': true,
             'minLength': 1,
             'maxLength': 3,
-            focusMsg: "请输入文章标签，空格隔开(非必填)",
-            errMsg: '文章标签须在2-30个字符之间'
+            focusMsg: " ",
+            errMsg: ' '
           },
           '#reco': {
             'must': false,
             'minLength': 1,
             'maxLength': 3,
-            focusMsg: "请输入文章标签，空格隔开(非必填)",
-            errMsg: '文章标签须在2-30个字符之间'
+            focusMsg: " ",
+            errMsg: ' '
           },
         },
         ajaxFun: function(data) {
@@ -155,8 +167,9 @@ var article = (function() {
           var op = "create";
           if (id != "") {
             op = "update";
+            data += '&id=' + id;
           }
-          data += '&content=' + editor.html()
+          data += '&content=' + editor.html();
           $.ajax({
             url: options.url + op,
             data: data,
@@ -182,9 +195,11 @@ var article = (function() {
       url: options.url + 'page',
       data: 'cp=' + options.cp + '&mp=' + options.mp + '&kw=' + $.trim($('#searchkw').val()) + '&nodeid=' + $('#node').val(),
       success: function(msg) {
-        var s = options.tpl({"data":msg.msg});
-        if(cp == 1) {
-            $('#list').html(s);
+        var s = options.tpl({
+          "data": msg.msg
+        });
+        if (cp == 1) {
+          $('#list').html(s);
         } else {
           $('#list').append(s);
         }
@@ -274,24 +289,24 @@ var article = (function() {
     }
     console.log("id=" + id);
     var ispass = "false";
-    if(obj.html() == '审核') {
+    if (obj.html() == '审核') {
       ispass = "true";
     }
     $.ajax({
       url: options.url + 'pass',
-      data: 'id=' + id +'&ispass=' + ispass,
+      data: 'id=' + id + '&ispass=' + ispass,
       success: function(msg) {
         if (msg.state == true) {
           console.log('asdasd');
           var ids = id.split(',');
-          if(ispass == "true") {//审核
+          if (ispass == "true") { //审核
             for (var i = 0, ll = ids.length; i < ll; i++) {
               console.log(ids[i]);
               var oo = $('#' + ids[i]).parent().parent();
               oo.find('b').remove();
               oo.find('i.pass').html('取消审核');
             }
-          } else {//取消审核
+          } else { //取消审核
             for (var i = 0, ll = ids.length; i < ll; i++) {
               var oo = $('#' + ids[i]).parent().parent();
               oo.children('a').after('<b>[未审核]</b>');

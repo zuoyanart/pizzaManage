@@ -1,7 +1,7 @@
 'use strict';
 
 import Base from './base.js';
-import sagent from 'superagent';
+import tools from '../tools/tools.js';
 export default class extends Base {
 
   /**
@@ -28,12 +28,12 @@ export default class extends Base {
      * @return {[type]}  [description]
      */
   getAction() {
-    // let result = await sagent.get(this.config("api") + 'user/' + this.post("id")).end(function(err, doc) {
-    //   if(err) {
-    //     return
-    //   }
-    // });
-    console.log(this.config("api"));
+      // let result = await sagent.get(this.config("api") + 'user/' + this.post("id")).end(function(err, doc) {
+      //   if(err) {
+      //     return
+      //   }
+      // });
+      console.log(this.config("api"));
       return this.json({
         "state": true,
         "doc": {
@@ -71,7 +71,9 @@ export default class extends Base {
      * @method updateAction
      * @return {[type]}     [description]
      */
-  createAction() {
+  async createAction() {
+      let us = this.post();
+      let user = await tools.httpAgent(this.config("api") + 'user', "post", us);
       return this.json({
         "state": true
       });

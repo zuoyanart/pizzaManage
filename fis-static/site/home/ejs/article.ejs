@@ -7,6 +7,12 @@
     <% if(data[i].pass == 0){%>
     <b>[未审核]</b>
     <%}%>
-    <span><i class="remove">删除</i><a href="/article/edit?id=<%= data[i].id%>">编辑</a><i class="pass">审核</i></span>
+    <span><a href="/article/edit?id=<%= data[i].id%>">编辑</a>
+      <% if(data[i].pass == 1){%>
+      <i class="pass">取消审核</i>
+      <%} else {%>
+        <i class="pass">审核</i>
+      <%}%>
+        <i class="remove">删除</i></span>
   </li>
 <%}%>
