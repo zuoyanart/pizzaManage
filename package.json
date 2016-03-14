@@ -19,7 +19,8 @@
     "babel-plugin-transform-runtime": "6.x.x",
     "babel-core": "6.x.x",
     "nodemailer": "2.2.0",
-    "superagent": "1.7.2"
+    "superagent": "1.7.2",
+    "xss": "0.2.10"
   },
   "repository": "",
   "license": "MIT"

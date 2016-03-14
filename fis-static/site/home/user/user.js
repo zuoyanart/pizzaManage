@@ -51,8 +51,8 @@ var user = (function() {
         data: 'id=' + id,
         success: function(msg) {
           if (msg.state == true) {
-            for (var key in msg.doc) {
-              $('#' + key).val(msg.doc[key]);
+            for (var key in msg.msg) {
+              $('#' + key).val(msg.msg[key]);
             }
           }
         }
@@ -64,7 +64,8 @@ var user = (function() {
      * @param  {[type]} obj [description]
      * @return {[type]}     [description]
      */
-  my.edit = function(obj) {
+  my.edit = function() {
+      var id = tools.getPara("id");
       $(".form").pizzaValidate({
         'fields': {
           '#username': {
@@ -82,18 +83,18 @@ var user = (function() {
             errMsg: '昵称必须在3-20个字符之间'
           },
           '#password': {
-            'must': true,
+            'must': id == '' ? true: false,
             'minLength': 6,
             'maxLength': 25,
-            focusMsg: "请输入密码",
+            focusMsg: id == '' ? "请输入密码" : "请输入密码,不填写将不更新密码",
             errMsg: '密码必须6-25个字符之间'
           },
         },
         ajaxFun: function(data) {
-          var id = tools.getPara("id");
           var op = "create";
           if (id != "") {
             op = "update";
+            data  += "&id=" + id;
           }
           $.ajax({
             url: options.url + op,
@@ -120,8 +121,12 @@ var user = (function() {
       url: options.url + 'page',
       data: 'cp=' + options.cp + '&mp=' + options.mp + '&kw=' + $.trim($('#searchkw').val()),
       success: function(msg) {
-        var s = options.tpl();
-        $('#list').append(s);
+        var s = options.tpl({"data":msg.msg});
+        if(cp == 1) {
+          $('#list').html(s);
+        } else {
+          $('#list').append(s);
+        }
         options.cp += 1;
         isScroll = true;
       }

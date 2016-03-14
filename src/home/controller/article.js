@@ -78,20 +78,21 @@ export default class extends Base {
      * @method removeAction
      * @return {[type]}     [description]
      */
-  removeAction() {
-      return this.json({
-        "state": true
-      });
+  async removeAction() {
+    let param = tools.xss(this.post());
+    let result = await tools.httpAgent(think.config("api") + "article", "del", "id=" + param.id);
+    return this.json(result);
     }
     /**
      * 审核文章
      * @method passAction
      * @return {[type]}   [description]
      */
-  passAction() {
-    return this.json({
-      "state": true
-    });
+  async passAction() {
+    let param = tools.xss(this.post());
+    let pass = param.ispass == "true" ? 1 : 0;
+    let result = await tools.httpAgent(think.config("api") + "article/pass", "post", "id=" + param.id + "&pass=" + pass);
+    return this.json(result);
   }
 
 }

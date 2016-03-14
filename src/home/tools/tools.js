@@ -3,6 +3,7 @@
 import fs from 'fs';
 import superagent from 'superagent';
 import crypto from 'crypto';
+import xssFilter from 'xss';
 
 
 export default class {
@@ -49,9 +50,10 @@ export default class {
      */
   static httpAgent(url, method, data) {
     data = data ? data : "";
-    if (method.toLowerCase() == "get") {
+    var method = method.toLowerCase();
+    if (method == "get" || method == "del") {
       return new Promise(function(resolve, reject) {
-        superagent.get(url).query(data).end(function(err, res) {
+        superagent[method].call(this, url).query(data).end(function(err, res) {
           if (err || !res.ok) {
             reject(err || res.ok);
           }
@@ -76,7 +78,24 @@ export default class {
    * @returns {*}
    */
   static sha1(str) {
-    return crypto.createHash('sha1').update(str).digest('hex');
+      return crypto.createHash('sha1').update(str).digest('hex');
+    }
+    /**
+     * xss过滤
+     * @method xssFomat
+     * @param  {[type]} str [description]
+     * @return {[type]}     [description]
+     */
+  static xss(str) {
+    if (typeof(str) == "object") { //处理json
+      let json = {};
+      for (var key in str) {
+        json[key] = xssFilter(str[key]);
+      }
+      return json;
+    } else {
+      return xssFilter(str);
+    }
   }
 
 }

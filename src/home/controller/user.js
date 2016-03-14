@@ -17,36 +17,19 @@ export default class extends Base {
      * @method pageAction
      * @return {[type]}   [description]
      */
-  pageAction() {
-      return this.json({
-        "state": "true"
-      });
+  async pageAction() {
+      let param = tools.xss(this.post());
+      let users = await tools.httpAgent(think.config("api") + 'user/page', "post", "cp=" + param.cp + '&mp=' + param.mp + '&kw=' + param.kw);
+      return this.json(users);
     }
     /**
      * 获取用户操作
      * @method getAction
      * @return {[type]}  [description]
      */
-  getAction() {
-      // let result = await sagent.get(this.config("api") + 'user/' + this.post("id")).end(function(err, doc) {
-      //   if(err) {
-      //     return
-      //   }
-      // });
-      console.log(this.config("api"));
-      return this.json({
-        "state": true,
-        "doc": {
-          "username": "习近平谈\"新常态\":3个特点 4个机遇 1个挑战",
-          "node": 1,
-          "timg": "http://img5.cache.netease.com/photo/0001/2016-02-25/BGMBK3PB00AO0001.jpg",
-          "link": "",
-          "source": "网易新闻",
-          "brief": "在十八大之后，习总的公开用户和讲话中，“新常态”被提及了160余次。其中阐述最全面的，应该是在2014年亚太经合组织（APEC）工商领导人峰会上，习总的主旨演讲。这之中，习总讲到了“新常态”的 3个特点、4个机遇和1个挑战。",
-          "content": "在十八大之后，习总的公开用户和讲话中，“新常态”被提及了160余次。其中阐述最全面的，应该是在2014年亚太经合组织（APEC）工商领导人峰会上，习总的主旨演讲。这之中，习总讲到了“新常态”的 3个特点、4个机遇和1个挑战。在十八大之后，习总的公开用户和讲话中，“新常态”被提及了160余次。<br/>其中阐述最全面的，应该是在2014年亚太经合组织（APEC）工商领导人峰会上，习总的主旨演讲。这之中，习总讲到了“新常态”的 3个特点、4个机遇和1个挑战。",
-          "tag": "习近平,网易新闻"
-        }
-      });
+  async getAction() {
+      let user = await tools.httpAgent(this.config("api") + 'user/' + tools.xss(this.post("id")), "get");
+      return this.json(user);
     }
     /**
      * 编辑用户
@@ -61,10 +44,11 @@ export default class extends Base {
      * @method updateAction
      * @return {[type]}     [description]
      */
-  updateAction() {
-      return this.json({
-        "state": true
-      });
+  async updateAction() {
+      let user = tools.xss(this.post());
+      user.id = parseInt(user.id);
+      let result = await tools.httpAgent(think.config("api") + 'user', "put", user);
+      return this.json(result);
     }
     /**
      * 更新用户
@@ -83,10 +67,11 @@ export default class extends Base {
      * @method removeAction
      * @return {[type]}     [description]
      */
-  removeAction() {
-      return this.json({
-        "state": true
-      });
+  async removeAction() {
+      let id = tools.xss(this.post("id")).replace(/,0/, "");
+      console.log(id);
+      let result = await tools.httpAgent(think.config("api") + 'user', "del", "id=" + id);
+      return this.json(result);
     }
     /**
      * 审核用户
