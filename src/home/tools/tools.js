@@ -73,6 +73,37 @@ export default class {
   }
 
   /**
+   * http请求
+   * @method httpAgent
+   * @param  {[type]}  url    [description]
+   * @param  {[type]}  method [description]
+   * @param  {[type]}  data   [description]
+   * @return {[type]}         [description]
+   */
+static httpSpider(url, method, data) {
+  data = data ? data : "";
+  var method = method.toLowerCase();
+  if (method == "get" || method == "del") {
+    return new Promise(function(resolve, reject) {
+      superagent[method].call(this, url).query(data).end(function(err, res) {
+        if (err || !res.ok) {
+          reject(err || res.ok);
+        }
+        resolve(res.text);
+      });
+    });
+  } else {
+    return new Promise(function(resolve, reject) {
+      superagent[method].call(this, url).send(data).end(function(err, res) {
+        if (err || !res.ok) {
+          reject(err || res.ok);
+        }
+        resolve(res.text);
+      });
+    });
+  }
+}
+  /**
    * sha1加密
    * @param str 将加密的字符串
    * @returns {*}
