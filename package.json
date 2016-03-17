@@ -20,8 +20,9 @@
     "babel-core": "6.x.x",
     "nodemailer": "2.2.0",
     "superagent": "1.7.2",
-    "xss": "0.2.10"
+    "xss": "0.2.10",
+    "cheerio": "0.20.0"
   },
-  "repository": "",
+  "repository": "https://github.com/zuoyanart/pizzaManage",
   "license": "MIT"
 }
