@@ -15,19 +15,25 @@ export default class extends Base {
       let msg = [];
       let jsonItem = {};
       let param = tools.xss(this.post());
-      let article = await tools.httpSpider("http://www.henanjianye.cn/jianyeftweb/website/newsList.htm" + "?page=" + param.cp , "get");
+      let article = await tools.httpSpider("http://www.henanjianye.cn/jianyeftweb/website/newsList.htm" + "?page=" + param.cp, "get");
       // console.log(article);
       let $ = cheerio.load(article, {
         normalizeWhitespace: true,
         xmlMode: true
       });
       $(".list").find("li").each(function(index, elem) {
+        if (index == param.mp) {
+          return false;
+        }
         let o = $(this);
         jsonItem = {};
         jsonItem.id = o.find("a").attr("href").split("&id=")[1];
+        if (!jsonItem.id) {
+          jsonItem.id = 5684;
+        }
         jsonItem.title = o.find("h3").text();
         jsonItem.timg = o.find("img").attr("src");
-        jsonItem.bref = o.find(".detailBlock > p").text();
+        jsonItem.brief = o.find(".detailBlock > p").text();
         jsonItem.createtime = o.find(".time").text();
         jsonItem.comment = o.find(".readCount").text();
         msg.push(jsonItem);
@@ -40,29 +46,22 @@ export default class extends Base {
      * @method pageAction
      * @return {[type]}   [description]
      */
-  async pageAction() {
+  async getAction() {
     let json = {
       "state": true
     };
-    let msg = [];
-    let jsonItem = {};
     let param = tools.xss(this.post());
-    let article = await tools.httpAgent("http://www.henanjianye.cn/jianyeftweb/website/newsList.htm" + "?page=" + cp + "&cid=", "get");
+    console.log(param);
+    let article = await tools.httpSpider("http://www.henanjianye.cn/jianyeftweb/website/newsRead.htm?id=" + param.id, "get");
     let $ = cheerio.load(article, {
       normalizeWhitespace: true,
       xmlMode: true
     });
-    $(".list").find("li").each(function(index, elem) {
-      let o = $(this);
-      jsonItem = {};
-      jsonItem.id = o.find("a").attr("href").split("&id")[1];
-      jsonItem.title = o.find("a").text();
-      jsonItem.timg = o.fond("img").attr("src");
-      jsonItem.bref = o.find(".detailBlock").html();
-      jsonItem.createtime = o.find(".time").text();
-      jsonItem.comment = o.find(".readCount").text();
-      msg.push(jsonItem);
-    });
+    let msg = {};
+    msg.title = $("h3").text();
+    msg.content = tools.htmlDecode($(".detail").html().split("<div")[0]);
+    json.msg = msg;
+    console.log(json);
     return this.json(json);
   }
 }
