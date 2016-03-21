@@ -1,10 +1,9 @@
-<%for(var i=0; i<30; i++) { %>
-  <% var id = new Date().getTime() + '' + i; %>
+<%for(var i=0,ll=data.length; i<ll; i++) { %>
   <li>
     <label class="checkgroup">
-      <input type="checkbox" id="checkall<%= id%>" name="checkall"><label for="checkall<%= id%>" class="check-all"></label>
+      <input type="checkbox" id="<%= data[i].id%>" name="checkall"><label for="<%= data[i].id%>" class="check-all"></label>
     </label>
-    <a href="javascript:void(0);"><%= i %>首页头条</a>
-    <span><a href="/module/edit?id=<%=i%>">编辑</a><i class="remove">删除</i></span>
+    <a href="javascript:void(0);"><%= data[i].title%></a>
+    <span><a href="/module/edit?id=<%= data[i].id%>">编辑</a><i class="remove">删除</i></span>
   </li>
 <%}%>

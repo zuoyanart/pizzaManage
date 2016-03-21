@@ -10,7 +10,7 @@ var modules = (function() {
   var common = require('common/common');
   var my = {};
   var options = {
-    url: '/home/module/',
+    url: '/home/block/',
     tpl: __inline('./ejs/module.ejs'),
     cp: 1,
     mp: 20
@@ -47,10 +47,10 @@ var modules = (function() {
         data: 'id=' + id,
         success: function(msg) {
           if (msg.state == true) {
-            for (var key in msg.doc) {
-              $('#' + key).val(msg.doc[key]);
+            for (var key in msg.msg) {
+              $('#' + key).val(msg.msg[key]);
             }
-            editor.html(msg.doc.content);
+            editor.html(msg.msg.content);
           }
         }
       });
@@ -77,6 +77,7 @@ var modules = (function() {
           var op = "create";
           if (id != "") {
             op = "update";
+            data += "&id=" + id;
           }
           data += '&content=' + editor.html()
           $.ajax({
@@ -84,7 +85,7 @@ var modules = (function() {
             data: data,
             success: function(msg) {
               if (msg.state == true) {
-                history.back();
+                // history.back();
               }
             }
           });
@@ -104,8 +105,14 @@ var modules = (function() {
       url: options.url + 'page',
       data: 'cp=' + options.cp + '&mp=' + options.mp + '&kw=' + $.trim($('#searchkw').val()),
       success: function(msg) {
-        var s = options.tpl();
-        $('#list').append(s);
+        var s = options.tpl({
+          data: msg.msg
+        });
+        if (cp == 1) {
+          $('#list').html(s);
+        } else {
+          $('#list').append(s);
+        }
         options.cp += 1;
         isScroll = true;
       }
