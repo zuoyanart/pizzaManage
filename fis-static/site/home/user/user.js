@@ -101,7 +101,7 @@ var user = (function() {
             data: data,
             success: function(msg) {
               if (msg.state == true) {
-                //history.back();
+                history.back();
               }
             }
           });
