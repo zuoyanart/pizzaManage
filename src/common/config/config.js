@@ -16,5 +16,5 @@ export default {
   },
   resource_on: true, //是否开启静态资源解析功能
   resource_reg: /^((static|upload)\/|[^\/]+\.(?!js|html|jpg|png|jpeg)\w+$)/, //判断为静态资源请求的正则
-  api: 'http://192.168.1.134:3000/v1/'
+  api: 'http://192.168.1.100:3000/v1/'
 };
