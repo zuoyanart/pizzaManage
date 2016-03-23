@@ -4,12 +4,12 @@
  */
 export default {
   port: 8360,
-  host:"",
-  timeout:60,//60s
+  host: "",
+  timeout: 60, //60s
   resource_on: true, //是否开启静态资源解析功能
   resource_reg: /^((static|upload)\/|[^\/]+\.(?!js|html|jpg|png|jpeg)\w+$)/, //判断为静态资源请求的正则
-  log_error:true,//是否打印错误日志
-  default_module:"home",
+  log_error: true, //是否打印错误日志
+  default_module: "home",
   default_controller: "index",
   default_action: "index",
   json_content_type: "application/json",
@@ -24,9 +24,5 @@ export default {
         pass: 'spnt@#loveworld'
       }
     }
-  },
-  resource_on: true, //是否开启静态资源解析功能
-  resource_reg: /^((static|upload)\/|[^\/]+\.(?!js|html|jpg|png|jpeg)\w+$)/, //判断为静态资源请求的正则
-  api: 'http://192.168.1.100:3000/v1/'
   }
 };
