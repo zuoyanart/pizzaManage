@@ -18,7 +18,8 @@ export default class extends Base {
      * @return {[type]}    [description]
      */
   async loginAction() {
-      var user = await tools.httpAgent(this.config("api") + 'user/login', "post", "username=" + this.post("name") + "&password=" + this.post("password"));
+      var user = await tools.httpAgent("http://123.1.155.187/jianye/v1/" + 'user/login', "post", "username=" + this.post("name") + "&password=" + this.post("password"));
+      console.log("data=" + JSON.stringify(user));
       if (user.state == true) {
         let msg = user.msg;
         let ip = this.ip();
