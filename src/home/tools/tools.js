@@ -63,7 +63,6 @@ export default class {
     } else {
       return new Promise(function(resolve, reject) {
         superagent[method].call(this, url).send(data).end(function(err, res) {
-          // console.log(res.text);
           if (err || !res.ok) {
             reject(err || res.ok);
           }

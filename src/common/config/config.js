@@ -13,7 +13,7 @@ export default {
   default_controller: "index",
   default_action: "index",
   json_content_type: "application/json",
-  api: 'http://123.1.155.187/jianye/v1/',
+  api: 'http://203.189.234.220/jianye/v1/',
   mail: { //邮箱配置
     smtp: {
       host: 'smtp.163.com',
