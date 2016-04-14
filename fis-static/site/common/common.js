@@ -38,6 +38,15 @@ var common = (function() {
 		}
 		return id + '0';
 	}
+	/**
+	 * 获取单条id
+	 * @method function
+	 * @param  {[type]} obj [description]
+	 * @return {[type]}     [description]
+	 */
+	my.getId = function(obj) {
+		return obj.parent().parent().find('input[type=checkbox]').attr('id');
+	}
 /**
  * 关键字搜索
  * @method function

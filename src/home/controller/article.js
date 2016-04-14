@@ -79,9 +79,9 @@ export default class extends Base {
      * @return {[type]}     [description]
      */
   async removeAction() {
-    let param = tools.xss(this.post());
-    let result = await tools.httpAgent(think.config("api") + "article", "del", "id=" + param.id);
-    return this.json(result);
+      let param = tools.xss(this.post());
+      let result = await tools.httpAgent(think.config("api") + "article", "del", "id=" + param.id);
+      return this.json(result);
     }
     /**
      * 审核文章

@@ -17,6 +17,14 @@ var article = (function() {
     cp: 1,
     mp: 20
   };
+
+  var cmtOption = { //评论相关操作
+    url: '/home/comment/',
+    tpl: __inline('./ejs/comment.ejs'),
+    cp: 1,
+    mp: 20
+  }
+
   var isScroll = true;
 
   /**
@@ -283,37 +291,57 @@ var article = (function() {
      * @return {[type]} [description]
      */
   action.pass = function(obj) {
-    var id = common.getCheckId(obj);
-    if (id == '0') {
-      return;
-    }
-    console.log("id=" + id);
-    var ispass = "false";
-    if (obj.html() == '审核') {
-      ispass = "true";
-    }
-    $.ajax({
-      url: options.url + 'pass',
-      data: 'id=' + id + '&ispass=' + ispass,
-      success: function(msg) {
-        if (msg.state == true) {
-          console.log('asdasd');
-          var ids = id.split(',');
-          if (ispass == "true") { //审核
-            for (var i = 0, ll = ids.length; i < ll; i++) {
-              console.log(ids[i]);
-              var oo = $('#' + ids[i]).parent().parent();
-              oo.find('b').remove();
-              oo.find('i.pass').html('取消审核');
-            }
-          } else { //取消审核
-            for (var i = 0, ll = ids.length; i < ll; i++) {
-              var oo = $('#' + ids[i]).parent().parent();
-              oo.children('a').after('<b>[未审核]</b>');
-              oo.find('i.pass').html('审核');
+      var id = common.getCheckId(obj);
+      if (id == '0') {
+        return;
+      }
+      var ispass = "false";
+      if (obj.html() == '审核') {
+        ispass = "true";
+      }
+      $.ajax({
+        url: options.url + 'pass',
+        data: 'id=' + id + '&ispass=' + ispass,
+        success: function(msg) {
+          if (msg.state == true) {
+            console.log('asdasd');
+            var ids = id.split(',');
+            if (ispass == "true") { //审核
+              for (var i = 0, ll = ids.length; i < ll; i++) {
+                console.log(ids[i]);
+                var oo = $('#' + ids[i]).parent().parent();
+                oo.find('b').remove();
+                oo.find('i.pass').html('取消审核');
+              }
+            } else { //取消审核
+              for (var i = 0, ll = ids.length; i < ll; i++) {
+                var oo = $('#' + ids[i]).parent().parent();
+                oo.children('a').after('<b>[未审核]</b>');
+                oo.find('i.pass').html('审核');
+              }
             }
           }
         }
+      });
+    }
+    /**
+     * 显示评论
+     * @method function
+     * @param  {[type]} * [description]
+     * @return {[type]}   [description]
+     */
+  action.comment = function(obj) {
+    var id = common.getId(obj);
+    var opli = obj.parent().parent();
+    $.ajax({
+      url: cmtOption.url + 'page',
+      data: 'id=' + id + "&cp=" + cmtOption.cp + "&mp=" + cmtOption.mp,
+      success: function(msg) {
+        var s = cmtOption.tpl({
+          "data": msg.msg
+        });
+        opli.after(s);
+        cmtOption.cp += 1;
       }
     });
   }
