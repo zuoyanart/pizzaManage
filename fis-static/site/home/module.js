@@ -4,14 +4,14 @@
  * @param  {[type]} function( [description]
  * @return {[type]}           [description]
  */
-var modules = (function() {
+var block = (function() {
   var $ = require('jquery');
   var tools = require('pizzatools');
   var common = require('common/common');
   var my = {};
   var options = {
     url: '/home/block/',
-    tpl: __inline('./ejs/module.ejs'),
+    tpl: __inline('./ejs/block.ejs'),
     cp: 1,
     mp: 20
   };
@@ -192,4 +192,4 @@ var modules = (function() {
   return my;
 }());
 
-module.exports = modules;
+module.exports = block;

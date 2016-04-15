@@ -96,7 +96,7 @@ var common = (function() {
 		a.addClass('active');
 		if(a.parent().parent().parent().attr("id") != 'sidebar') {
 			//a.parent().parent().addClass('display').fadeIn();
-			a.parent().parent().parent().children('a').addClass('active');
+			a.parent().parent().parent().children('a').addClass('active').click();
 		}
 	}
 	/**

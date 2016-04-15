@@ -5,6 +5,23 @@ import tools from '../tools/tools.js';
 import upload from '../tools/upload.js';
 export default class extends Base {
 
+  /**
+   * index action
+   * @return {Promise} []
+   */
+  indexAction() {
+    //auto render template file index_index.html
+    return this.display();
+  }
+
+  /**
+   * index action
+   * @return {Promise} []
+   */
+  editAction() {
+    //auto render template file index_index.html
+    return this.display();
+  }
 
   async pageAction() {
     let param = tools.xss(this.post());
