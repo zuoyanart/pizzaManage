@@ -1,14 +1,8 @@
-<ul class="list comment">
+<ul class="list commentlist">
 <%for(var i=0,ll=data.length; i<ll; i++) { %>
-  <li>
-    <a href=""><%= data[i].username%></a>
-    <span><a href="/article/edit?id=<%= data[i].id%>">编辑</a><i class="comment">评论</i>
-      <% if(data[i].pass == 1){%>
-      <i class="pass">取消审核</i>
-      <%} else {%>
-        <i class="pass">审核</i>
-      <%}%>
-        <i class="remove">删除</i></span>
+  <li id="comment_<%= data[i].id%>">
+    <a href="javascript:void(0);"><%= data[i].content%></a>
+    <span><i class="commentRemove">删除</i></span>
   </li>
 <%}%>
 </ul>

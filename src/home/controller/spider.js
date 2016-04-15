@@ -62,7 +62,7 @@ export default class extends Base {
 
         msg.content = msg.content.replace(/<(\/){0,1}div[^<>]*>/ig, '').replace(/<\/span>/ig, "</span><br/><br/>").replace(/<(\/){0,1}span[^<>]*>/ig, '').replace(/&amp;/ig,"&");
         json.msg = msg;
-        console.log(json);
+        // console.log(json);
         return this.json(json);
     }
 }

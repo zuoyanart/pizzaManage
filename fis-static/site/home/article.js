@@ -9,6 +9,11 @@ var article = (function() {
   var tools = require('pizzatools');
   var common = require('common/common');
   var node = require('home/tree/tree');
+  var trunpage = require("trunpage/trunpage"); //获取翻页
+  var pizzalayer = require("pizzalayer"); //获取翻页
+  var tppage = null; //翻页的实例化
+  var commentObj = null;
+
   require('pizzaui');
   var my = {};
   var options = {
@@ -22,7 +27,7 @@ var article = (function() {
     url: '/home/comment/',
     tpl: __inline('./ejs/comment.ejs'),
     cp: 1,
-    mp: 20
+    mp: 10
   }
 
   var isScroll = true;
@@ -62,7 +67,6 @@ var article = (function() {
      * @return {[type]}     [description]
      */
   my.get = function() {
-
       var id = tools.getPara("id");
       if (id == "") {
         node.pageall(function(data) {
@@ -331,19 +335,86 @@ var article = (function() {
      * @return {[type]}   [description]
      */
   action.comment = function(obj) {
-    var id = common.getId(obj);
-    var opli = obj.parent().parent();
+      commentObj = obj;
+      var ocomment = $(".commentlist");
+      if(ocomment.length == 1) {
+        ocomment.next("div").remove();
+        ocomment.remove();
+      } else {
+        commentPage(1, 0);
+      }
+    }
+    /**
+     * 删除评论
+     * @method function
+     * @param  {[type]} obj [description]
+     * @return {[type]}     [description]
+     */
+  action.commentRemove = function(obj) {
+      layer.confirm("您确定要删除该评论吗？", {title:"提示"},function(index) {
+        var id = obj.parent().parent().attr("id").split("_")[1];
+        $.ajax({
+          url: cmtOption.url + "del",
+          data: "id=" + id,
+          success: function(msg) {
+            if(msg.state == true) {
+              $("#comment_" + id).remove();
+            }
+          }
+        })
+        layer.close(index);
+      });
+    }
+    /**
+     * 获取文章评论列表
+     * @method commentPage
+     * @param  {[type]}    obj [description]
+     * @param  {[type]}    cp  [description]
+     * @return {[type]}        [description]
+     */
+  function commentPage(cp, oldcp) {
+    cp = cp ? cp : 1;
+    oldcp = oldcp ? oldcp : 0;
+    var id = common.getId(commentObj);
+    var opli = commentObj.parent().parent();
     $.ajax({
       url: cmtOption.url + 'page',
-      data: 'id=' + id + "&cp=" + cmtOption.cp + "&mp=" + cmtOption.mp,
+      data: 'id=' + id + "&cp=" + cp + "&mp=" + cmtOption.mp,
       success: function(msg) {
+        if(msg.state == false) {
+            pizzalayer.msg({msg: '获取列表失败，请稍后重试'});
+            return;
+        }
+        if(msg.count == 0) {
+            pizzalayer.msg({ msg: '暂无评论'});
+          return;
+        }
+        if (cp == 1) {//实例化翻页对象
+          tpage = new trunpage({
+            name: "article.commentPage",
+            sum: msg.count,
+            mp: cmtOption.mp
+          });
+        }
         var s = cmtOption.tpl({
           "data": msg.msg
         });
-        opli.after(s);
+        opli.next("ul").remove();
+        opli.next("div").remove();
+        opli.after(s + tpage.hunde(cp));
         cmtOption.cp += 1;
       }
     });
+  }
+  /**
+   * 获取文章评论对外接口
+   * @method function
+   * @param  {[type]} obj [description]
+   * @param  {[type]} cp  [description]
+   * @return {[type]}     [description]
+   */
+  my.commentPage = function(cp, oldcp) {
+    commentPage(cp, oldcp);
   }
 
 

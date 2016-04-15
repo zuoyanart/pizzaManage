@@ -112,7 +112,7 @@ var spaceLayer = new function () {
 		 */
 	_self.msg = function (options) {
 			var defaults = {
-				time: 2000,
+				time: 1000,
 				msg: ''
 			}
 			var options = $.extend(defaults, options);

@@ -125,10 +125,29 @@ body {
           cursor: pointer;
       }
     }
-    & > ul.list{
+    ul.list{
       background-color: #fff;
       min-height: 1000px;
       padding-top: 1px;
+      & > ul.list{
+        min-height:50px;
+        margin-top: -8px;
+        padding-left: 34px;
+        background-color: ivory;
+        & > li{
+          min-height: 30px;
+          height: auto;
+          & > a{
+            min-height:30px;
+            display: inline-block;
+            max-width: 600px;
+            word-break: break-all;
+          }
+          &:hover{
+            background-color: ivory;
+          }
+        }
+      }
       & > form, div.form{
         padding-top: 20px;
       }
@@ -159,6 +178,13 @@ body {
           margin-left: 0px;
           color:$bgcolor-danger;
         }
+      }
+
+      & > .turnpage{
+        background-color: ivory;
+        margin-top: -8px;
+        padding: 7px 20px;
+        height: 60px;
       }
     }
 }

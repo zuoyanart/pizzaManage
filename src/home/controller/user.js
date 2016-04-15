@@ -69,7 +69,6 @@ export default class extends Base {
      */
   async removeAction() {
       let id = tools.xss(this.post("id")).replace(/,0/, "");
-      console.log(id);
       let result = await tools.httpAgent(think.config("api") + 'user', "del", "id=" + id);
       return this.json(result);
     }
