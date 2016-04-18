@@ -1,6 +1,7 @@
 //由于使用了bower，有很多非必须资源。通过set project.files对象指定需要编译的文件夹和引用的资源
 // fis.set('project.files', ['page/**', 'map.json', 'modules/**', 'lib']);
 fis.set('project.ignore', ['*.bat', '*.rar', 'node_modules/**', 'fis-conf.js', "package.json"]);
+fis.set('project.fileType.text', 'es6');
 
 fis.set('statics', '/www/static'); //static目录
 fis.set('url', '/static');
@@ -18,6 +19,13 @@ fis.match("**/*", {
         parser: fis.plugin('ejs'),
         isJsLike: true,
         release: false
+    }).match('**/**.es6', {
+        parser: fis.plugin('babel-5.x', {
+            sourceMaps: true,
+            // blacklist: ['regenerator'],
+            stage: 3 //ES7不同阶段语法提案的转码规则（共有4个阶段）
+        }),
+        rExt: 'js'
     })
     //modules下面都是模块化资源
     .match(/^\/modules\/([^\/]+)\/(.*)\.(js)$/i, {
@@ -34,13 +42,13 @@ fis.match("**/*", {
         release: '/$&'
     })
     .match(/^\/(widget|site)\/(.*)\.(js)$/i, {
-      isMod:true,
-      id: '$2',
-       url: '${url}/$&'
+        isMod: true,
+        id: '$2',
+        url: '${url}/$&'
     })
     .match(/^\/widget\/kindeditor-4.1.10\/(.*)\.(js)$/i, {
-      isMod:false,
-       url: '${url}/$&'
+        isMod: false,
+        url: '${url}/$&'
     })
     //less的mixin文件无需发布
     .match(/^(.*)mixin\.less$/i, {
@@ -70,10 +78,10 @@ fis.match('::packager', {
         useInlineMap: true, // 资源映射表内嵌
     }),
     packager: fis.plugin('map', {
-      useTrack: false,
-      'pkg/base.js': ['/modules/jquery/*.js', '/modules/layer/*.js', '/modules/pizzalayer/*.js', '/modules/pizzatools/*.js'],
-      'pkg/base-a.js': ['/widget/globle/*.js', '/modules/pizzaui/pizza.ui.js', '/site/common/common.js'],
-      'pkg/base.css': ['/css/pizza.css', '/css/iconfont.css']
+        useTrack: false,
+        'pkg/base.js': ['/modules/jquery/*.js', '/modules/layer/*.js', '/modules/pizzalayer/*.js', '/modules/pizzatools/*.js'],
+        'pkg/base-a.js': ['/widget/globle/*.js', '/modules/pizzaui/pizza.ui.js', '/site/common/common.js'],
+        'pkg/base.css': ['/css/pizza.css', '/css/iconfont.css']
     }),
     spriter: fis.plugin('csssprites', {
         layout: 'matrix',
