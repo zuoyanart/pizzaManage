@@ -45,7 +45,7 @@ var common = (function() {
 	 * @return {[type]}     [description]
 	 */
 	my.getId = function(obj) {
-		return obj.parent().parent().find('input[type=checkbox]').attr('id');
+		return obj.parent().parent().find('input[type=checkbox]').attr('id').split('_')[1];
 	}
 /**
  * 关键字搜索

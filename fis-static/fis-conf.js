@@ -1,7 +1,7 @@
 //由于使用了bower，有很多非必须资源。通过set project.files对象指定需要编译的文件夹和引用的资源
 // fis.set('project.files', ['page/**', 'map.json', 'modules/**', 'lib']);
 fis.set('project.ignore', ['*.bat', '*.rar', 'node_modules/**', 'fis-conf.js', "package.json"]);
-fis.set('project.fileType.text', 'es6');
+fis.set('project.fileType.text', 'es');
 
 fis.set('statics', '/www/static'); //static目录
 fis.set('url', '/static');
@@ -19,12 +19,14 @@ fis.match("**/*", {
         parser: fis.plugin('ejs'),
         isJsLike: true,
         release: false
-    }).match('**/**.es6', {
+    }).match('**/**.es', {
         parser: fis.plugin('babel-5.x', {
-            sourceMaps: true,
+             sourceMaps: true,//启用调试
             // blacklist: ['regenerator'],
             stage: 3 //ES7不同阶段语法提案的转码规则（共有4个阶段）
         }),
+        isMod: true,
+        id: "$0",
         rExt: 'js'
     })
     //modules下面都是模块化资源

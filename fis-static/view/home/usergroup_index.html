@@ -4,7 +4,7 @@
 <div class="menu">
   <label class="checkgroup">
     <input type="checkbox" id="checkall" name="checkall"><label for="checkall" class="check-all"></label>全选
-  </label>|<a href="/home/usergroup/edit">添加</a>
+  </label>|<a href="/home/usergroup/edit">添加用户组</a>
 </div>
 <ul class="list" id="list">
 </ul>
@@ -12,7 +12,7 @@
 <!---->
 {% block js %}
 <script type="text/javascript">
-  var user = require('home/usergroup/usergroup');
-  user.init();
+  var userGroup = require('home/usergroup/usergroup');
+  userGroup.init();
 </script>
 {% endblock %}

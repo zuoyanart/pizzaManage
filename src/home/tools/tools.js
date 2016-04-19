@@ -103,6 +103,21 @@ static httpSpider(url, method, data) {
     });
   }
 }
+/**
+ * 格式化http参数
+ * @method formatHttpParam
+ * @return {[type]}        [description]
+ */
+static httpParam(param) {
+  var s = '';
+  for(var key in param) {
+    s += key + "=" + param[key] + "&";
+  }
+  if(s != "") {
+    s = s.substring(0, s.length - 1);
+  }
+  return s;
+}
   /**
    * sha1加密
    * @param str 将加密的字符串

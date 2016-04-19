@@ -19,7 +19,7 @@ export default class extends Base {
      */
   async pageAction() {
       let param = tools.xss(this.post());
-      let results = await tools.httpAgent(think.config("api") + 'usergroup/page', "post", "cp=" + param.cp + '&mp=' + param.mp + '&kw=' + param.kw);
+      let results = await tools.httpAgent(think.config("api") + 'power/page', "post", "cp=" + param.cp + '&mp=' + param.mp + '&kw=' + param.kw);
       return this.json(results);
     }
     /**
@@ -28,7 +28,7 @@ export default class extends Base {
      * @return {[type]}  [description]
      */
   async getAction() {
-      let user = await tools.httpAgent(this.config("api") + 'usergroup/' + tools.xss(this.post("id")), "get");
+      let user = await tools.httpAgent(this.config("api") + 'power/' + tools.xss(this.post("id")), "get");
       return this.json(user);
     }
     /**
@@ -48,7 +48,7 @@ export default class extends Base {
       let userGroup = tools.xss(this.post());
       userGroup.id = parseInt(userGroup.id);
       userGroup.state = parseInt(userGroup.state);
-      let result = await tools.httpAgent(think.config("api") + 'usergroup', "put", userGroup);
+      let result = await tools.httpAgent(think.config("api") + 'power', "put", userGroup);
       return this.json(result);
     }
     /**
@@ -59,7 +59,7 @@ export default class extends Base {
   async createAction() {
       let us = this.post();
       us.state = parseInt(us.state);
-      let user = await tools.httpAgent(this.config("api") + 'usergroup', "post", us);
+      let user = await tools.httpAgent(this.config("api") + 'power', "post", us);
       return this.json(user);
     }
     /**
@@ -69,7 +69,7 @@ export default class extends Base {
      */
   async removeAction() {
       let id = tools.xss(this.post("id")).replace(/,0/, "");
-      let result = await tools.httpAgent(think.config("api") + 'usergroup', "del", "id=" + id);
+      let result = await tools.httpAgent(think.config("api") + 'power', "del", "id=" + id);
       return this.json(result);
     }
     /**
