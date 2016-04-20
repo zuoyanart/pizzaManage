@@ -13,74 +13,79 @@ export default class extends Base {
       return this.display();
     }
     /**
-     * page article
+     * 获取所有子节点
      * @method pageAction
      * @return {[type]}   [description]
      */
   async pageAction() {
-      let param = tools.xss(this.post());
-      let results = await tools.httpAgent(think.config("api") + 'power/page', "post", "cp=" + param.cp + '&mp=' + param.mp + '&kw=' + param.kw);
-      return this.json(results);
-    }
-    /**
-     * 获取用户组操作
-     * @method getAction
-     * @return {[type]}  [description]
-     */
-  async getAction() {
-      let user = await tools.httpAgent(this.config("api") + 'power/' + tools.xss(this.post("id")), "get");
-      return this.json(user);
-    }
-    /**
-     * 编辑用户组
-     * @method editAction
-     * @return {[type]}   [description]
-     */
+    let pid = this.post("pid");
+    let power = await tools.httpAgent(this.config("api") + 'power/page', "post", "pid=" + this.post("pid"));
+    return this.json(power);
+  }
+  /**
+   *  返回所有的节点列表
+   * @method pageallAction
+   * @return {[type]}      [description]
+   */
+  async pageallAction() {
+    let power = await tools.httpAgent(this.config("api") + 'power/pageall', "get");
+    return this.json(power);
+  }
+  //编辑节点
   editAction() {
-      return this.display();
-    }
-    /**
-     * 更新用户组
-     * @method updateAction
-     * @return {[type]}     [description]
-     */
+    return this.display();
+  }
+
+  /**
+   * 获取节点操作
+   * @method getAction
+   * @return {[type]}  [description]
+   */
+  async getAction() {
+    let power = await tools.httpAgent(this.config("api") + 'power/' + this.post("id"), "get");
+    return this.json(power);
+  }
+
+  /**
+   * 更新节点
+   * @method updateAction
+   * @return {[type]}     [description]
+   */
   async updateAction() {
-      let userGroup = tools.xss(this.post());
-      userGroup.id = parseInt(userGroup.id);
-      userGroup.state = parseInt(userGroup.state);
-      let result = await tools.httpAgent(think.config("api") + 'power', "put", userGroup);
-      return this.json(result);
+    let p = this.post();
+    p.id = parseInt(p.id);
+    p.weight = parseInt(p.weight);
+    let power = await tools.httpAgent(this.config("api") + 'power', "put", p);
+    if (power.state == true) {
+      return this.json({
+        "state": true
+      });
+    } else {
+      return this.json({
+        "state": false
+      });
     }
-    /**
-     * 添加用户组
-     * @method updateAction
-     * @return {[type]}     [description]
-     */
+  }
+
+  /**
+   * 更新节点
+   * @method updateAction
+   * @return {[type]}     [description]
+   */
   async createAction() {
-      let us = this.post();
-      us.state = parseInt(us.state);
-      let user = await tools.httpAgent(this.config("api") + 'power', "post", us);
-      return this.json(user);
+    let p = this.post();
+    p.pid = parseInt(p.pid);
+    p.weight = parseInt(p.weight);
+    let power = await tools.httpAgent(this.config("api") + 'power', "post", p);
+    if (power.state == true) {
+      return this.json({
+        "state": true
+      });
+    } else {
+      return this.json({
+        "state": false
+      });
     }
-    /**
-     * 删除用户组
-     * @method removeAction
-     * @return {[type]}     [description]
-     */
-  async removeAction() {
-      let id = tools.xss(this.post("id")).replace(/,0/, "");
-      let result = await tools.httpAgent(think.config("api") + 'power', "del", "id=" + id);
-      return this.json(result);
-    }
-    /**
-     * 冻结用户组
-     * @method passAction
-     * @return {[type]}   [description]
-     */
-  passAction() {
-    return this.json({
-      "state": true
-    });
   }
 
 

@@ -5,7 +5,7 @@
 {% endblock%}
 
 {% block title %}
- 节点管理
+ 权限管理
  {% endblock %}
  <!---->
 {% block content %}
@@ -13,13 +13,13 @@
 
 </div>
 <ul class="treelist" id="treelist">
-  <li id="1" path="path,1,"><b class="icon-home"></b>&nbsp;&nbsp;<em>权限列表</em><span><a href="/home/tree/edit?pid=1">添加子栏目</a></span></li>
+  <li id="1" path="path,1,"><b class="icon-home"></b>&nbsp;&nbsp;<em>权限列表</em><span><a href="/home/power/edit?pid=1">添加部门</a></span></li>
 </ul>
  {% endblock %}
  <!---->
  {% block js %}
  <script type="text/javascript">
-  var tree = require('home/tree/tree');
-  tree.init();
+  var power = require('home/power/power');
+  power.init();
  </script>
  {% endblock %}
