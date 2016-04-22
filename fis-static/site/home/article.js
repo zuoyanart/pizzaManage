@@ -228,7 +228,6 @@ var article = (function() {
   function eventBind() {
     $('#list').on('click', 'li > span > i', function() {
       var cl = $(this).attr('class');
-      console.log(cl);
       if (cl) {
         action[cl].call(this, $(this));
       }

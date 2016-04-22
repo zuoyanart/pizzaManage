@@ -4,14 +4,14 @@
  * @param  {[type]} function( [description]
  * @return {[type]}           [description]
  */
-var power = (function() {
+var tree = (function() {
   var $ = require('jquery');
   var tools = require('pizzatools');
   var common = require('common/common');
   var my = {};
   var options = {
-    url: '/home/power/',
-    tpl: __inline('../ejs/power.ejs')
+    url: '/home/tree/',
+    tpl: __inline('../ejs/tree.ejs')
   };
 
   /**
@@ -228,4 +228,4 @@ var power = (function() {
   return my;
 }());
 
-module.exports = power;
+module.exports = tree;
