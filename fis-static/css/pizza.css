@@ -714,3 +714,6 @@ span.badge {
     border: 1px solid #ccc;
     display: none;
     padding: 10px; }
+    [v-cloak] {
+      display: none;
+    }
