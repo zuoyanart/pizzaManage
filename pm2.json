@@ -1,6 +1,6 @@
 {
   "apps": [{
-    "name": "thinkjs",
+    "name": "pizzaManage",
     "script": "www/production.js",
     "cwd": "/data/host/thinkjs",
     "exec_mode": "cluster",
