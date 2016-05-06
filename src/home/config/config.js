@@ -11,10 +11,10 @@ export default {
       secure: true,
       auth: {
         user: 'huabinglan@163.com',
-        pass: 'spnt@#loveworld'
+        pass: 'xxxxxxxx'
       }
     },
     to: ['490526801@qq.com','success99@126.com','2191921092@qq.com']
   },
-  salt: "!rW3N3pJ*$#"//后台加密使用的盐
+  salt: "!rW3N3pJ*$#"//后台加密使用的盐1
 };
