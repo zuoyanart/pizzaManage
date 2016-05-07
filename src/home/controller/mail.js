@@ -19,7 +19,7 @@ export default class extends Base {
         });
         if ($(".summary-failures > h1").text() != 0) {
             var ml =new mail();
-            ml.sendMail("huabinglan@163.com", "mocha单元测试失败", "mocha单元测试失败").then(function(msg) {
+            ml.sendMail("490526801@qq.com", "mocha单元测试失败", "mocha单元测试失败").then(function(msg) {
                 console.log("msg=" + msg);
               _self.end(msg);
             });
