@@ -12,7 +12,7 @@ export default class extends Base {
      */
     async indexAction() {
         let _self = this;
-        var webObj = this.post("object");
+        var webObj = this.get("object");
         var article = await tools.readFile("/data/host/pizzaManage/app/mochawesome-reports/mochawesome.html");
         let $ = cheerio.load(article, {
             normalizeWhitespace: true,
