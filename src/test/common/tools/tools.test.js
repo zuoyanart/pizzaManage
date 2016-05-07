@@ -1,7 +1,7 @@
 /**
  * 工具类单元测试
  */
-import tools from '../../../common/tools/tools.js';
+import tools from '../../../home/tools/tools.js';
 var expect = require("chai").expect;
 
 describe("xss", function() {
@@ -15,13 +15,9 @@ describe("xss", function() {
 
  describe("readFile", function() {
    it("文件存在", async function() {
-    var t = await tools.readFile("/data/host/thinkjs/app/test/readfile.test");
+    var t = await tools.readFile("/data/host/pizzaManage/app/test/readfile.tes1t");
     expect(t).to.be.contain("asd");
   });
-  // it("文件不存在", function() {
-  //   var t = await tools.readFile("./readfile.test1");
-  //   expect(t.to.be.equalt("asd"))
-  // });
 });
 
  describe("httpAgent", function() {
