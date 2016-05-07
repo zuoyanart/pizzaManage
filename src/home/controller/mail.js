@@ -12,6 +12,7 @@ export default class extends Base {
      */
     async indexAction() {
         let _self = this;
+        var webObj = this.post("object");
         var article = await tools.readFile("/data/host/pizzaManage/app/mochawesome-reports/mochawesome.html");
         let $ = cheerio.load(article, {
             normalizeWhitespace: true,
@@ -19,9 +20,9 @@ export default class extends Base {
         });
         if ($(".summary-failures > h1").text() != 0) {
             var ml =new mail();
-            ml.sendMail("490526801@qq.com", "mocha单元测试失败", "mocha单元测试失败").then(function(msg) {
+            ml.sendMail("490526801@qq.com", webObj + "mocha单元测试失败", webObj + "mocha单元测试失败").then(function(msg) {
                 console.log("msg=" + msg);
-              _self.end(msg);
+                _self.end(msg);
             });
         } else {
             return this.json({
