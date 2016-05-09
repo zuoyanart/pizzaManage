@@ -23,7 +23,8 @@
     "xss": "0.2.10",
     "cheerio": "0.20.0",
     "chai": "*",
-    "mochawesome": "*"
+    "mochawesome": "*",
+    "ndir": "*"
   },
   "repository": "https://github.com/zuoyanart/pizzaManage",
   "license": "MIT"
