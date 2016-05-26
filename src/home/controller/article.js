@@ -19,7 +19,8 @@ export default class extends Base {
      * @return {[type]}   [description]
      */
   async pageAction() {
-      let article = await tools.httpAgent(this.config("api") + 'article/page', "post", "kw=" + this.post("kw") + "&cp=" + this.post("cp") + "&mp=" + this.post("mp") + "&nodeid=" + this.post("nodeid"));
+      // let article = await tools.httpAgent(this.config("api") + 'article/page', "post", "kw=" + this.post("kw") + "&cp=" + this.post("cp") + "&mp=" + this.post("mp") + "&nodeid=" + this.post("nodeid"));
+      let article = await this.model("article").page(this.post("kw"), this.post("nodeid"),this.post("cp"),this.post("mp"));
       return this.json(article);
     }
     /**
@@ -28,7 +29,8 @@ export default class extends Base {
      * @return {[type]}  [description]
      */
   async getAction() {
-      let article = await tools.httpAgent(this.config("api") + 'article/' + parseInt(this.post("id")), "get");
+      // let article = await tools.httpAgent(this.config("api") + 'article/' + parseInt(this.post("id")), "get");
+      let article = await this.model("article").get(this.post("id"));
       return this.json(article);
     }
     /**
@@ -50,7 +52,8 @@ export default class extends Base {
       up.pass = parseInt(up.pass);
       up.reco = parseInt(up.reco);
       up.id = parseInt(up.id);
-      let article = await tools.httpAgent(this.config("api") + 'article', "put", up);
+      // let article = await tools.httpAgent(this.config("api") + 'article', "put", up);
+      let article = await this.model("article").articleUpdate(up);
       return this.json({
         "state": true
       });
@@ -66,7 +69,8 @@ export default class extends Base {
       up.pass = parseInt(up.pass);
       up.reco = parseInt(up.reco);
       up.uid = parseInt(this.cookie("id"));
-      let article = await tools.httpAgent(this.config("api") + 'article', "post", up);
+      // let article = await tools.httpAgent(this.config("api") + 'article', "post", up);
+      let article = await this.model("article").create(up);
       return this.json({
         "state": true
       });
@@ -78,7 +82,8 @@ export default class extends Base {
      */
   async removeAction() {
       let param = tools.xss(this.post());
-      let result = await tools.httpAgent(think.config("api") + "article", "del", "id=" + param.id);
+      // let result = await tools.httpAgent(think.config("api") + "article", "del", "id=" + param.id);
+    let result = await this.model("article").del(param.id);
       return this.json(result);
     }
     /**
@@ -89,7 +94,8 @@ export default class extends Base {
   async passAction() {
     let param = tools.xss(this.post());
     let pass = param.ispass == "true" ? 1 : 0;
-    let result = await tools.httpAgent(think.config("api") + "article/pass", "post", "id=" + param.id + "&pass=" + pass);
+    // let result = await tools.httpAgent(think.config("api") + "article/pass", "post", "id=" + param.id + "&pass=" + pass);
+    let result = await this.model("article").pass(param.id, pass);
     return this.json(result);
   }
 

@@ -11,7 +11,8 @@ export default class extends Base {
    */
   async pageAction() {
     let param = tools.xss(this.post());
-    let result = await tools.httpAgent(think.config("api") + "comment/page", "post", "id=" + param.id + "&cp=" + param.cp + "&mp=" + param.mp);
+    // let result = await tools.httpAgent(think.config("api") + "comment/page", "post", "id=" + param.id + "&cp=" + param.cp + "&mp=" + param.mp);
+    let result = await this.model("comment").page(param.id, param.cp, param.mp);
     return this.json(result)
   }
   /**
@@ -21,7 +22,8 @@ export default class extends Base {
    */
   async delAction() {
     let id = tools.xss(this.post("id"));
-    let result = await tools.httpAgent(think.config("api") + "comment", "del", "id=" + id);
+    // let result = await tools.httpAgent(think.config("api") + "comment", "del", "id=" + id);
+    let result = await this.model("comment").del(id);
     return this.json(result);
   }
 

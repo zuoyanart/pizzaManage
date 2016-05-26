@@ -19,7 +19,8 @@ export default class extends Base {
      */
   async pageAction() {
       let param = tools.xss(this.post());
-      let users = await tools.httpAgent(think.config("api") + 'user/page', "post", "cp=" + param.cp + '&mp=' + param.mp + '&kw=' + param.kw);
+      // let users = await tools.httpAgent(think.config("api") + 'user/page', "post", "cp=" + param.cp + '&mp=' + param.mp + '&kw=' + param.kw);
+      let users = await this.model("user").page(param.kw, param.cp,param.mp);
       return this.json(users);
     }
     /**
@@ -28,7 +29,8 @@ export default class extends Base {
      * @return {[type]}  [description]
      */
   async getAction() {
-      let user = await tools.httpAgent(this.config("api") + 'user/' + tools.xss(this.post("id")), "get");
+      // let user = await tools.httpAgent(this.config("api") + 'user/' + tools.xss(this.post("id")), "get");
+      let user = await this.model("user").get(this.post("id"));
       return this.json(user);
     }
     /**
@@ -47,7 +49,8 @@ export default class extends Base {
   async updateAction() {
       let user = tools.xss(this.post());
       user.id = parseInt(user.id);
-      let result = await tools.httpAgent(think.config("api") + 'user', "put", user);
+      // let result = await tools.httpAgent(think.config("api") + 'user', "put", user);
+      let result = await this.model("user").userUpdate(user);
       return this.json(result);
     }
     /**
@@ -57,7 +60,8 @@ export default class extends Base {
      */
   async createAction() {
       let us = this.post();
-      let user = await tools.httpAgent(this.config("api") + 'user', "post", us);
+      // let user = await tools.httpAgent(this.config("api") + 'user', "post", us);
+      let user = await this.model("user").create(us);
       return this.json({
         "state": true
       });
@@ -69,7 +73,8 @@ export default class extends Base {
      */
   async removeAction() {
       let id = tools.xss(this.post("id")).replace(/,0/, "");
-      let result = await tools.httpAgent(think.config("api") + 'user', "del", "id=" + id);
+      // let result = await tools.httpAgent(think.config("api") + 'user', "del", "id=" + id);
+      let result = await this.model("user").del(id);
       return this.json(result);
     }
     /**

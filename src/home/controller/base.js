@@ -11,7 +11,7 @@ export default class extends think.controller.base {
     let id = this.cookie("id");
     let key = this.cookie('key');
     let ip = this.ip();
-    let secureKey = think.md5(username + ip + id + think.config("salt"));
+    let secureKey = think.md5(username + ip + id + think.config("salt") + this.userAgent());
     if (key !== secureKey) {
        this.redirect('/login');
     }

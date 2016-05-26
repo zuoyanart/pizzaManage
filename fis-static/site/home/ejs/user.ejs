@@ -1,7 +1,7 @@
 <%for(var i=0, l=data.length; i<l; i++) { %>
   <li>
     <label class="checkgroup">
-      <input type="checkbox" id="<%= data[i].id%>" name="checkall"><label for="checkall<%= data[i].id%>" class="check-all"></label>
+      <input type="checkbox" id="user_<%= data[i].id%>" name="checkall"><label for="user_<%= data[i].id%>" class="check-all"></label>
     </label>
     <a href=""><%= data[i].username %></a>
     <% if(data[i].state == -1) {%>

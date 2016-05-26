@@ -33,7 +33,7 @@ var common = (function() {
 			id = obj.parent().parent().find('input[type=checkbox]').attr('id') + ',';
 		} else {
 			$('#list').find('input:checked').each(function(key, value) {
-				id += $(value).attr('id') + ',';
+				id += $(value).attr('id').split('_')[1] + ',';
 			});
 		}
 		return id + '0';

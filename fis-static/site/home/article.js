@@ -282,7 +282,7 @@ var article = (function() {
           if (msg.state == true) {
             var ids = id.split(',');
             for (var i = 0, ll = ids.length; i < ll; i++) {
-              $('#' + ids[i]).parent().parent().remove();
+              $('#article_' + ids[i]).parent().parent().remove();
             }
           }
         }
