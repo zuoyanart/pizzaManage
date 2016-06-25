@@ -1,9 +1,9 @@
 'use strict';
 
-import Base from './base.js';
-import tools from "../../home/tools/tools.js"
+import LoginBase from './loginbase.js';
+import tools from "../../common/tools/tools.js"
 
-export default class extends Base {
+export default class extends LoginBase {
     /**
      * index action
      * @return {Promise} []
@@ -45,6 +45,8 @@ export default class extends Base {
          * @return {[type]}       [description]
          */
     loginoutAction() {
+      this.cookie("id", null);
+      this.cookie("key", null);
         return this.json({
             "state": true
         });

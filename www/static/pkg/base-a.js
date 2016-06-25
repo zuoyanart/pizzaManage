@@ -1853,10 +1853,10 @@
   	 */
   	function loginout() {
   		$.ajax({
-  			url:'/login/index/loginout',
+  			url:'/admin/login/loginout',
   			data: "d=d",
   			success: function(msg) {
-  				document.location.href = '/login'
+  				document.location.href = '/admin/login'
   			}
   		})
   	}

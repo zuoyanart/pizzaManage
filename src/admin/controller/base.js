@@ -13,7 +13,7 @@ export default class extends think.controller.base {
     let ip = this.ip();
     let secureKey = think.md5(username + ip + id + think.config("salt") + this.userAgent());
     if (key !== secureKey) {
-       this.redirect('/login');
+       this.redirect('/admin/login');
     }
   }
 }

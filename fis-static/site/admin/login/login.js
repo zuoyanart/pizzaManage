@@ -39,11 +39,11 @@ var login = (function() {
       ajaxFun: function(data) {
         $.ajax({
           type: 'post',
-          url: '/login/index/login',
+          url: '/admin/login/login',
           data: data,
           success: function(msg) {
             if (msg.state == true) {
-              document.location.href = "/";
+              document.location.href = "/admin";
             } else {
               layer.msg('用户名或密码错误', {time: 2000});
             }
