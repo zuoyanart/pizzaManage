@@ -22,7 +22,7 @@ export default {
       secure: true,
       auth: {
         user: 'huabinglan@163.com',
-        pass: 'spnt@#loveworld'
+        pass: ''
       }
     }
   }
