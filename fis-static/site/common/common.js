@@ -30,7 +30,7 @@ var common = (function() {
 	my.getCheckId = function(obj) {
 		var id = '';
 		if (obj.is('i')) {
-			id = obj.parent().parent().find('input[type=checkbox]').attr('id') + ',';
+			id = obj.parent().parent().find('input[type=checkbox]').attr('id').split('_')[1] + ',';
 		} else {
 			$('#list').find('input:checked').each(function(key, value) {
 				id += $(value).attr('id').split('_')[1] + ',';
