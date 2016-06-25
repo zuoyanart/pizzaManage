@@ -15,12 +15,7 @@ fis.hook('commonjs', {
 fis.match("**/*", {
         release: '${statics}/$&'
     })
-    .match(/^\/site\/(common|home|login)\/(.*)\.(ejs)$/i, {
-        parser: fis.plugin('ejs'),
-        isJsLike: true,
-        release: false
-    })
-    .match(/^\/site\/(shopadmin|admin)\/(.*)\.(ejs)$/i, {
+    .match(/^\/site\/([^\/]+)\/(.*)\.(ejs)$/i, {
         isHtmlLike: true,
         release: false
     })
@@ -43,7 +38,7 @@ fis.match("**/*", {
         // optimizer: fis.plugin('uglify-js')
     })
     //page下面的页面发布时去掉page文件夹
-    .match(/^\/view\/(common|home|login|master|shopadmin|admin)\/(.*)\.(html)$/i, {
+    .match(/^\/view\/(common|master|admin)\/(.*)\.(html)$/i, {
         parser: fis.plugin('swigt'),
         useCache: false,
         release: '/$&'

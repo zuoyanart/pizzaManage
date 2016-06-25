@@ -1818,7 +1818,7 @@
   	 * @return {[type]} [description]
   	 */
   	function sidebarBind() {
-  		var url = document.location.href.split('/')[3].split('#')[0];
+  		var url = 'admin/' + document.location.href.split('/')[4].split('#')[0];
   		var sidebar = $('#sidebar');
   		sidebar.find('.active').removeClass('active');
   		var a = sidebar.find('a[href="/'+url+'"]');
