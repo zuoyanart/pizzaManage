@@ -7,6 +7,7 @@ export default class extends think.model.base {
     init(...args) {
         super.init(...args);
         this.pk = 'id';
+        this.tableName = "user_admin";
 
     }
 
