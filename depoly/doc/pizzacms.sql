@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50538
 File Encoding         : 65001
 
-Date: 2016-06-29 15:20:23
+Date: 2016-06-30 17:54:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -380,7 +380,7 @@ CREATE TABLE `pz_guestbook` (
   `pass` int(2) DEFAULT '0' COMMENT '是否审核，0未审核，1审核',
   `createtime` int(10) DEFAULT '0' COMMENT '添加时间',
   PRIMARY KEY (`gbid`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=gbk;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of pz_guestbook
@@ -389,7 +389,7 @@ INSERT INTO `pz_guestbook` VALUES ('1', '0', '国台办29日上午举行新闻�
 INSERT INTO `pz_guestbook` VALUES ('2', '0', '国台办29日上午举行新闻发布会，发言人安峰山对两岸联系沟通机制停摆一事做了说明。安峰山表示，台湾新执政当局迄今未承认“九二共识”、认同其核心意涵，动摇了两岸互动的政治基础，导致了国台办与陆委会的联系沟通机制、海协会与海基会的协商谈判机制的停摆，责任完全在台湾一方。', '0', '亚历山大安布罗休', '亚历山大安布罗休$15537172114$huabinglan@163.com$河南省郑州市管城区', '1', '1467184181');
 INSERT INTO `pz_guestbook` VALUES ('3', '0', '国台办29日上午举行新闻发布会，发言人安峰山对两岸联系沟通机制停摆一事做了说明。安峰山表示，台湾新执政当局迄今未承认“九二共识”、认同其核心意涵，动摇了两岸互动的政治基础，导致了国台办与陆委会的联系沟通机制、海协会与海基会的协商谈判机制的停摆，责任完全在台湾一方。', '0', '亚历山大安布罗休', '亚历山大安布罗休$15537172114$huabinglan@163.com$河南省郑州市管城区', '1', '1467184181');
 INSERT INTO `pz_guestbook` VALUES ('4', '0', '国台办29日上午举行新闻发布会，发言人安峰山对两岸联系沟通机制停摆一事做了说明。安峰山表示，台湾新执政当局迄今未承认“九二共识”、认同其核心意涵，动摇了两岸互动的政治基础，导致了国台办与陆委会的联系沟通机制、海协会与海基会的协商谈判机制的停摆，责任完全在台湾一方。', '0', '亚历山大安布罗休', '亚历山大安布罗休$15537172114$huabinglan@163.com$河南省郑州市管城区', '1', '1467184181');
-INSERT INTO `pz_guestbook` VALUES ('5', '1', 'asdasdasd', '0', 'asd', '', '0', '1467184181');
+INSERT INTO `pz_guestbook` VALUES ('5', '1', 'asdasdasd', '0', 'asd', '', '1', '1467184181');
 
 -- ----------------------------
 -- Table structure for pz_node
@@ -510,7 +510,7 @@ CREATE TABLE `pz_user_admin` (
   `userGroupId` int(11) DEFAULT '0' COMMENT '用户组id',
   `roleId` int(11) DEFAULT '0' COMMENT '角色id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pz_user_admin
