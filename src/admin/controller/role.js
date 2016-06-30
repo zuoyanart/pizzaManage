@@ -18,7 +18,7 @@ export default class extends Base {
      */
   async pageAction() {
       let param = xss(this.post());
-      let result = await httpAgent(think.config("api") + "role/page", "post", tools.httpParam(param));
+      let result = await httpAgent(think.config("api") + "role/page", "post", httpParam(param));
       return this.json(result);
     }
     /**
@@ -27,7 +27,7 @@ export default class extends Base {
      * @return {[type]}  [description]
      */
   async getAction() {
-      let user = await httpAgent(this.config("api") + 'role/' + tools.xss(this.post("id")), "get");
+      let user = await httpAgent(this.config("api") + 'role/' + xss(this.post("id")), "get");
       return this.json(user);
     }
     /**

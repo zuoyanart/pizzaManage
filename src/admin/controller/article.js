@@ -1,7 +1,6 @@
 'use strict';
 
 import Base from './base.js';
-import upload from '../tools/upload.js';
 export default class extends Base {
 
     /**

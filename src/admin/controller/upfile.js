@@ -1,7 +1,7 @@
 'use strict';
 
 import Base from './base.js';
-import upload from '../tools/upload.js';
+import upload from '../../common/tools/upload.js';
 export default class extends Base {
     /**
      * 上传
