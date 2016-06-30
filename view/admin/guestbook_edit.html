@@ -7,10 +7,10 @@
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">     
-    <title> 文章管理 </title>
+    <title> 留言板管理 </title>
 
     <link rel="stylesheet" media="screen" charset="utf-8" href="/static/pkg/base.css" />
-    <link rel="stylesheet" href="/static/pkg/view/admin/role_edit.html_aio.css" />
+    <link rel="stylesheet" href="/static/pkg/view/admin/guestbook_edit.html_aio.css" />
 </head>
 <body>
 	<div id="header">
@@ -61,12 +61,16 @@
 </div>
 <ul class="list" id="list">
 <div class="form"  style="width:800px;">
-  <div><label for="">角色名称</label><input type="text" id="name" name="name"></div>
-  <div><label for="">描述</label><textarea id="des" name="des"></textarea></div>
-  <div><label for="">状态</label><select id="state" name="state">
-    <option value="0">正常</option>
-    <option value="-1">冻结</option>
+  <div><label for="">姓名</label><input type="text" id="username" name="username"></div>
+  <div><label for="">手机</label><input type="text" id="phone" name="phone"></div>
+  <div><label for="">邮箱</label><input type="text" id="mail" name="mail"></div>
+  <div><label for="">地址</label><input type="text" id="addr" name="addr"></div>
+  <div><label for="">留言内容</label><textarea name="des" rows="10" cols="20" id="des"></textarea></div>
+  <div><label for="">是否审核</label><select name="pass" id="pass">
+    <option value="0">未审核</option>
+    <option value="1">审核</option>
   </select></div>
+  <div><label for="">描述</label><textarea name="brief" rows="5" cols="20" id="brief" placeholder="备用字段" readonly="enabled"></textarea></div>
   <div><input type="submit" class="btn btn-primary" value="更新"></div>
 </div>
 </ul>
@@ -78,7 +82,7 @@
 <script data-loader="data-loader" charset="utf-8" src="/static/lib/ejs.js"></script>
 <script type="text/javascript" src="/static/pkg/base.js"></script>
 <script type="text/javascript" src="/static/pkg/base-a.js"></script>
-<script type="text/javascript" src="/static/pkg/view/admin/role_edit.html_aio.js"></script>
+<script type="text/javascript" src="/static/pkg/view/admin/guestbook_edit.html_aio.js"></script>
 <script type="text/javascript">
   var globleConfig = require('globle/globle');
   globleConfig.init();
@@ -86,9 +90,9 @@
 	common.init();
 	
 
-  var userGroup = require('admin/usergroup/usergroup');
-  userGroup.getRole();
-  userGroup.editRole();
+  var modules = require('admin/guestbook/guestbook');
+    modules.get();
+    modules.edit();
 
 </script>
 <script type="text/javascript" charset="utf-8" src="http://192.168.1.43:8134/livereload.js"></script></body>
