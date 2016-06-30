@@ -1,9 +1,7 @@
 'use strict';
 
 import Base from './base.js';
-import config from '../config/config.js';
 import mail from '../tools/mail.js';
-import tools from '../tools/tools.js';
 import data from '../tools/data.js';
 export default class extends Base {
 
@@ -34,6 +32,11 @@ export default class extends Base {
     });
   }
 
+  /**
+   *
+   * @method pageAction
+   * @return {[type]}   [description]
+   */
   async pageAction() {
     let requests = [];
     requests.push(data.pageArticle(8,"",1,10));
