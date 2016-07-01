@@ -1100,6 +1100,7 @@ var jQuery = require('jquery');
 		if (!$('.member-143000181')[0]) {
 			$('body').append('<div style="position:absolute;"><div class="member-143000181"></div></div>');
 		}
+<<<<<<< HEAD
 		var tpl = [function(locals, filters, escape, rethrow
 /**/) {
 escape = escape || function (html){
@@ -1144,6 +1145,9 @@ return buf.join('');
   rethrow(err, __stack.input, __stack.filename, __stack.lineno);
 }
 }][0];
+=======
+		var tpl = "<ul>\r\n  <li class=\"style-1\">\r\n    <span><%= data.nickName %></span>\r\n    <% if(data.duty != undefined) { %>\r\n      <em class=\"mcicon-circle\"></em>\r\n      <%= data.duty %>\r\n    <% } %>\r\n      <br>\r\n      <% if(data.company != undefined) { %>\r\n        <%= data.company %>\r\n      <% } %>\r\n      <br>河南-郑州\r\n      <% if(data.company != undefined) { %>\r\n        <em class=\"mcicon-circle\"></em>\r\n        <%= tools.siteData.data.know[data.know] %>\r\n      <% } %>\r\n      <% if(data.company != undefined) { %>\r\n        <em class=\"mcicon-circle\"></em>\r\n        <%= data.phone %>\r\n      <% } %>\r\n  </li>\r\n  <li class=\"style-2\"><i class=\"icon-tags\"></i>\r\n    <%= data.tag.join('，') %>\r\n  </li>\r\n</ul>\r\n<div class=\"pingjia\">\r\n  <p>\r\n    <span>个人资料</span><i class=\"star-huang icon-star\"></i><i class=\"star-huang icon-star\"></i><i class=\"star-huang icon-star\"></i></p>\r\n  <p>\r\n    <span>人脉质量</span><i class=\"star-hong icon-star\"></i><i class=\"star-hong icon-star-half\"></i></p>\r\n  <p>\r\n    <span>综合能力</span><i class=\"star-gray icon-star\"></i></p>\r\n</div>\r\n";
+>>>>>>> noApi
 		var
 		oAvatar = $(this), //触发事件的DOM对象
 		obj = $('.member-143000181'), //信息卡片所在的DOM

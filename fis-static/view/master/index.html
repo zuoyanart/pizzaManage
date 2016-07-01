@@ -5,7 +5,7 @@
 <head>
     <link rel="import" href="/widget/meta/meta.html?__inline">
     <link rel="stylesheet" href="/site/common/common.css">
-    <link rel="stylesheet" href="/site/home/base.css" >
+    <link rel="stylesheet" href="/site/admin/base.css" >
     {% block css %}{% endblock %}
     <title>{% block title %}{% endblock %}</title>
 </head>
@@ -24,24 +24,30 @@
 	</div>
 	<div id="sidebar">
 		<ul>
-			<li><a href="/" class=""><i class="icon-home"></i>主页</a></li>
+			<li><a href="/admin" class=""><i class="icon-home"></i>主页</a></li>
 			<li>
 				<a href="#" class="submenu"><i class="icon-article"></i>信息管理</a>
 				<ul>
-					<li><a href="/tree">节点管理</a></li>
-					<li><a href="/article">文章管理</a></li>
-					<li><a href="/block">模块管理</a></li>
+					<li><a href="/admin/tree">节点管理</a></li>
+					<li><a href="/admin/article">文章管理</a></li>
+					<li><a href="/admin/block">模块管理</a></li>
 				</ul>
 			</li>
 			<li>
+        <a href="#" class="submenu"><i class="icon-setting"></i>互动管理</a>
+        <ul>
+					<li><a href="/admin/guestbook">留言板管理</a></li>
+					<!-- <li><a href="/admin/usergroup">用户组管理</a></li> -->
+					<!-- <li><a href="/admin/power">权限分配</a></li> -->
+				</ul>
+      </li>
+      <li>
         <a href="#" class="submenu"><i class="icon-setting"></i>系统管理</a>
         <ul>
-					<li><a href="/user">管理员管理</a></li>
-					<li><a href="/usergroup">用户组管理</a></li>
-					<li><a href="/power">权限分配</a></li>
-					<!-- <li><a href="/article">系统设置</a></li>
-					<li><a href="/module"></a></li> -->
-				</ul>
+          <li><a href="/admin/user">管理员管理</a></li>
+          <!-- <li><a href="/admin/usergroup">用户组管理</a></li> -->
+          <!-- <li><a href="/admin/power">权限分配</a></li> -->
+        </ul>
       </li>
 		</ul>
 	</div>

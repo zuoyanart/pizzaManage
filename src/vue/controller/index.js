@@ -1,7 +1,6 @@
 'use strict';
 
 import Base from './base.js';
-import tools from "../../home/tools/tools.js"
 
 export default class extends Base {
   /**
@@ -18,7 +17,7 @@ export default class extends Base {
      * @return {[type]}    [description]
      */
   async loginAction() {
-      var user = await tools.httpAgent(think.config("api") + 'user/login', "post", "username=" + this.post("name") + "&password=" + this.post("password"));
+      var user = await httpAgent(think.config("api") + 'user/login', "post", "username=" + this.post("name") + "&password=" + this.post("password"));
       if (user.state == true) {
         let msg = user.msg;
         let ip = this.ip();

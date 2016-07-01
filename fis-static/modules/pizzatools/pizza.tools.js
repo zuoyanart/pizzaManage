@@ -170,38 +170,28 @@ var tools = new function() {
       return fmt;
     }
     /**
-     * 整站使用到的基础数据
-     * @type {Object}
+     * 根据objectid获取时间
+     * @param  {[type]} ObjectId [description]
+     * @param  {[type]} fmt      [description]
+     * @return {[type]}          [description]
      */
-  _self.siteData = {
-    url: {
-      avatar: 'http://avatar.ssllff.com',
-      photo: 'http://photo.ssllff.com',
-      say: 'http://say.ssllff.com',
-      needimg: 'http://needimg.mcren.net'
-    },
-    data: {
-      know: ["高中", "中专", "大专", "学士", "硕士", "博士", "博士后"],
-      estimate: [2, 1.5, 1, -1.3],
-      need: {
-        0: '自我推荐',
-        1: '求职',
-        2: '招聘',
-        3: '实体店-销售促销',
-        4: '电商-微商-销售',
-        5: '公司形象宣传',
-        6: '技术/学术交流',
-        7: '主题社交',
-        8: '商务合作',
-        9: '教育-培训-会议',
-        10: '汽车/地产销售',
-        11: '生活需求/服务',
-        12: '医疗需求/服务',
-        13: '创业',
-        14: '众筹-投融资-理财'
-      }
+  _self.formatUnixTime = function(unixTime, fmt) {
+      var t = new Date(unixTime * 1000);
+      var o = {
+        "M+": t.getMonth() + 1, //月份
+        "d+": t.getDate(), //日
+        "h+": t.getHours(), //小时
+        "m+": t.getMinutes(), //分
+        "s+": t.getSeconds(), //秒
+        "q+": Math.floor((t.getMonth() + 3) / 3), //季度
+        "S": t.getMilliseconds() //毫秒
+      };
+      if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (t.getFullYear() + "").substr(4 - RegExp.$1.length));
+      for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+      return fmt;
     }
-  };
+
 
   //打印占位符
   //up down 分别对应占位符上下两段话

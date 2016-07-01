@@ -30,7 +30,11 @@ define('home/article', function(require, exports, module) {
       .replace(/'/g, '&#39;')
       .replace(/"/g, '&quot;');
   };
+<<<<<<< HEAD
   var __stack = { lineno: 1, input: "<%for(var i=0,ll=data.length; i<ll; i++) { %>\r\n  <li>\r\n    <label class=\"checkgroup\">\r\n      <input type=\"checkbox\" id=\"<%= data[i].id%>\" name=\"checkall\"><label for=\"<%= data[i].id%>\" class=\"check-all\"></label>\r\n    </label>\r\n    <a href=\"\">[<%= data[i].nodename%>] <%= data[i].title%></a>\r\n    <% if(data[i].pass == 0){%>\r\n    <b>[未审核]</b>\r\n    <%}%>\r\n    <span><a href=\"/article/edit?id=<%= data[i].id%>\">编辑</a><i class=\"comment\">评论</i>\r\n      <% if(data[i].pass == 1){%>\r\n      <i class=\"pass\">取消审核</i>\r\n      <%} else {%>\r\n        <i class=\"pass\">审核</i>\r\n      <%}%>\r\n        <i class=\"remove\">删除</i></span>\r\n  </li>\r\n<%}%>\r\n", filename: "site/home/ejs/article.ejs" };
+=======
+  var __stack = { lineno: 1, input: "<%for(var i=0,ll=data.length; i<ll; i++) { %>\r\n  <li>\r\n    <label class=\"checkgroup\">\r\n      <input type=\"checkbox\" id=\"article_<%= data[i].id%>\" name=\"checkall\"><label for=\"article_<%= data[i].id%>\" class=\"check-all\"></label>\r\n    </label>\r\n    <a href=\"\">[<%= data[i].nodename%>] <%= data[i].title%></a>\r\n    <% if(data[i].pass == 0){%>\r\n    <b>[未审核]</b>\r\n    <%}%>\r\n    <span><a href=\"/article/edit?id=<%= data[i].id%>\">编辑</a><i class=\"comment\">评论</i>\r\n      <% if(data[i].pass == 1){%>\r\n      <i class=\"pass\">取消审核</i>\r\n      <%} else {%>\r\n        <i class=\"pass\">审核</i>\r\n      <%}%>\r\n        <i class=\"remove\">删除</i></span>\r\n  </li>\r\n<%}%>\r\n", filename: "site/home/ejs/article.ejs" };
+>>>>>>> noApi
   function rethrow(err, str, filename, lineno){
     var lines = str.split('\n')
       , start = Math.max(lineno - 3, 0)
@@ -57,7 +61,11 @@ define('home/article', function(require, exports, module) {
   try {
   var buf = [];
   with (locals || {}) { (function(){ 
+<<<<<<< HEAD
    buf.push('');__stack.lineno=1;for(var i=0,ll=data.length; i<ll; i++) { ; buf.push('\n  <li>\n    <label class="checkgroup">\n      <input type="checkbox" id="', escape((__stack.lineno=4,  data[i].id)), '" name="checkall"><label for="', escape((__stack.lineno=4,  data[i].id)), '" class="check-all"></label>\n    </label>\n    <a href="">[', escape((__stack.lineno=6,  data[i].nodename)), '] ', escape((__stack.lineno=6,  data[i].title)), '</a>\n    ');__stack.lineno=7; if(data[i].pass == 0){; buf.push('\n    <b>[未审核]</b>\n    ');__stack.lineno=9;}; buf.push('\n    <span><a href="/article/edit?id=', escape((__stack.lineno=10,  data[i].id)), '">编辑</a><i class="comment">评论</i>\n      ');__stack.lineno=11; if(data[i].pass == 1){; buf.push('\n      <i class="pass">取消审核</i>\n      ');__stack.lineno=13;} else {; buf.push('\n        <i class="pass">审核</i>\n      ');__stack.lineno=15;}; buf.push('\n        <i class="remove">删除</i></span>\n  </li>\n');__stack.lineno=18;}; buf.push('\n'); })();
+=======
+   buf.push('');__stack.lineno=1;for(var i=0,ll=data.length; i<ll; i++) { ; buf.push('\n  <li>\n    <label class="checkgroup">\n      <input type="checkbox" id="article_', escape((__stack.lineno=4,  data[i].id)), '" name="checkall"><label for="article_', escape((__stack.lineno=4,  data[i].id)), '" class="check-all"></label>\n    </label>\n    <a href="">[', escape((__stack.lineno=6,  data[i].nodename)), '] ', escape((__stack.lineno=6,  data[i].title)), '</a>\n    ');__stack.lineno=7; if(data[i].pass == 0){; buf.push('\n    <b>[未审核]</b>\n    ');__stack.lineno=9;}; buf.push('\n    <span><a href="/article/edit?id=', escape((__stack.lineno=10,  data[i].id)), '">编辑</a><i class="comment">评论</i>\n      ');__stack.lineno=11; if(data[i].pass == 1){; buf.push('\n      <i class="pass">取消审核</i>\n      ');__stack.lineno=13;} else {; buf.push('\n        <i class="pass">审核</i>\n      ');__stack.lineno=15;}; buf.push('\n        <i class="remove">删除</i></span>\n  </li>\n');__stack.lineno=18;}; buf.push('\n'); })();
+>>>>>>> noApi
   } 
   return buf.join('');
   } catch (err) {
@@ -370,7 +378,11 @@ define('home/article', function(require, exports, module) {
             if (msg.state == true) {
               var ids = id.split(',');
               for (var i = 0, ll = ids.length; i < ll; i++) {
+<<<<<<< HEAD
                 $('#' + ids[i]).parent().parent().remove();
+=======
+                $('#article_' + ids[i]).parent().parent().remove();
+>>>>>>> noApi
               }
             }
           }

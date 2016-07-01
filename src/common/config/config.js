@@ -13,6 +13,7 @@ export default {
   default_controller: "index",
   default_action: "index",
   json_content_type: "application/json",
+  openApi: false,
   api: 'http://192.168.1.134:4000/v1/',
   mail: { //邮箱配置
     smtp: {
@@ -21,7 +22,7 @@ export default {
       secure: true,
       auth: {
         user: 'huabinglan@163.com',
-        pass: 'spnt@#loveworld'
+        pass: ''
       }
     }
   }

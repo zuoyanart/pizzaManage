@@ -23,7 +23,11 @@ define('home/module', function(require, exports, module) {
       .replace(/'/g, '&#39;')
       .replace(/"/g, '&quot;');
   };
+<<<<<<< HEAD
   var __stack = { lineno: 1, input: "<%for(var i=0,ll=data.length; i<ll; i++) { %>\r\n  <li>\r\n    <label class=\"checkgroup\">\r\n      <input type=\"checkbox\" id=\"<%= data[i].id%>\" name=\"checkall\"><label for=\"<%= data[i].id%>\" class=\"check-all\"></label>\r\n    </label>\r\n    <a href=\"javascript:void(0);\"><%= data[i].title%></a>\r\n    <span><a href=\"/block/edit?id=<%= data[i].id%>\">编辑</a><i class=\"remove\">删除</i></span>\r\n  </li>\r\n<%}%>\r\n", filename: "site/home/ejs/block.ejs" };
+=======
+  var __stack = { lineno: 1, input: "<%for(var i=0,ll=data.length; i<ll; i++) { %>\r\n  <li>\r\n    <label class=\"checkgroup\">\r\n      <input type=\"checkbox\" id=\"block_<%= data[i].id%>\" name=\"checkall\"><label for=\"block_<%= data[i].id%>\" class=\"check-all\"></label>\r\n    </label>\r\n    <a href=\"javascript:void(0);\"><%= data[i].title%></a>\r\n    <span><a href=\"/block/edit?id=<%= data[i].id%>\">编辑</a><i class=\"remove\">删除</i></span>\r\n  </li>\r\n<%}%>\r\n", filename: "site/home/ejs/block.ejs" };
+>>>>>>> noApi
   function rethrow(err, str, filename, lineno){
     var lines = str.split('\n')
       , start = Math.max(lineno - 3, 0)
@@ -50,7 +54,11 @@ define('home/module', function(require, exports, module) {
   try {
   var buf = [];
   with (locals || {}) { (function(){ 
+<<<<<<< HEAD
    buf.push('');__stack.lineno=1;for(var i=0,ll=data.length; i<ll; i++) { ; buf.push('\n  <li>\n    <label class="checkgroup">\n      <input type="checkbox" id="', escape((__stack.lineno=4,  data[i].id)), '" name="checkall"><label for="', escape((__stack.lineno=4,  data[i].id)), '" class="check-all"></label>\n    </label>\n    <a href="javascript:void(0);">', escape((__stack.lineno=6,  data[i].title)), '</a>\n    <span><a href="/block/edit?id=', escape((__stack.lineno=7,  data[i].id)), '">编辑</a><i class="remove">删除</i></span>\n  </li>\n');__stack.lineno=9;}; buf.push('\n'); })();
+=======
+   buf.push('');__stack.lineno=1;for(var i=0,ll=data.length; i<ll; i++) { ; buf.push('\n  <li>\n    <label class="checkgroup">\n      <input type="checkbox" id="block_', escape((__stack.lineno=4,  data[i].id)), '" name="checkall"><label for="block_', escape((__stack.lineno=4,  data[i].id)), '" class="check-all"></label>\n    </label>\n    <a href="javascript:void(0);">', escape((__stack.lineno=6,  data[i].title)), '</a>\n    <span><a href="/block/edit?id=', escape((__stack.lineno=7,  data[i].id)), '">编辑</a><i class="remove">删除</i></span>\n  </li>\n');__stack.lineno=9;}; buf.push('\n'); })();
+>>>>>>> noApi
   } 
   return buf.join('');
   } catch (err) {
@@ -226,7 +234,11 @@ define('home/module', function(require, exports, module) {
           if (msg.state == true) {
             var ids = id.split(',');
             for (var i = 0, ll = ids.length; i < ll; i++) {
+<<<<<<< HEAD
               $('#' + ids[i]).parent().parent().remove();
+=======
+              $('#block_' + ids[i]).parent().parent().remove();
+>>>>>>> noApi
             }
           }
         }

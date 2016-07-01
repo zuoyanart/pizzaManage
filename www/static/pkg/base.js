@@ -11537,6 +11537,7 @@
         return fmt;
       }
       /**
+<<<<<<< HEAD
        * 整站使用到的基础数据
        * @type {Object}
        */
@@ -11569,6 +11570,30 @@
         }
       }
     };
+=======
+       * 根据objectid获取时间
+       * @param  {[type]} ObjectId [description]
+       * @param  {[type]} fmt      [description]
+       * @return {[type]}          [description]
+       */
+    _self.formatUnixTime = function(unixTime, fmt) {
+        var t = new Date(unixTime * 1000);
+        var o = {
+          "M+": t.getMonth() + 1, //月份
+          "d+": t.getDate(), //日
+          "h+": t.getHours(), //小时
+          "m+": t.getMinutes(), //分
+          "s+": t.getSeconds(), //秒
+          "q+": Math.floor((t.getMonth() + 3) / 3), //季度
+          "S": t.getMilliseconds() //毫秒
+        };
+        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (t.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+          if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+      }
+  
+>>>>>>> noApi
   
     //打印占位符
     //up down 分别对应占位符上下两段话

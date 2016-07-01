@@ -24,7 +24,11 @@ define('home/user/user', function(require, exports, module) {
       .replace(/'/g, '&#39;')
       .replace(/"/g, '&quot;');
   };
+<<<<<<< HEAD
   var __stack = { lineno: 1, input: "<%for(var i=0, l=data.length; i<l; i++) { %>\r\n  <li>\r\n    <label class=\"checkgroup\">\r\n      <input type=\"checkbox\" id=\"<%= data[i].id%>\" name=\"checkall\"><label for=\"checkall<%= data[i].id%>\" class=\"check-all\"></label>\r\n    </label>\r\n    <a href=\"\"><%= data[i].username %></a>\r\n    <% if(data[i].state == -1) {%>\r\n    <b>[已冻结]</b>\r\n    <%}%>\r\n    <span><a href=\"/home/user/edit?id=<%= data[i].id%>\">编辑</a>\r\n      <% if(data[i].state == -1) {%>\r\n      <i class=\"pass\">取消冻结</i>\r\n      <%} else if(data[i].id != 1){%>\r\n        <i class=\"pass\">冻结</i>\r\n      <%}%>\r\n    <i class=\"remove\">删除</i></span>\r\n  </li>\r\n<%}%>\r\n", filename: "site/home/ejs/user.ejs" };
+=======
+  var __stack = { lineno: 1, input: "<%for(var i=0, l=data.length; i<l; i++) { %>\r\n  <li>\r\n    <label class=\"checkgroup\">\r\n      <input type=\"checkbox\" id=\"user_<%= data[i].id%>\" name=\"checkall\"><label for=\"user_<%= data[i].id%>\" class=\"check-all\"></label>\r\n    </label>\r\n    <a href=\"\"><%= data[i].username %></a>\r\n    <% if(data[i].state == -1) {%>\r\n    <b>[已冻结]</b>\r\n    <%}%>\r\n    <span><a href=\"/home/user/edit?id=<%= data[i].id%>\">编辑</a>\r\n      <% if(data[i].state == -1) {%>\r\n      <i class=\"pass\">取消冻结</i>\r\n      <%} else if(data[i].id != 1){%>\r\n        <i class=\"pass\">冻结</i>\r\n      <%}%>\r\n    <i class=\"remove\">删除</i></span>\r\n  </li>\r\n<%}%>\r\n", filename: "site/home/ejs/user.ejs" };
+>>>>>>> noApi
   function rethrow(err, str, filename, lineno){
     var lines = str.split('\n')
       , start = Math.max(lineno - 3, 0)
@@ -51,7 +55,11 @@ define('home/user/user', function(require, exports, module) {
   try {
   var buf = [];
   with (locals || {}) { (function(){ 
+<<<<<<< HEAD
    buf.push('');__stack.lineno=1;for(var i=0, l=data.length; i<l; i++) { ; buf.push('\n  <li>\n    <label class="checkgroup">\n      <input type="checkbox" id="', escape((__stack.lineno=4,  data[i].id)), '" name="checkall"><label for="checkall', escape((__stack.lineno=4,  data[i].id)), '" class="check-all"></label>\n    </label>\n    <a href="">', escape((__stack.lineno=6,  data[i].username )), '</a>\n    ');__stack.lineno=7; if(data[i].state == -1) {; buf.push('\n    <b>[已冻结]</b>\n    ');__stack.lineno=9;}; buf.push('\n    <span><a href="/home/user/edit?id=', escape((__stack.lineno=10,  data[i].id)), '">编辑</a>\n      ');__stack.lineno=11; if(data[i].state == -1) {; buf.push('\n      <i class="pass">取消冻结</i>\n      ');__stack.lineno=13;} else if(data[i].id != 1){; buf.push('\n        <i class="pass">冻结</i>\n      ');__stack.lineno=15;}; buf.push('\n    <i class="remove">删除</i></span>\n  </li>\n');__stack.lineno=18;}; buf.push('\n'); })();
+=======
+   buf.push('');__stack.lineno=1;for(var i=0, l=data.length; i<l; i++) { ; buf.push('\n  <li>\n    <label class="checkgroup">\n      <input type="checkbox" id="user_', escape((__stack.lineno=4,  data[i].id)), '" name="checkall"><label for="user_', escape((__stack.lineno=4,  data[i].id)), '" class="check-all"></label>\n    </label>\n    <a href="">', escape((__stack.lineno=6,  data[i].username )), '</a>\n    ');__stack.lineno=7; if(data[i].state == -1) {; buf.push('\n    <b>[已冻结]</b>\n    ');__stack.lineno=9;}; buf.push('\n    <span><a href="/home/user/edit?id=', escape((__stack.lineno=10,  data[i].id)), '">编辑</a>\n      ');__stack.lineno=11; if(data[i].state == -1) {; buf.push('\n      <i class="pass">取消冻结</i>\n      ');__stack.lineno=13;} else if(data[i].id != 1){; buf.push('\n        <i class="pass">冻结</i>\n      ');__stack.lineno=15;}; buf.push('\n    <i class="remove">删除</i></span>\n  </li>\n');__stack.lineno=18;}; buf.push('\n'); })();
+>>>>>>> noApi
   } 
   return buf.join('');
   } catch (err) {
@@ -238,7 +246,11 @@ define('home/user/user', function(require, exports, module) {
             if (msg.state == true) {
               var ids = id.split(',');
               for (var i = 0, ll = ids.length; i < ll; i++) {
+<<<<<<< HEAD
                 $('#' + ids[i]).parent().parent().remove();
+=======
+                $('#user_' + ids[i]).parent().parent().remove();
+>>>>>>> noApi
               }
             }
           }
