@@ -66,10 +66,10 @@ let tree = (function() {
         },
         '#link': {
           'must': false,
-          'minLength': 5,
+          'minLength': 1,
           'maxLength': 150,
           focusMsg: "请输入自定义链接(非必填)",
-          errMsg: '自定义链接须在5-150个字符之间'
+          errMsg: '自定义链接须在1-150个字符之间'
         },
         '#weight': {
           'must': true,
@@ -90,7 +90,7 @@ let tree = (function() {
         } else {
           data += '&pid=' + pid;
         }
-        data += '&brief=' + editor.html()
+        data += '&brief=' + escape(editor.html());
         $.ajax({
           url: options.url + op,
           data: data,

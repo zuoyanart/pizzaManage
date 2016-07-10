@@ -251,3 +251,15 @@ global.subStr = (s, l, st = '') => {
 global.formatTime = function(time = getUnixTime(), format = 'YYYY-MM-DD HH:mm:ss') {
     return moment(time, "X").format(format);
 };
+/**
+ * 转换value是否是int值，如果不是则用default代替
+ * @method
+ * @return {[type]} [description]
+ */
+global.getInt = (value, def = 0) => {
+    value = parseInt(value);
+    if (isNaN(value) || value == null) {
+        return def;
+    }
+    return parseInt(value);
+}
