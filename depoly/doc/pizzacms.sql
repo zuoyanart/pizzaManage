@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50538
 File Encoding         : 65001
 
-Date: 2016-07-10 23:42:27
+Date: 2016-07-11 01:06:02
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -107,12 +107,13 @@ CREATE TABLE `pz_article` (
   PRIMARY KEY (`id`),
   KEY `id` (`id`),
   KEY `title` (`title`,`nodeid`,`uid`,`pass`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pz_article
 -- ----------------------------
-INSERT INTO `pz_article` VALUES ('4', '丈夫将老婆名写篮球上 一生气就打被判定家暴4', '/upload/2016/03/12/_3sw2_2acltjopcrqv5brhmhxlzst7wl.jpg', '<div class=\"otitle\" style=\"padding:0px;margin:20px 0px 0px;font-size:14px;color:#252525;font-family:宋体, sans-serif;background-color:#FFFFFF;\">\n	（原标题：他把老婆名字写在篮球上 拍球时不停地说“打死你”）\n</div>\n<div id=\"endText\" class=\"end-text\" style=\"padding:0px 0px 20px;margin:0px 10px 0px 0px;text-align:justify;font-size:16px;color:#252525;font-family:宋体, sans-serif;background-color:#FFFFFF;\">\n	<p style=\"text-indent:2em;\">\n		3月1日，我国第一部《反家庭暴力法》正式实施，意味着家庭暴力属于“家务事”的时代正式终结。除了大家都清楚的，家庭成员之间的侵害行为，属于家庭暴力。反家暴法还适用于具有共同生活关系的成员，也就是说，情侣同居出现殴打、谩骂等行为，也是家庭暴力。\n	</p>\n	<p style=\"text-indent:2em;\">\n		3月10日上午，是反家暴法生效的第十天，区妇联联合区委政法委、区司法局、区公安局，开展了《反家庭暴力法》业务知识培训。参加会议的有全区妇女代表以及司法局、公安局等相关科室人员，共计200余人参加。\n	</p>\n	<p style=\"text-indent:2em;\">\n		培训会邀请了重庆市经管学院心理学教授、全国公安系统优秀教师郭子贤教授。会上，郭教授用简洁易懂的方式，给大家诠释了反家庭暴力的相关条款。“不孝子女殴打父母，或者妻子殴打丈夫，这些也是家庭暴力。”郭教授说，只要是发生在家庭成员之间的侵害行为，都属于家庭暴力。\n	</p>\n	<p style=\"text-indent:2em;\">\n		“同居之间的恋人，一方殴打另一方，也是家庭暴力。”郭教授介绍，如今只要是具有共同生活关系，比如同居、扶养、寄养等，他们之间出现的殴打、谩骂，都能算作家庭暴力。\n	</p>\n	<p style=\"text-indent:2em;\">\n		而人们很少意识到的恐吓，也是家庭暴力的一种。郭教授说，在他接触过的案例中，曾有一个丈夫，因为对妻子不满。便在家中放置了很多篮球，篮球上写上妻子的名字。每天闲来无事，他便拍打篮球，同时口中念念有词“×××，打死你！”等等。\n	</p>\n	<p style=\"text-indent:2em;\">\n		时间一长，妻子的精神受到了极大的伤害，以至于她一听到“篮球”二字就会浑身发抖，要是听到打篮球的声音，就会抱头躲开。最后，经过调查，判定丈夫的这种行为已经构成了家庭暴力。\n	</p>\n</div>', '3月1日，我国第一部《反家庭暴力法》正式实施，意味着家庭暴力属于“家务事”的时代正式终结。除了大家都清楚的，家庭成员之间的侵害行为，属于家庭暴力。反家暴法还适用于具有共同生活关系的成员，也就是说，情侣同居出现殴打、谩骂等行为，也是家庭暴力。', '7', '0', '0', '1', '1', '网易新闻', '家暴 反家庭暴力法', 'http://www.baidu.com', '0', '0', '1457779085');
+INSERT INTO `pz_article` VALUES ('7', '烟台副市长转任银行后私分7000万 举报者遭威胁', '', '<span style=\"color:#404040;font-family:&quot;font-size:18px;line-height:32px;background-color:#FFFFFF;\">7月10日，恒丰银行高管向《中国经营报》提供证据显示，自其向媒体爆料以来，即受到死亡威胁。“遗憾的是，媒体报道两个月，没有任何主管、监管单位公开表态。”</span>', '', '8', '0', '0', '1', '1', '', '', '/content/7', '0', '0', '1468168558');
+INSERT INTO `pz_article` VALUES ('10', '烟台副市长转任银行后私分7000万 举报者遭威胁', '', '', '', '3', '0', '0', '1', '1', '', '', '/content_photo/10', '0', '0', '1468169100');
 
 -- ----------------------------
 -- Table structure for pz_block
@@ -736,6 +737,9 @@ CREATE TABLE `pz_node` (
   `nodepath` varchar(255) DEFAULT '',
   `link` varchar(100) DEFAULT '',
   `weight` int(11) DEFAULT '0',
+  `article_type` varchar(20) DEFAULT '' COMMENT '文章类型',
+  `keyword` varchar(255) DEFAULT '' COMMENT 'seo的关键字',
+  `seodes` varchar(500) DEFAULT '' COMMENT 'seo的描述',
   PRIMARY KEY (`id`),
   KEY `id` (`id`) USING BTREE,
   KEY `nodepath` (`nodepath`),
@@ -745,19 +749,19 @@ CREATE TABLE `pz_node` (
 -- ----------------------------
 -- Records of pz_node
 -- ----------------------------
-INSERT INTO `pz_node` VALUES ('1', '0', '网站节点', '', ',1,', '/', '0');
-INSERT INTO `pz_node` VALUES ('3', '1', '国际', '国际豆腐干豆腐干', ',1,3,', '/guoji_3m20', '0');
-INSERT INTO `pz_node` VALUES ('4', '1', '排行', '', ',1,4,', '/paihang_4', '0');
-INSERT INTO `pz_node` VALUES ('5', '1', '图片', '', ',1,5,', '/tupian_5', '0');
-INSERT INTO `pz_node` VALUES ('6', '1', '国内', '', ',1,6,', '/guonei_6', '0');
-INSERT INTO `pz_node` VALUES ('7', '1', '社会', '', ',1,7,', '/shehui_7', '0');
-INSERT INTO `pz_node` VALUES ('8', '1', '聚合', '网易聚合阅读', ',1,8,', '/juhe_8', '1');
-INSERT INTO `pz_node` VALUES ('9', '3', '国际评论', '测试1测试', ',1,3,9,', '/guojipinglun_9', '0');
-INSERT INTO `pz_node` VALUES ('10', '1', '数读', '', ',1,10,', '/shudu_10', '0');
-INSERT INTO `pz_node` VALUES ('11', '8', '聚合军事', '', ',1,8,11,', '/juhejunshi_11', '0');
-INSERT INTO `pz_node` VALUES ('12', '11', '两会观点', '', ',1,8,11,12,', '/lianghuiguandian_11', '0');
-INSERT INTO `pz_node` VALUES ('15', '3', '媒体', '', ',1,3,15,', '/meiti_15', '0');
-INSERT INTO `pz_node` VALUES ('16', '1', '家居', '', ',1,16,', '/jiaju_16', '0');
+INSERT INTO `pz_node` VALUES ('1', '0', '网站节点', '', ',1,', '/', '0', null, '', '');
+INSERT INTO `pz_node` VALUES ('3', '1', '国际', '国际豆腐干豆腐干', ',1,3,', '/guoji_3m20', '0', 'photo', 'dd asd ', '关键字关键字关键字');
+INSERT INTO `pz_node` VALUES ('4', '1', '排行', '', ',1,4,', '/paihang_4', '0', null, '', '');
+INSERT INTO `pz_node` VALUES ('5', '1', '图片', '', ',1,5,', '/tupian_5', '0', null, '', '');
+INSERT INTO `pz_node` VALUES ('6', '1', '国内', '', ',1,6,', '/guonei_6', '0', null, '', '');
+INSERT INTO `pz_node` VALUES ('7', '1', '社会', '', ',1,7,', '/shehui_7', '0', null, '', '');
+INSERT INTO `pz_node` VALUES ('8', '1', '聚合', '网易聚合阅读', ',1,8,', '/juhe_8', '1', null, '', '');
+INSERT INTO `pz_node` VALUES ('9', '3', '国际评论', '测试1测试', ',1,3,9,', '/guojipinglun_9', '0', null, '', '');
+INSERT INTO `pz_node` VALUES ('10', '1', '数读', '', ',1,10,', '/shudu_10', '0', null, '', '');
+INSERT INTO `pz_node` VALUES ('11', '8', '聚合军事', '', ',1,8,11,', '/juhejunshi_11', '0', null, '', '');
+INSERT INTO `pz_node` VALUES ('12', '11', '两会观点', '', ',1,8,11,12,', '/lianghuiguandian_11', '0', null, '', '');
+INSERT INTO `pz_node` VALUES ('15', '3', '媒体', '', ',1,3,15,', '/meiti_15', '0', null, '', '');
+INSERT INTO `pz_node` VALUES ('16', '1', '家居', '', ',1,16,', '/jiaju_16', '0', null, '', '');
 
 -- ----------------------------
 -- Table structure for pz_pinpai

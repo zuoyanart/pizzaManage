@@ -84,6 +84,20 @@ let tree = (function() {
           'maxLength': 30,
           focusMsg: "请选择正文类型",
           errMsg: '请选择正文类型'
+        },
+        '#keyword': {
+          'must': false,
+          'minLength': 1,
+          'maxLength': 100,
+          focusMsg: "请输入关键字",
+          errMsg: '请输入关键字，字数必须小于100个字符'
+        },
+        '#seodes': {
+          'must': false,
+          'minLength': 1,
+          'maxLength': 200,
+          focusMsg: "请输入描述",
+          errMsg: '请输入描述，字数必须小于200个字符'
         }
 
       },
