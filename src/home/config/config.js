@@ -3,5 +3,5 @@
  * config
  */
 export default {
-  //key: value
+  title: "左盐的空间"
 };

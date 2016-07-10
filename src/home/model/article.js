@@ -94,4 +94,24 @@ export default class extends think.model.base {
             }
         }
     }
+    /**
+     * 获取文章by id,不管是否审核
+     * @method get
+     * @param  {[type]} nodeid [description]
+     * @return {[type]}        [description]
+     */
+async getPreview(id) {
+    if (think.config("openApi")) {
+        let article = await httpAgent(this.config("api") + 'article/' + parseInt(id), "get");
+        return article;
+    } else {
+        let row = await this.where({
+            id: id
+        }).find();
+        return {
+            state: true,
+            msg: row
+        }
+    }
+}
 }

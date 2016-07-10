@@ -208,7 +208,7 @@ global.getCharLen = (str) => {
      * @param st   补充的结尾字符
      * @returns {*}
      */
-global.subStr = (s, l, st = '') => {
+global.subStr = (s, l = 200, st = '') => {
         var T = false;
         if (getCharLen(s) > l) {
             l -= getCharLen(st);
@@ -257,9 +257,17 @@ global.formatTime = function(time = getUnixTime(), format = 'YYYY-MM-DD HH:mm:ss
  * @return {[type]} [description]
  */
 global.getInt = (value, def = 0) => {
-    value = parseInt(value);
-    if (isNaN(value) || value == null) {
-        return def;
+        value = parseInt(value);
+        if (isNaN(value) || value == null) {
+            return def;
+        }
+        return parseInt(value);
     }
-    return parseInt(value);
+    /**
+     * 去除所有的html代码
+     * @param  {[type]} str =             "" [description]
+     * @return {[type]}     [description]
+     */
+global.removeHtml = (str = "") => {
+    return str.replace(/<[^>]+>/g,"").replace(/&nbsp;/g, "");
 }
