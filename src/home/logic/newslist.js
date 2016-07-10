@@ -10,17 +10,32 @@ export default class extends think.logic.base {
      * @return {} []
      */
     indexAction() {
-        this.rules = {
-            nodeid: "required|int:1,1000000"
+            this.rules = {
+                nodeid: "required|int:1,1000000",
+                cp: "int:1,10000",
+                mp: "int:1,100"
+            }
         }
-    }
-    /**
-     * index action logic
-     * @return {} []
-     */
+        /**
+         * index action logic
+         * @return {} []
+         */
     imgAction() {
+            this.rules = {
+                nodeid: "required|int:1,1000000",
+                cp: "int:1,10000",
+                mp: "int:1,100"
+            }
+        }
+        /**
+         * index action logic
+         * @return {} []
+         */
+    nodeAction() {
         this.rules = {
-            nodeid: "required|int:1,1000000"
+            nodeid: "required|int:1,1000000",
+            cp: "int:1,10000",
+            mp: "int:1,100"
         }
     }
 }

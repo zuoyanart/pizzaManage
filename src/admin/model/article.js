@@ -70,6 +70,7 @@ export default class extends think.model.base {
                 let article = await httpAgent(this.config("api") + 'article', "put", article);
                 return article;
             } else {
+                article.content = unescape(article.content);
                 let row = await this.update(article);
                 return {
                     state: true
@@ -87,6 +88,7 @@ export default class extends think.model.base {
                 let article = await httpAgent(this.config("api") + 'article', "put", article);
                 return article;
             } else {
+                article.content = unescape(article.content);
                 let id = await this.add(article);
                 return {
                     state: true,

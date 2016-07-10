@@ -11,6 +11,8 @@
   "dependencies": {
     "babel-runtime": "6.x.x",
     "moment": "^2.13.0",
+    "node-pinyin": "^0.2.3",
+    "source-map-support": "^0.4.0",
     "thinkjs": "2.2.x"
   },
   "devDependencies": {
