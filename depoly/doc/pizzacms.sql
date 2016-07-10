@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50538
 File Encoding         : 65001
 
-Date: 2016-06-30 17:54:49
+Date: 2016-07-10 15:11:08
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -75,8 +75,8 @@ CREATE TABLE `pz_article` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) DEFAULT '',
   `timg` varchar(100) DEFAULT '',
-  `content` varchar(10000) DEFAULT '',
-  `brief` varchar(255) DEFAULT '',
+  `content` text,
+  `brief` varchar(600) DEFAULT '',
   `nodeid` int(11) DEFAULT '0',
   `count` int(11) DEFAULT '0',
   `reco` int(11) DEFAULT '0',
@@ -89,7 +89,8 @@ CREATE TABLE `pz_article` (
   `state` int(11) DEFAULT '0',
   `createtime` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `page` (`id`,`title`,`nodeid`) USING HASH
+  KEY `id` (`id`),
+  KEY `title` (`title`,`nodeid`,`uid`,`pass`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -104,7 +105,7 @@ DROP TABLE IF EXISTS `pz_block`;
 CREATE TABLE `pz_block` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL DEFAULT '',
-  `content` varchar(10000) DEFAULT '',
+  `content` text,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=114 DEFAULT CHARSET=utf8;
 
@@ -399,11 +400,14 @@ CREATE TABLE `pz_node` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) DEFAULT '0',
   `name` varchar(50) DEFAULT '',
-  `brief` varchar(255) DEFAULT '',
+  `brief` text,
   `nodepath` varchar(255) DEFAULT '',
   `link` varchar(100) DEFAULT '',
   `weight` int(11) DEFAULT '0',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`) USING BTREE,
+  KEY `nodepath` (`nodepath`),
+  KEY `pid` (`pid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -510,7 +514,7 @@ CREATE TABLE `pz_user_admin` (
   `userGroupId` int(11) DEFAULT '0' COMMENT '用户组id',
   `roleId` int(11) DEFAULT '0' COMMENT '角色id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pz_user_admin

@@ -1,8 +1,7 @@
 'use strict';
 
 import Base from './base.js';
-import mail from '../tools/mail.js';
-import data from '../tools/data.js';
+import mail from '../../common/tools/mail.js';
 export default class extends Base {
 
   /**
