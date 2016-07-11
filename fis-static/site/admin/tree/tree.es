@@ -79,7 +79,7 @@ let tree = (function() {
           errMsg: '请输入节点权重，只能是小于4位的数字'
         },
         '#article_type': {
-          'must': true,
+          'must': false,
           'minLength': 1,
           'maxLength': 30,
           focusMsg: "请选择正文类型",
