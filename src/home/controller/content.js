@@ -28,15 +28,12 @@ export default class extends Base {
         requests.push(tree.pageSister(art.msg.nodeid)); //子节点
         requests.push(tree.crumbs(art.msg.nodeid)); //面包屑
         let result = await Promise.all(requests);
-        // this.assign({
-        //     news: art.msg,
-        //     nodelist: result[0].msg,
-        //     crumbs: result[1].msg
-        // });
-        // return this.display();
-        return this.json(
-            result
-        );
+        this.assign({
+            news: art.msg,
+            nodelist: result[0].msg,
+            crumbs: result[1].msg
+        });
+        return this.display();
     }
     /**
      * index action
@@ -63,15 +60,12 @@ export default class extends Base {
         requests.push(tree.pageSister(art.msg.nodeid)); //子节点
         requests.push(tree.crumbs(art.msg.nodeid)); //面包屑
         let result = await Promise.all(requests);
-        // this.assign({
-        //     news: art.msg,
-        //     nodelist: result[0].msg,
-        //     crumbs: result[1].msg
-        // });
-        // return this.display();
-        return this.json(
-            result
-        );
+        this.assign({
+            news: art.msg,
+            nodelist: result[0].msg,
+            crumbs: result[1].msg
+        });
+        return this.display();
     }
     /**
      * index action
@@ -98,14 +92,11 @@ export default class extends Base {
         requests.push(tree.pageSister(art.msg.nodeid)); //子节点
         requests.push(tree.crumbs(art.msg.nodeid)); //面包屑
         let result = await Promise.all(requests);
-        // this.assign({
-        //     news: art.msg,
-        //     nodelist: result[0].msg,
-        //     crumbs: result[1].msg
-        // });
-        // return this.display();
-        return this.json(
-            result
-        );
+        this.assign({
+            news: art.msg,
+            nodelist: result[0].msg,
+            crumbs: result[1].msg
+        });
+        return this.display();
     }
 }

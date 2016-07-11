@@ -51,25 +51,25 @@ export default class extends think.model.base {
                     })
                     .where(resultOptions.where);
 
-                if (options.turnpage) {
+                    console.log(options.turnpage);
+                if (options.turnpage === true) {
                     let rows = await rowsPromise.field("article.id,article.title,article.timg,article.brief,article.nodeid,article.source,article.link,article.comment,article.createtime,node.name as nodename,user.username").order(resultOptions.order)
                         .limit((cp - 1) * mp, mp).countSelect();
+
+                    return {
+                        state: true,
+                        msg: rows.data,
+                        count: rows.count
+                    };
+                } else {
+                    let rows = await rowsPromise.field("article.id,article.title,article.timg,article.brief,article.nodeid,article.source,article.link,article.comment,article.createtime,node.name as nodename,user.username").order(resultOptions.order)
+                        .limit((cp - 1) * mp, mp).select();
 
                     // console.log("count=" + rows.count);
                     return {
                         state: true,
-                        msg: rows.data,
-                        count: 0
+                        msg: rows,
                     };
-                } else {
-                  let rows = await rowsPromise.field("article.id,article.title,article.timg,article.brief,article.nodeid,article.source,article.link,article.comment,article.createtime,node.name as nodename,user.username").order(resultOptions.order)
-                      .limit((cp - 1) * mp, mp).select();
-
-                  // console.log("count=" + rows.count);
-                  return {
-                      state: true,
-                      msg: rows,
-                  };
                 }
             }
         }
@@ -80,13 +80,33 @@ export default class extends think.model.base {
          * @return {[type]}        [description]
          */
     async get(id) {
+            if (think.config("openApi")) {
+                let article = await httpAgent(this.config("api") + 'article/' + parseInt(id), "get");
+                return article;
+            } else {
+                let row = await this.where({
+                    id: id,
+                    pass: 1
+                }).find();
+                return {
+                    state: true,
+                    msg: row
+                }
+            }
+        }
+        /**
+         * 获取文章by id,不管是否审核
+         * @method get
+         * @param  {[type]} nodeid [description]
+         * @return {[type]}        [description]
+         */
+    async getPreview(id) {
         if (think.config("openApi")) {
             let article = await httpAgent(this.config("api") + 'article/' + parseInt(id), "get");
             return article;
         } else {
             let row = await this.where({
-                id: id,
-                pass: 1
+                id: id
             }).find();
             return {
                 state: true,
@@ -94,24 +114,4 @@ export default class extends think.model.base {
             }
         }
     }
-    /**
-     * 获取文章by id,不管是否审核
-     * @method get
-     * @param  {[type]} nodeid [description]
-     * @return {[type]}        [description]
-     */
-async getPreview(id) {
-    if (think.config("openApi")) {
-        let article = await httpAgent(this.config("api") + 'article/' + parseInt(id), "get");
-        return article;
-    } else {
-        let row = await this.where({
-            id: id
-        }).find();
-        return {
-            state: true,
-            msg: row
-        }
-    }
-}
 }

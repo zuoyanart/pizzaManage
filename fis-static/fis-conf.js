@@ -38,12 +38,12 @@ fis.match("**/*", {
         // optimizer: fis.plugin('uglify-js')
     })
     //page下面的页面发布时去掉page文件夹
-    .match(/^\/view\/(common|master|admin|home)\/(.*)\.(html)$/i, {
+    .match(/^\/view\/(common|master|admin)\/(.*)\.(html)$/i, {
         parser: fis.plugin('swigt'),
         useCache: false,
         release: '/$&'
     })
-    .match(/^\/view\/(vue)\/(.*)\.(html)$/i, {
+    .match(/^\/view\/(vue|home)\/(.*)\.(html)$/i, {
         useCache: false,
         release: '/$&'
     })
@@ -55,6 +55,11 @@ fis.match("**/*", {
     .match("/widget/kindeditor-4.1.10/**.js", {
         isMod: false,
         url: '${url}/$&'
+    })
+    .match('**/*.less', { //编译less
+        parser: fis.plugin('less'),
+        rExt: '.css',
+        // optimizer: fis.plugin('optimizer-clean-css')
     })
     //less的mixin文件无需发布
     .match(/^(.*)mixin\.less$/i, {

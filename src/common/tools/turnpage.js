@@ -132,7 +132,7 @@ var turnpage = function(options) {
     function clickEvent(page, oldpage) {
         var s = '';
         if (_self.isLink) { //传值是一个连接
-            s = _self.options.name +'/cp/' + page;
+            s = _self.options.name.replace("{cp}", page).replace("{mp}", options.mp).replace("c1","").replace("m20","");
         } else { //传值是一个函数
             s = 'javascript:void(0)" click="' + _self.options.name + '(' + page + ', ' + oldpage + ')"';
         }
