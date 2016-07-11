@@ -21,7 +21,6 @@ export default class extends Base {
         requests.push(article.page("", 9, 1, 10));
         requests.push(article.page("", 10, 1, 10));
         let results = await Promise.all(requests);
-        console.log(results[1].msg);
         this.assign({
            node: results[0].msg,
            article: results

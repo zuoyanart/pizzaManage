@@ -59,14 +59,11 @@ var turnpage = function(options) {
 
     // 标准翻页模式，包含首页、上下页、末页、及数字分页
     _self.hunde = function(cp) {
-        //console.log(clickEvent(1,1));
         var btnClass = 'btn btn-primary',
             gap = '<em>...</em>';
         var numberClass = 'number';
 
         _self.options.pageTotal = Math.ceil(_self.options.sum / _self.options.mp);
-
-        // console.log(_self.options);
 
         if(_self.options.pageTotal <= 1) {
             return '';

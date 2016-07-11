@@ -25,7 +25,6 @@ export default class extends Base {
             requests.push(tree.crumbs(nodeid)); //面包屑
 
             let result = await Promise.all(requests);
-            console.log(result[0].count);
             let tp = new turnpage({
                 name: "/" + path + "_" + nodeid +"c{cp}m{mp}",
                 sum: result[0].count,

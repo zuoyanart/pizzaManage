@@ -31,7 +31,6 @@ export default class extends think.model.base {
          */
     async pageSister(nodeid) {
             let node = await this.get(nodeid);
-            // console.log(node);
             let rows = await this.page(node.msg.pid);
             return {
                 state: true,

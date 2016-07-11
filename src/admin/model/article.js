@@ -96,7 +96,6 @@ export default class extends think.model.base {
                 //更新link
                 let nodeModel = this.model("tree");
                 let node = await nodeModel.get(article.nodeid);
-                console.log(node);
                 let link = "/content/" + id;
                 if (node.msg.article_type != "") {
                     link = "/content_" + node.msg.article_type + "/" + id;

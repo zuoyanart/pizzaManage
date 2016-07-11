@@ -51,7 +51,6 @@ export default class extends think.model.base {
                     })
                     .where(resultOptions.where);
 
-                    console.log(options.turnpage);
                 if (options.turnpage === true) {
                     let rows = await rowsPromise.field("article.id,article.title,article.timg,article.brief,article.nodeid,article.source,article.link,article.comment,article.createtime,node.name as nodename,user.username").order(resultOptions.order)
                         .limit((cp - 1) * mp, mp).countSelect();
@@ -65,7 +64,6 @@ export default class extends think.model.base {
                     let rows = await rowsPromise.field("article.id,article.title,article.timg,article.brief,article.nodeid,article.source,article.link,article.comment,article.createtime,node.name as nodename,user.username").order(resultOptions.order)
                         .limit((cp - 1) * mp, mp).select();
 
-                    // console.log("count=" + rows.count);
                     return {
                         state: true,
                         msg: rows,
