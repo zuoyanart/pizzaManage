@@ -1,7 +1,6 @@
 'use strict';
-
 import mail from 'nodemailer';
-import config from '../config/config.js';
+import smtpTransport from 'nodemailer-smtp-transport';
 
 export default class {
   /**
@@ -13,14 +12,19 @@ export default class {
    * @return {[type]}       [description]
    */
   sendMail(to, title, html) {
-    let transporter = mail.createTransport(config.mail.smtp);
+    console.log(think.config("mail").smtp);
+    let transporter = mail.createTransport(smtpTransport(think.config("mail").smtp));
     let mailOption = {
       from: 'huabinglan@163.com',
       to: to,
       subject: title,
       html: html
     }
-    let fn = think.promisify(transporter.sendMail, transporter);
-    return fn(mailOption);
+    transporter.sendMail(mailOption, function(err, info){
+      console.log(err);
+      console.log(info);
+    })
+    // let fn = think.promisify(transporter.sendMail, transporter);
+    // return fn(mailOption);
   }
 }

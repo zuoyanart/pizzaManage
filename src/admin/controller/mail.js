@@ -1,7 +1,7 @@
 'use strict';
 
 import Base from './base.js';
-import mail from '../tools/mail.js';
+import mail from '../../common/tools/mail.js';
 import cheerio from 'cheerio';
 export default class extends Base {
 
@@ -33,16 +33,14 @@ export default class extends Base {
         let _self = this;
         var webObj = this.get("object");
         var hosts = this.get("hosts");
-        let article = await httpSpider("http://192.168.1.134:8080", "get");
-        let $ = cheerio.load(article, {
-            normalizeWhitespace: true,
-            xmlMode: true
-        });
-        if ($(".summary-failures > h1").text() != 0) {
+        // let article = await httpSpider("http://192.168.1.134:8080", "get");
+        // let $ = cheerio.load(article, {
+        //     normalizeWhitespace: true,
+        //     xmlMode: true
+        // });
+        if (true) {
             var ml = new mail();
-            ml.sendMail("490526801@qq.com", webObj + "golang单元测试失败", webObj + "golang单元测试失败").then(function(msg) {
-                _self.end(msg);
-            });
+            ml.sendMail("490526801@qq.com", webObj + "golang单元测试失败", webObj + "golang单元测试失败");
         } else {
             return this.json({
                 "state": "true"

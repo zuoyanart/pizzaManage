@@ -20,7 +20,7 @@ export default {
     smtp: {
       host: 'smtp.163.com',
       port: 465,
-      secure: true,
+      secure: false,
       auth: {
         user: 'huabinglan@163.com',
         pass: ''
