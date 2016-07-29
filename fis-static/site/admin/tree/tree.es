@@ -21,6 +21,7 @@ let tree = (function() {
    */
   my.init = function() {
       eventBind(); //绑定所有交互操作
+      ishide();
       page(1);
     }
     /**
@@ -124,7 +125,12 @@ let tree = (function() {
       }
     });
   }
-
+/**
+ * 获取所有的节点
+ * @method function
+ * @param  {Function} callback [description]
+ * @return {[type]}            [description]
+ */
   my.pageall = function(callback) {
       $.ajax({
         url: options.url + 'pageall',
@@ -244,6 +250,31 @@ let tree = (function() {
       if ($(this).attr('path').indexOf(nodepath) > -1) {
         action[isdisplay].call(this, subnode);
       }
+    });
+  }
+  /**
+   * 该节点是否在菜单显示
+   * @method function
+   * @return {[type]} [description]
+   */
+  let ishide = function() {
+    $("#treelist").on("click", ".ishide", function() {
+      let o = $(this);
+      let ishide = o.text() == "隐藏" ? 1 :0;
+      let id = o.parent().parent().attr("id");
+      $.ajax({
+        url: options.url + "ishide",
+        data: "id=" + id +"&ishide=" + ishide,
+        success: function(msg) {
+          if(ishide == 1) {
+            o.parent().parent().children("em").after("<b>[已隐藏]</b>");
+            o.text("显示");
+          } else {
+            o.parent().prev().remove();
+            o.text("隐藏");
+          }
+        }
+      });
     });
   }
 

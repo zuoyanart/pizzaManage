@@ -16,7 +16,8 @@ export default class extends think.model.base {
          */
     async page(pid) {
             let rows = await this.where({
-                "pid": pid
+                "pid": pid,
+                "ishide":0
             }).select();
             return {
                 state: true,
@@ -50,7 +51,8 @@ export default class extends think.model.base {
                 ids = ",0" + ids.msg.nodepath + "0,";
                 ids = ids.replace(/,0,/g, "");
                 data = await this.where({
-                    id: ["IN", ids]
+                    id: ["IN", ids],
+                    "ishide":0
                 }).field("id,name,link").order("nodepath asc,weight desc").select();
                 return {
                     state: true,

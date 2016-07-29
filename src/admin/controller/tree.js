@@ -91,6 +91,18 @@ export default class extends Base {
       });
     }
   }
+  /**
+   * 是否隐藏菜单
+   * @method ishideAction
+   * @return {[type]}     [description]
+   */
+  async ishideAction() {
+    let p = this.post();
+    let node = await this.model("tree").ishide(p.id, p.ishide);
+    return this.json({
+      "state": true
+    });
+  }
 
 
 }

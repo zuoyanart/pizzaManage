@@ -53,6 +53,21 @@ export default class extends think.model.base {
             }
         }
         /**
+         * 更新菜单是否隐藏
+         * @method ishide
+         * @return {[type]} [description]
+         */
+    async ishide(id, hide) {
+            let row = await this.where({
+                id: id
+            }).update({
+                ishide: hide
+            });
+            return {
+                state: true
+            }
+        }
+        /**
          * 创建节点
          * @method create
          * @param  {[type]} node [description]
