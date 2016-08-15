@@ -1,7 +1,6 @@
 'use strict';
 
 import Base from './base.js';
-import objectid from 'objectid';
 
 export default class extends Base {
     /**
@@ -35,39 +34,4 @@ export default class extends Base {
         });
         return this.display();
     }
-
-    async getnodeAction() {
-      let node = await httpAgent("http://192.168.1.134:3004/v1/neo4juser/98042", "get");
-      return this.json(node);
-    }
-
-    async updateAction() {
-      let node = await httpAgent("http://192.168.1.134:3004/v1/neo4juser", "put", "key=mail&value=huabinglan@163.com&id=1");
-      return this.json(node)
-    }
-
-  async createAction() {
-    let s = "_id=" + objectid + "&avatar=/avatar.jpg&photo=/photo.jpg&company1="
-    let json = {
-      "Objid": objectid(),
-      "avatar": "/avatar.jpg",
-      "photo": "/photo.jpg",
-      "city": "郑州"
-
-    };
-    let node = await httpAgent("http://192.168.1.134:3004/v1/neo4juser", "post", json);
-    return this.json(node)
-  }
-
-  async loginAction() {
-    let s = "username=2191921092&password=" + sha1("888999" + "H0UK*Lwd");
-    let node = await httpAgent("http://192.168.1.134:3004/v1/user/checklogin", "post", s);
-    return this.json(node)
-  }
-
-  async pathAction() {
-    let s = "id=1&cp=1&mp=18";
-    let node = await httpAgent("http://192.168.1.134:3004/v1/neo4juser/path", "post", s);
-    return this.json(node)
-  }
 }
