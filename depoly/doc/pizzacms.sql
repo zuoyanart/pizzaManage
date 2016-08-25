@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 本地测试
+Source Server         : 本机测试
 Source Server Version : 50538
 Source Host           : localhost:3306
 Source Database       : pizzacms
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50538
 File Encoding         : 65001
 
-Date: 2016-07-11 01:06:02
+Date: 2016-08-15 18:05:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -107,13 +107,16 @@ CREATE TABLE `pz_article` (
   PRIMARY KEY (`id`),
   KEY `id` (`id`),
   KEY `title` (`title`,`nodeid`,`uid`,`pass`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pz_article
 -- ----------------------------
-INSERT INTO `pz_article` VALUES ('7', '烟台副市长转任银行后私分7000万 举报者遭威胁', '', '<span style=\"color:#404040;font-family:&quot;font-size:18px;line-height:32px;background-color:#FFFFFF;\">7月10日，恒丰银行高管向《中国经营报》提供证据显示，自其向媒体爆料以来，即受到死亡威胁。“遗憾的是，媒体报道两个月，没有任何主管、监管单位公开表态。”</span>', '', '8', '0', '0', '1', '1', '', '', '/content/7', '0', '0', '1468168558');
-INSERT INTO `pz_article` VALUES ('10', '烟台副市长转任银行后私分7000万 举报者遭威胁', '', '', '', '3', '0', '0', '1', '1', '', '', '/content_photo/10', '0', '0', '1468169100');
+INSERT INTO `pz_article` VALUES ('7', '烟台副市长转任银行后私分7000万 举报者遭威胁1', '', '<span style=\"color:#404040;font-family:&quot;font-size:18px;line-height:32px;background-color:#FFFFFF;\">7月10日，恒丰银行高管向《中国经营报》提供证据显示，自其向媒体爆料以来，即受到死亡威胁。“遗憾的是，媒体报道两个月，没有任何主管、监管单位公开表态。”</span>', '', '8', '0', '0', '1', '1', '', '', '/content/7', '0', '0', '1468168558');
+INSERT INTO `pz_article` VALUES ('10', '烟台副市长转任银行后私分7000万 举报者遭威胁2', '', '', '', '3', '0', '0', '1', '1', '', '', '/content_photo/10', '0', '0', '1468169100');
+INSERT INTO `pz_article` VALUES ('11', '烟台副市长转任银行后私分7000万 举报者遭威胁3', '', '<span style=\"color:#404040;font-family:&quot;font-size:18px;line-height:32px;background-color:#FFFFFF;\">7月10日，恒丰银行高管向《中国经营报》提供证据显示，自其向媒体爆料以来，即受到死亡威胁。“遗憾的是，媒体报道两个月，没有任何主管、监管单位公开表态。”</span>', '', '8', '0', '0', '1', '1', '', '', '/content/11', '0', '0', '1468168558');
+INSERT INTO `pz_article` VALUES ('12', '烟台副市长转任银行后私分7000万 举报者遭威胁4', '', '<span style=\"color:#404040;font-family:&quot;font-size:18px;line-height:32px;background-color:#FFFFFF;\">7月10日，恒丰银行高管向《中国经营报》提供证据显示，自其向媒体爆料以来，即受到死亡威胁。“遗憾的是，媒体报道两个月，没有任何主管、监管单位公开表态。”</span>', '', '8', '0', '0', '1', '1', '', '', '/content/12', '0', '0', '1468168558');
+INSERT INTO `pz_article` VALUES ('13', '烟台副市长转任银行后私分7000万 举报者遭威胁5', '', '<span style=\"color:#404040;font-family:&quot;font-size:18px;line-height:32px;background-color:#FFFFFF;\">7月10日，恒丰银行高管向《中国经营报》提供证据显示，自其向媒体爆料以来，即受到死亡威胁。“遗憾的是，媒体报道两个月，没有任何主管、监管单位公开表态。”</span>', '', '8', '0', '0', '1', '1', '', '', '/content/13', '0', '0', '1468168558');
 
 -- ----------------------------
 -- Table structure for pz_block
@@ -740,6 +743,7 @@ CREATE TABLE `pz_node` (
   `article_type` varchar(20) DEFAULT '' COMMENT '文章类型',
   `keyword` varchar(255) DEFAULT '' COMMENT 'seo的关键字',
   `seodes` varchar(500) DEFAULT '' COMMENT 'seo的描述',
+  `ishide` int(2) DEFAULT '0' COMMENT '是否显示',
   PRIMARY KEY (`id`),
   KEY `id` (`id`) USING BTREE,
   KEY `nodepath` (`nodepath`),
@@ -749,19 +753,19 @@ CREATE TABLE `pz_node` (
 -- ----------------------------
 -- Records of pz_node
 -- ----------------------------
-INSERT INTO `pz_node` VALUES ('1', '0', '网站节点', '', ',1,', '/', '0', null, '', '');
-INSERT INTO `pz_node` VALUES ('3', '1', '国际', '国际豆腐干豆腐干', ',1,3,', '/guoji_3m20', '0', 'photo', 'dd asd ', '关键字关键字关键字');
-INSERT INTO `pz_node` VALUES ('4', '1', '排行', '', ',1,4,', '/paihang_4', '0', null, '', '');
-INSERT INTO `pz_node` VALUES ('5', '1', '图片', '', ',1,5,', '/tupian_5', '0', null, '', '');
-INSERT INTO `pz_node` VALUES ('6', '1', '国内', '', ',1,6,', '/guonei_6', '0', null, '', '');
-INSERT INTO `pz_node` VALUES ('7', '1', '社会', '', ',1,7,', '/shehui_7', '0', null, '', '');
-INSERT INTO `pz_node` VALUES ('8', '1', '聚合', '网易聚合阅读', ',1,8,', '/juhe_8', '1', null, '', '');
-INSERT INTO `pz_node` VALUES ('9', '3', '国际评论', '测试1测试', ',1,3,9,', '/guojipinglun_9', '0', null, '', '');
-INSERT INTO `pz_node` VALUES ('10', '1', '数读', '', ',1,10,', '/shudu_10', '0', null, '', '');
-INSERT INTO `pz_node` VALUES ('11', '8', '聚合军事', '', ',1,8,11,', '/juhejunshi_11', '0', null, '', '');
-INSERT INTO `pz_node` VALUES ('12', '11', '两会观点', '', ',1,8,11,12,', '/lianghuiguandian_11', '0', null, '', '');
-INSERT INTO `pz_node` VALUES ('15', '3', '媒体', '', ',1,3,15,', '/meiti_15', '0', null, '', '');
-INSERT INTO `pz_node` VALUES ('16', '1', '家居', '', ',1,16,', '/jiaju_16', '0', null, '', '');
+INSERT INTO `pz_node` VALUES ('1', '0', '首页', '', ',1,', '/', '0', null, '', '', '0');
+INSERT INTO `pz_node` VALUES ('3', '1', '国际', '国际豆腐干豆腐干', ',1,3,', '/guoji_3m20', '0', 'photo', 'dd asd ', '关键字关键字关键字', '0');
+INSERT INTO `pz_node` VALUES ('4', '1', '排行', '', ',1,4,', '/paihang_4', '0', null, '', '', '0');
+INSERT INTO `pz_node` VALUES ('5', '1', '图片', '', ',1,5,', '/tupian_5', '0', null, '', '', '0');
+INSERT INTO `pz_node` VALUES ('6', '1', '国内', '', ',1,6,', '/guonei_6', '0', null, '', '', '0');
+INSERT INTO `pz_node` VALUES ('7', '1', '社会', '', ',1,7,', '/shehui_7', '0', null, '', '', '0');
+INSERT INTO `pz_node` VALUES ('8', '1', '聚合', '网易聚合阅读', ',1,8,', '/juhe_8m1', '1', '', '', '', '0');
+INSERT INTO `pz_node` VALUES ('9', '3', '国际评论', '测试1测试', ',1,3,9,', '/guojipinglun_9', '0', null, '', '', '0');
+INSERT INTO `pz_node` VALUES ('10', '1', '数读', '', ',1,10,', '/shudu_10', '0', null, '', '', '0');
+INSERT INTO `pz_node` VALUES ('11', '8', '聚合军事', '', ',1,8,11,', '/juhejunshi_11', '0', null, '', '', '0');
+INSERT INTO `pz_node` VALUES ('12', '11', '两会观点', '', ',1,8,11,12,', '/lianghuiguandian_11', '0', null, '', '', '0');
+INSERT INTO `pz_node` VALUES ('15', '3', '媒体', '', ',1,3,15,', '/meiti_15', '0', null, '', '', '0');
+INSERT INTO `pz_node` VALUES ('16', '1', '家居', '', ',1,16,', '/jiaju_16', '0', null, '', '', '0');
 
 -- ----------------------------
 -- Table structure for pz_pinpai
