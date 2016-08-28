@@ -82,10 +82,20 @@ export default class extends think.model.base {
                 let article = await httpAgent(this.config("api") + 'article/' + parseInt(id), "get");
                 return article;
             } else {
-                let row = await this.where({
-                    id: id,
-                    pass: 1
-                }).find();
+              let rowsPromise = this.alias("article").join({
+                   table: "node",
+                   as: "node",
+                   join: "inner",
+                   on: ["article.nodeid", "node.id"]
+               }).join({
+                   table: "user_admin",
+                   as: "user",
+                   join: "inner",
+                   on: ["article.uid", "id"]
+               }).where({"article.id": id, "article.pass": 1});
+
+               let row = await rowsPromise.field("article.id,article.title,article.timg,article.brief,article.content,article.nodeid,article.source,article.link,article.comment,article.createtime,node.name as nodename,user.username").find();
+
                 let rows = await this.where({//点击加一
                     id: id
                 }).increment("count", 1);
