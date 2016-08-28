@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 本机测试
-Source Server Version : 50538
-Source Host           : localhost:3306
-Source Database       : pizzacms
+Source Server         : 虚拟机
+Source Server Version : 50632
+Source Host           : 192.168.1.8:3306
+Source Database       : pizzaCms
 
 Target Server Type    : MYSQL
-Target Server Version : 50538
+Target Server Version : 50632
 File Encoding         : 65001
 
-Date: 2016-08-15 18:05:32
+Date: 2016-08-28 13:29:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -107,16 +107,14 @@ CREATE TABLE `pz_article` (
   PRIMARY KEY (`id`),
   KEY `id` (`id`),
   KEY `title` (`title`,`nodeid`,`uid`,`pass`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pz_article
 -- ----------------------------
-INSERT INTO `pz_article` VALUES ('7', '烟台副市长转任银行后私分7000万 举报者遭威胁1', '', '<span style=\"color:#404040;font-family:&quot;font-size:18px;line-height:32px;background-color:#FFFFFF;\">7月10日，恒丰银行高管向《中国经营报》提供证据显示，自其向媒体爆料以来，即受到死亡威胁。“遗憾的是，媒体报道两个月，没有任何主管、监管单位公开表态。”</span>', '', '8', '0', '0', '1', '1', '', '', '/content/7', '0', '0', '1468168558');
-INSERT INTO `pz_article` VALUES ('10', '烟台副市长转任银行后私分7000万 举报者遭威胁2', '', '', '', '3', '0', '0', '1', '1', '', '', '/content_photo/10', '0', '0', '1468169100');
-INSERT INTO `pz_article` VALUES ('11', '烟台副市长转任银行后私分7000万 举报者遭威胁3', '', '<span style=\"color:#404040;font-family:&quot;font-size:18px;line-height:32px;background-color:#FFFFFF;\">7月10日，恒丰银行高管向《中国经营报》提供证据显示，自其向媒体爆料以来，即受到死亡威胁。“遗憾的是，媒体报道两个月，没有任何主管、监管单位公开表态。”</span>', '', '8', '0', '0', '1', '1', '', '', '/content/11', '0', '0', '1468168558');
-INSERT INTO `pz_article` VALUES ('12', '烟台副市长转任银行后私分7000万 举报者遭威胁4', '', '<span style=\"color:#404040;font-family:&quot;font-size:18px;line-height:32px;background-color:#FFFFFF;\">7月10日，恒丰银行高管向《中国经营报》提供证据显示，自其向媒体爆料以来，即受到死亡威胁。“遗憾的是，媒体报道两个月，没有任何主管、监管单位公开表态。”</span>', '', '8', '0', '0', '1', '1', '', '', '/content/12', '0', '0', '1468168558');
-INSERT INTO `pz_article` VALUES ('13', '烟台副市长转任银行后私分7000万 举报者遭威胁5', '', '<span style=\"color:#404040;font-family:&quot;font-size:18px;line-height:32px;background-color:#FFFFFF;\">7月10日，恒丰银行高管向《中国经营报》提供证据显示，自其向媒体爆料以来，即受到死亡威胁。“遗憾的是，媒体报道两个月，没有任何主管、监管单位公开表态。”</span>', '', '8', '0', '0', '1', '1', '', '', '/content/13', '0', '0', '1468168558');
+INSERT INTO `pz_article` VALUES ('14', '2.4米眼镜王蛇占屋为王 多方出动擒获放生', '', '<p>\n	云南网讯 日前，一条近2.4米的眼镜王蛇在云南新平一农户家屋顶下游荡，后耐着性子又在屋梁下藏匿一个多小时，终被森警擒获。\n</p>\n<p>\n	8月15日17时30分许，新平县森林公安局值班民警接到报警称：“新平县老厂乡李先生家里发现一条大蛇，并且有人说是眼镜蛇。”考虑到大蛇的攻击性和路途需要的时间，新平森警立即与当地乡林业站、派出所取得联系，派工作人员前往事发现场，做好安全保卫工作。随即，森林公安立即指派有捕蛇经验的民警赶往事发现场。\n</p>\n<p>\n	据屋主李先生介绍：“刚要做饭，就看见一条很大很大的蛇从里边卧室一直爬到，外边屋梁这里，不时的露出蛇头，“看看”大家。\n</p>\n<p>\n	民警仔细观察发现，房屋是木质结构，下边由泥砌成，很可能房屋顶部四通八达，加上时间又比较紧，视线也不是很好，捕蛇极其困难。要想成功捕蛇，必须提起在屋梁两侧打洞，只要它敢露头，就实施抓捕。\n</p>\n<p>\n	<br />\n</p>\n<p style=\"text-align:center;\">\n	<img src=\"http://cms-bucket.nosdn.127.net/catchpic/B/B7/B7B651D815A986F39F189CF01C9E48C5.jpg?imageView&thumbnail=550x0\" alt=\"\" /> \n</p>\n<p style=\"text-align:center;\">\n	<br />\n</p>\n<p style=\"text-align:center;\">\n	<hr style=\"page-break-after:always;\" class=\"ke-pagebreak\" />\n</p>\n<p>\n	<br />\n</p>\n<p>\n	在与屋主商量之后，当地工作人员在附近村民的配合下，开始在有蛇的两个地方打洞，却没有什么发现。大蛇好像消失了一样，事情一度进入了焦灼状态。如果蛇要是离开了，要再找着那是很难的。\n</p>\n<p>\n	这时，一位森林公安民警想到：要不用水管穿一下蛇洞？或许碰到蛇以后，蛇自己就爬出来了。\n</p>\n<p>\n	说干就干。民警立即找来水管（胶皮）从一个洞钻了进去，一会后，蛇头就从另一个洞露出来了。\n</p>\n<p>\n	捕蛇的民警，立即用蛇夹夹了过去。由于人踩着楼梯，使不上力，没有准确的夹在七寸位置上。蛇在半空中，张牙舞爪，不肯被擒。民警决定直接将其拉出来，放到地面上，解决问题。蛇到达地面后，迅速按其七寸，大蛇成功擒获。\n</p>\n<p>\n	经测量，该蛇是眼镜王蛇，身长2.65米，胸围16厘米，具备野外生存能力，是世界上最危险的蛇类之一，已被列入《濒危野生动植物种国际贸易公约》附录II名录中。\n</p>\n<p>\n	专家提醒，室内防蛇，大家可采取撒硫磺粉、放置大蒜的方法驱蛇，万一发现蛇进家的情况，应及时拨打报警电话，远离蛇，并做好安全防范措施，等待森林公安民警处置。到野外作业，穿高帮鞋（皮靴），穿着长衣长裤，戴帽、扣紧衣领、袖口、裤口，还可涂些雄黄粉或硫磺粉在鞋面上，毒蛇闻到气味会自然退避；若在山上被蛇追逐，应往上坡方向沿“Z”字形路线逃跑，因为蛇的骨骼呈节状，转弯跑不快；村民应保持家中干净整洁，在角落处撒一些雄黄粉或硫磺粉，蛇就不会进家了；碰到毒蛇时不要惊扰它，也不要擅自捕捉，应绕道远行或把衣服朝蛇扔去蒙住它，离开后拨打“110”或森林公安报警电话，由专业捕蛇民警来擒拿。\n</p>\n<p>\n	<br />\n</p>', '一条近2.4米的眼镜王蛇在云南新平一农户家屋顶下游荡，后耐着性子又在屋梁下藏匿一个多小时，终被森警擒获。', '3', '0', '0', '1', '1', '网易', '云南 蛇', '/content/14', '0', '0', '1472348035');
+INSERT INTO `pz_article` VALUES ('15', '甘肃张掖航空大会遇难飞行员官方确认为南非籍', '', '<p style=\"text-align:center;\">\n	<embed src=\"http://v.163.com/swf/video/NetEaseFlvPlayerV3.swf?topicid=1000&vid=VBUHV5TT4&sid=VBI02UV6M&coverpic=http://vimg3.ws.126.net/image/snapshot/2016/8/T/5/VBUHV5TT5.jpg&autoplay=true\" type=\"application/x-shockwave-flash\" width=\"550\" height=\"400\" quality=\"high\" />\n</p>\n<p style=\"text-align:left;\">\n	首届丝绸之路(张掖)国际通航大会组委会27日发布消息称，在今日举行的飞行表演中，一架飞机在表演特技动作时坠落，飞行员已确认死亡，为南非籍。无地面人员伤亡。\n</p>\n<p style=\"text-align:left;\">\n	<br />\n</p>\n<p style=\"text-align:left;\">\n	<p>\n		经张掖市官方确认，遇难飞行员名为保罗，为南非籍。26日他曾在飞行结束后，接受媒体采访表示，他已有20年飞行经验，本次是他第一次来到中国进行飞行特技表演，他们团队驾驶的是德国产的XA42飞机，一共4驾，持续3天的表演，很高兴来到中国，下一场的比赛已定在了9月30日。\n	</p>\n	<p>\n		<hr style=\"page-break-after:always;\" class=\"ke-pagebreak\" />\n	</p>\n	<p>\n		据悉，26日，首届丝绸之路(张掖)国际通用航空大会在张掖丹霞通用机场开幕，当日，来自国内外17家通用航空企业的76架航空器进行动静态展演。\n	</p>\n	<p>\n		8月27日，首届丝绸之路(张掖)国际通用航空大会在张掖丹霞通用机场举行飞行表演，一架飞机在表演特技动作时坠落，飞行员已确认死亡，为南非籍。无地面人员伤亡。　杨艳敏 摄\n	</p>\n	<p>\n		26-28日，中国和美国8家国内外参展商44架(具)航空器将进行为期三天的动态表演，美国空中动力、美国飞行家这两家全球顶级空中表演队将在真高100米以下的超低空完成大坡度盘旋、垂直横滚、俯冲横滚、“死亡”翻滚、半筋斗翻转、水平∞字、跃升盘旋、水平多次横滚等高难度动作。\n	</p>\n	<p>\n		27日为飞行表演的第二天。通航高峰论坛也在今日同时异地举行。\n	</p>\n	<p>\n		27日上午10时47分，飞行表演期间，沈阳飞行家航空文化传媒有限公司邀请的美国飞行家表演队的一架飞机(XA42/N344XA)，在特技飞行表演时坠落在机场围界以外的无观众区，无地面人员伤亡。坠机后，现场立即启动应急救援预案，救援人员第一时间赶赴现场实施救援。\n	</p>\n	<p>\n		组委会称，按通航飞行表演国际惯例，具体表演指挥由外籍飞行指挥员Richard指挥，飞行员已确认死亡。当天飞行表演气象等保障条件符合飞行表演要求。该飞行表演时按照规定表演项目和程序，在规定空域范围内的正常特技飞行。\n	</p>\n	<p>\n		目前，事故原因正在调查中。定于下午的飞行表演照常进行。\n	</p>\n</p>', '首届丝绸之路(张掖)国际通航大会组委会27日发布消息称，在今日举行的飞行表演中，一架飞机在表演特技动作时坠落，飞行员已确认死亡，为南非籍。无地面人员伤亡。', '4', '0', '0', '1', '1', '网易', '', '/content_video/15', '0', '0', '1472356913');
+INSERT INTO `pz_article` VALUES ('16', '富士康再现跳楼悲剧 人为什么会对生活失去信心?', '', '<p style=\"text-align:center;\">\n	<img src=\"/upload/2016/08/28/_qppsfcmruvn7f7lo_pgvnrcy0pkoyla.jpeg\" alt=\"\" /> \n</p>\n<p style=\"text-align:center;\">\n	<br />\n</p>\n<p style=\"text-align:left;\">\n	<br />\n</p>\n<p style=\"text-align:left;\">\n	近期有两起自杀事件引起了小编的注意，一起是上周发生在郑州富士康的iPhone装配工跳楼事件，另一起则是发生在南京火车站的张云雷（德云社“四公子”之一）坠楼事件。如今悲剧已经酿成，后果也已无法挽回，小编在无尽唏嘘的同时，想跟大家聊聊人类的自杀心理学，希望能够对那些对生活失去信心有轻生念头的朋友有所启发，避免悲剧的再次发生。\n</p>\n<p style=\"text-align:left;\">\n	这两起事件发生之后，富士康的态度讳莫如深，只是发布了一个非常官方的声明，而德云社也已辟谣称张云雷是酒后失足所致，小编不打算去追究这两起悲剧的真正原因，只不过既然要聊自杀心理学，总得有个案例剖析下才行，在贾樟柯贾导的影片《天注定》里，就有一个在东莞某台资企业打工的角色（名叫“小辉”），最终不堪忍受身边的各种压力而跳楼自杀的故事，小编就针对这个故事展开对自杀心理学的剖析。\n</p>\n<hr style=\"page-break-after:always;\" class=\"ke-pagebreak\" />\n<p>\n	<br />\n</p>\n<p style=\"text-align:center;\">\n	<img src=\"/upload/2016/08/28/aocw___5pqx8htt66qzgw_5qkto83hfk.jpeg\" alt=\"\" /> \n</p>\n<p style=\"text-align:center;\">\n	<br />\n</p>\n<hr style=\"page-break-after:always;\" class=\"ke-pagebreak\" />\n<p>\n	<br />\n</p>\n<p style=\"text-align:center;\">\n	<img src=\"/upload/2016/08/28/tnvd888jadcqotrtkilplm1vftfticli.jpeg\" alt=\"\" /> \n</p>\n<p style=\"text-align:center;\">\n	<br />\n</p>\n<p style=\"text-align:center;\">\n	<br />\n</p>\n<hr style=\"page-break-after:always;\" class=\"ke-pagebreak\" />\n<div style=\"text-align:center;\">\n	<img src=\"/upload/2016/08/28/s5_q8obu4auajfkovlxxw2wfvhblyidg.jpeg\" alt=\"\" />\n</div>\n<p style=\"text-align:center;\">\n	<br />\n</p>\n<p style=\"text-align:center;\">\n	<br />\n</p>\n<hr style=\"page-break-after:always;\" class=\"ke-pagebreak\" />\n<div style=\"text-align:center;\">\n	<img src=\"/upload/2016/08/28/f30q_k_xwt2tuobt4cvdf8yl53fz7x21.jpeg\" alt=\"\" />\n</div>\n<p style=\"text-align:center;\">\n	<br />\n</p>\n<hr style=\"page-break-after:always;\" class=\"ke-pagebreak\" />\n<p>\n	<br />\n</p>\n<p style=\"text-align:center;\">\n	<img src=\"/upload/2016/08/28/hu_dutcvcylsq1iiwkn6jxjsx96rbwrz.jpeg\" alt=\"\" /> \n</p>\n<p style=\"text-align:center;\">\n	<br />\n</p>\n<p style=\"text-align:center;\">\n	<br />\n</p>\n<hr style=\"page-break-after:always;\" class=\"ke-pagebreak\" />\n<div style=\"text-align:center;\">\n	<img src=\"/upload/2016/08/28/kthwtii2iwzs6ng4rorzc8kla_ym5hp1.jpg\" alt=\"\" />\n</div>\n<p style=\"text-align:center;\">\n	<br />\n</p>\n<hr style=\"page-break-after:always;\" class=\"ke-pagebreak\" />\n<p>\n	<br />\n</p>\n<p style=\"text-align:center;\">\n	<img src=\"/upload/2016/08/28/8l3kisifp_xt_zrurv38d_a9xldk_ott.jpeg\" alt=\"\" /> \n</p>\n<p style=\"text-align:center;\">\n	<br />\n</p>\n<p style=\"text-align:center;\">\n	<br />\n</p>\n<hr style=\"page-break-after:always;\" class=\"ke-pagebreak\" />\n<div style=\"text-align:center;\">\n	<img src=\"/upload/2016/08/28/xndgrttmv6m8_xxyb0jfoa6eb8lksc29.jpeg\" alt=\"\" />\n</div>\n<p>\n	<br />\n</p>', '\n	\n\n\n	\n		\n	\n	\n		近期有两起自杀事件引起了小编的注意，一起是上周发生在郑州富士康的iPhone装配工跳楼事件，另一起则是发生在南京火车站的张云雷（德云社“四公子”之一）坠楼事件。如今悲剧已经酿成，后果也已无法', '5', '2', '0', '1', '1', '', '', '/content_photo/16', '0', '0', '1472357962');
 
 -- ----------------------------
 -- Table structure for pz_block
@@ -468,76 +466,6 @@ INSERT INTO `pz_goods` VALUES ('13', '14', 'ASU1465280932', '爱冕－白18K金�
 INSERT INTO `pz_goods` VALUES ('14', '13', 'ASU1465280932', 'asd asd', '+', '0', '11', '', '0', '0.000', '0.00', '0', '0.00', '0.00', '0', '0', '1', '', '', '', '', '', '', '1', '', '1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '', '0', '0', '0', '0', '', '-1', '-1', '0', '0');
 
 -- ----------------------------
--- Table structure for pz_goods-del
--- ----------------------------
-DROP TABLE IF EXISTS `pz_goods-del`;
-CREATE TABLE `pz_goods-del` (
-  `goodsid` int(11) NOT NULL AUTO_INCREMENT,
-  `catid` smallint(5) DEFAULT '0' COMMENT '商品分类id',
-  `goodsn` varchar(60) DEFAULT '' COMMENT '商品货号',
-  `name` varchar(120) DEFAULT '' COMMENT '商品名称',
-  `nameStyle` varchar(60) DEFAULT '' COMMENT '商品名称显示样式',
-  `clickCount` int(10) DEFAULT '0' COMMENT '浏览次数',
-  `pinpaiId` smallint(5) DEFAULT '0' COMMENT '品牌ID',
-  `providerName` varchar(100) DEFAULT '' COMMENT '供货商名称，程序还没实现该功能',
-  `goodsNumber` smallint(5) DEFAULT '0' COMMENT '库存数量',
-  `goodWeight` decimal(10,3) DEFAULT '0.000' COMMENT '商品重量,默认单位克',
-  `marketPrice` decimal(10,2) DEFAULT '0.00' COMMENT '市场价格',
-  `shopPrice` decimal(10,2) DEFAULT '0.00' COMMENT '本店售价',
-  `promotePrice` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '促销价格，如果有促销价格，则按照促销价格销售，此价格不再参与会员的折扣计算。',
-  `promoteStart` int(11) NOT NULL DEFAULT '0' COMMENT '促销开始日期',
-  `promoteEnd` int(11) NOT NULL DEFAULT '0' COMMENT '促销结束日期',
-  `warnNumer` tinyint(3) NOT NULL DEFAULT '1' COMMENT '库存警告数量',
-  `keywords` varchar(255) NOT NULL DEFAULT '',
-  `brief` varchar(255) NOT NULL DEFAULT '',
-  `goodDesc` text NOT NULL COMMENT '详细描述',
-  `thumb` varchar(255) NOT NULL DEFAULT '' COMMENT '前台显示的微缩图片，如在分类筛选时显示的小图片',
-  `goodsImg` varchar(255) NOT NULL DEFAULT '' COMMENT '商品的实际大小图片，如进入该商品页时介绍商品属性所显示的大图片',
-  `original_img` varchar(255) NOT NULL DEFAULT '' COMMENT '商品原始图片地址',
-  `isReal` tinyint(3) NOT NULL DEFAULT '1' COMMENT '是否实体商品',
-  `extensionCode` varchar(30) NOT NULL DEFAULT '' COMMENT '虚拟商品代码',
-  `isOnSale` tinyint(1) NOT NULL DEFAULT '1' COMMENT '能否销售(上架、下架)：1，上架；0，下架；',
-  `isAloneSale` tinyint(1) NOT NULL DEFAULT '1' COMMENT '能否单独销售',
-  `integral` int(10) NOT NULL DEFAULT '0' COMMENT '商品的积分',
-  `addTime` int(10) NOT NULL DEFAULT '0' COMMENT '加入时间',
-  `sortOrder` smallint(4) NOT NULL DEFAULT '0' COMMENT '排列顺序',
-  `isDelete` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否已删除',
-  `isBest` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否精品',
-  `isNew` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否新品',
-  `isHot` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否热销',
-  `isPromote` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否特价',
-  `bonusTypeId` tinyint(3) NOT NULL DEFAULT '0' COMMENT '红包类型id',
-  `suppliersId` smallint(5) NOT NULL DEFAULT '0' COMMENT '供货商id',
-  `isCheck` tinyint(1) NOT NULL DEFAULT '0' COMMENT '供货商商品审核标识，0，未审核；1，已审核',
-  `lastUpdate` int(10) NOT NULL DEFAULT '0' COMMENT '最后更新时间',
-  `goodsType` smallint(5) NOT NULL DEFAULT '0' COMMENT '商品类型ID',
-  `sellerNote` varchar(255) NOT NULL DEFAULT '' COMMENT '商家备注',
-  `giveIntegral` int(11) NOT NULL DEFAULT '-1' COMMENT '送消费积分数',
-  `rankIntegral` int(11) NOT NULL DEFAULT '-1' COMMENT '送等级积分数',
-  PRIMARY KEY (`goodsid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='商品数据表';
-
--- ----------------------------
--- Records of pz_goods-del
--- ----------------------------
-
--- ----------------------------
--- Table structure for pz_goodstype
--- ----------------------------
-DROP TABLE IF EXISTS `pz_goodstype`;
-CREATE TABLE `pz_goodstype` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `catname` varchar(60) DEFAULT '',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of pz_goodstype
--- ----------------------------
-INSERT INTO `pz_goodstype` VALUES ('4', '书');
-INSERT INTO `pz_goodstype` VALUES ('5', '音乐');
-
--- ----------------------------
 -- Table structure for pz_goods_attr
 -- ----------------------------
 DROP TABLE IF EXISTS `pz_goods_attr`;
@@ -673,6 +601,76 @@ INSERT INTO `pz_goods_type_attr` VALUES ('17', '5', 'test', '0', '0', '', '0');
 INSERT INTO `pz_goods_type_attr` VALUES ('18', '5', '邮寄方式', '1', '1', 'U盘1\nU盘2\nU盘3\nU盘4', '0');
 
 -- ----------------------------
+-- Table structure for pz_goods-del
+-- ----------------------------
+DROP TABLE IF EXISTS `pz_goods-del`;
+CREATE TABLE `pz_goods-del` (
+  `goodsid` int(11) NOT NULL AUTO_INCREMENT,
+  `catid` smallint(5) DEFAULT '0' COMMENT '商品分类id',
+  `goodsn` varchar(60) DEFAULT '' COMMENT '商品货号',
+  `name` varchar(120) DEFAULT '' COMMENT '商品名称',
+  `nameStyle` varchar(60) DEFAULT '' COMMENT '商品名称显示样式',
+  `clickCount` int(10) DEFAULT '0' COMMENT '浏览次数',
+  `pinpaiId` smallint(5) DEFAULT '0' COMMENT '品牌ID',
+  `providerName` varchar(100) DEFAULT '' COMMENT '供货商名称，程序还没实现该功能',
+  `goodsNumber` smallint(5) DEFAULT '0' COMMENT '库存数量',
+  `goodWeight` decimal(10,3) DEFAULT '0.000' COMMENT '商品重量,默认单位克',
+  `marketPrice` decimal(10,2) DEFAULT '0.00' COMMENT '市场价格',
+  `shopPrice` decimal(10,2) DEFAULT '0.00' COMMENT '本店售价',
+  `promotePrice` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '促销价格，如果有促销价格，则按照促销价格销售，此价格不再参与会员的折扣计算。',
+  `promoteStart` int(11) NOT NULL DEFAULT '0' COMMENT '促销开始日期',
+  `promoteEnd` int(11) NOT NULL DEFAULT '0' COMMENT '促销结束日期',
+  `warnNumer` tinyint(3) NOT NULL DEFAULT '1' COMMENT '库存警告数量',
+  `keywords` varchar(255) NOT NULL DEFAULT '',
+  `brief` varchar(255) NOT NULL DEFAULT '',
+  `goodDesc` text NOT NULL COMMENT '详细描述',
+  `thumb` varchar(255) NOT NULL DEFAULT '' COMMENT '前台显示的微缩图片，如在分类筛选时显示的小图片',
+  `goodsImg` varchar(255) NOT NULL DEFAULT '' COMMENT '商品的实际大小图片，如进入该商品页时介绍商品属性所显示的大图片',
+  `original_img` varchar(255) NOT NULL DEFAULT '' COMMENT '商品原始图片地址',
+  `isReal` tinyint(3) NOT NULL DEFAULT '1' COMMENT '是否实体商品',
+  `extensionCode` varchar(30) NOT NULL DEFAULT '' COMMENT '虚拟商品代码',
+  `isOnSale` tinyint(1) NOT NULL DEFAULT '1' COMMENT '能否销售(上架、下架)：1，上架；0，下架；',
+  `isAloneSale` tinyint(1) NOT NULL DEFAULT '1' COMMENT '能否单独销售',
+  `integral` int(10) NOT NULL DEFAULT '0' COMMENT '商品的积分',
+  `addTime` int(10) NOT NULL DEFAULT '0' COMMENT '加入时间',
+  `sortOrder` smallint(4) NOT NULL DEFAULT '0' COMMENT '排列顺序',
+  `isDelete` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否已删除',
+  `isBest` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否精品',
+  `isNew` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否新品',
+  `isHot` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否热销',
+  `isPromote` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否特价',
+  `bonusTypeId` tinyint(3) NOT NULL DEFAULT '0' COMMENT '红包类型id',
+  `suppliersId` smallint(5) NOT NULL DEFAULT '0' COMMENT '供货商id',
+  `isCheck` tinyint(1) NOT NULL DEFAULT '0' COMMENT '供货商商品审核标识，0，未审核；1，已审核',
+  `lastUpdate` int(10) NOT NULL DEFAULT '0' COMMENT '最后更新时间',
+  `goodsType` smallint(5) NOT NULL DEFAULT '0' COMMENT '商品类型ID',
+  `sellerNote` varchar(255) NOT NULL DEFAULT '' COMMENT '商家备注',
+  `giveIntegral` int(11) NOT NULL DEFAULT '-1' COMMENT '送消费积分数',
+  `rankIntegral` int(11) NOT NULL DEFAULT '-1' COMMENT '送等级积分数',
+  PRIMARY KEY (`goodsid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='商品数据表';
+
+-- ----------------------------
+-- Records of pz_goods-del
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for pz_goodstype
+-- ----------------------------
+DROP TABLE IF EXISTS `pz_goodstype`;
+CREATE TABLE `pz_goodstype` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `catname` varchar(60) DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of pz_goodstype
+-- ----------------------------
+INSERT INTO `pz_goodstype` VALUES ('4', '书');
+INSERT INTO `pz_goodstype` VALUES ('5', '音乐');
+
+-- ----------------------------
 -- Table structure for pz_goodtree
 -- ----------------------------
 DROP TABLE IF EXISTS `pz_goodtree`;
@@ -754,18 +752,9 @@ CREATE TABLE `pz_node` (
 -- Records of pz_node
 -- ----------------------------
 INSERT INTO `pz_node` VALUES ('1', '0', '首页', '', ',1,', '/', '0', null, '', '', '0');
-INSERT INTO `pz_node` VALUES ('3', '1', '国际', '国际豆腐干豆腐干', ',1,3,', '/guoji_3m20', '0', 'photo', 'dd asd ', '关键字关键字关键字', '0');
-INSERT INTO `pz_node` VALUES ('4', '1', '排行', '', ',1,4,', '/paihang_4', '0', null, '', '', '0');
-INSERT INTO `pz_node` VALUES ('5', '1', '图片', '', ',1,5,', '/tupian_5', '0', null, '', '', '0');
-INSERT INTO `pz_node` VALUES ('6', '1', '国内', '', ',1,6,', '/guonei_6', '0', null, '', '', '0');
-INSERT INTO `pz_node` VALUES ('7', '1', '社会', '', ',1,7,', '/shehui_7', '0', null, '', '', '0');
-INSERT INTO `pz_node` VALUES ('8', '1', '聚合', '网易聚合阅读', ',1,8,', '/juhe_8m1', '1', '', '', '', '0');
-INSERT INTO `pz_node` VALUES ('9', '3', '国际评论', '测试1测试', ',1,3,9,', '/guojipinglun_9', '0', null, '', '', '0');
-INSERT INTO `pz_node` VALUES ('10', '1', '数读', '', ',1,10,', '/shudu_10', '0', null, '', '', '0');
-INSERT INTO `pz_node` VALUES ('11', '8', '聚合军事', '', ',1,8,11,', '/juhejunshi_11', '0', null, '', '', '0');
-INSERT INTO `pz_node` VALUES ('12', '11', '两会观点', '', ',1,8,11,12,', '/lianghuiguandian_11', '0', null, '', '', '0');
-INSERT INTO `pz_node` VALUES ('15', '3', '媒体', '', ',1,3,15,', '/meiti_15', '0', null, '', '', '0');
-INSERT INTO `pz_node` VALUES ('16', '1', '家居', '', ',1,16,', '/jiaju_16', '0', null, '', '', '0');
+INSERT INTO `pz_node` VALUES ('3', '1', '国际', '', ',1,3,', '/guoji_3m20', '0', '', '国际关键字', '国际描述', '0');
+INSERT INTO `pz_node` VALUES ('4', '1', '视频', '', ',1,4,', '/shipin_4', '0', 'video', '视频关键字', '视频描述', '0');
+INSERT INTO `pz_node` VALUES ('5', '1', '图片', '', ',1,5,', '/tupian_5', '0', 'photo', '组图关键字', '组图描述', '0');
 
 -- ----------------------------
 -- Table structure for pz_pinpai
@@ -842,24 +831,6 @@ CREATE TABLE `pz_user` (
 INSERT INTO `pz_user` VALUES ('1', 'root', '左盐', 'bb2cafa845f2b405d8ccbd6e00b87f88', '0', '14FDUoW0(6', '0', '0');
 
 -- ----------------------------
--- Table structure for pz_usergroup
--- ----------------------------
-DROP TABLE IF EXISTS `pz_usergroup`;
-CREATE TABLE `pz_usergroup` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT '' COMMENT '用户组名称',
-  `des` varchar(1000) DEFAULT '' COMMENT '用户组描述',
-  `state` int(4) DEFAULT '0' COMMENT '用户组状态',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of pz_usergroup
--- ----------------------------
-INSERT INTO `pz_usergroup` VALUES ('1', '超级管理员', '超级管理员', '0');
-INSERT INTO `pz_usergroup` VALUES ('3', '编辑部', '编辑部', '0');
-
--- ----------------------------
 -- Table structure for pz_user_admin
 -- ----------------------------
 DROP TABLE IF EXISTS `pz_user_admin`;
@@ -879,3 +850,21 @@ CREATE TABLE `pz_user_admin` (
 -- Records of pz_user_admin
 -- ----------------------------
 INSERT INTO `pz_user_admin` VALUES ('1', 'root', '左盐', 'bb2cafa845f2b405d8ccbd6e00b87f88', '0', '14FDUoW0(6', '0', '0');
+
+-- ----------------------------
+-- Table structure for pz_usergroup
+-- ----------------------------
+DROP TABLE IF EXISTS `pz_usergroup`;
+CREATE TABLE `pz_usergroup` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT '' COMMENT '用户组名称',
+  `des` varchar(1000) DEFAULT '' COMMENT '用户组描述',
+  `state` int(4) DEFAULT '0' COMMENT '用户组状态',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of pz_usergroup
+-- ----------------------------
+INSERT INTO `pz_usergroup` VALUES ('1', '超级管理员', '超级管理员', '0');
+INSERT INTO `pz_usergroup` VALUES ('3', '编辑部', '编辑部', '0');
