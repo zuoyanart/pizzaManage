@@ -3,5 +3,5 @@
  * config
  */
 export default {
-  title: "左盐的空间"
+  title: "我的网站"
 };

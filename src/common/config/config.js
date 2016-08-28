@@ -15,16 +15,5 @@ export default {
   default_action: "index",
   json_content_type: "application/json",
   openApi: false,
-  api: 'http://192.168.1.134:4000/v1/',
-  mail: { //邮箱配置
-    smtp: {
-      host: 'smtp.163.com',
-      port: 465,
-      secure: false,
-      auth: {
-        user: 'huabinglan@163.com',
-        pass: ''
-      }
-    }
-  }
+  api: 'http://192.168.1.134:4000/v1/'
 };

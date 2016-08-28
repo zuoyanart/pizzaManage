@@ -86,6 +86,9 @@ export default class extends think.model.base {
                     id: id,
                     pass: 1
                 }).find();
+                let rows = await this.where({//点击加一
+                    id: id
+                }).increment("count", 1);
                 return {
                     state: true,
                     msg: row

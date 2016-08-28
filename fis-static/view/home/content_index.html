@@ -2,6 +2,9 @@
 <html>
 
 <head>
+  <title><%= news.title%> - <%=SEO.getTitle()%></title>
+  <meta name="keywords" content="<%= news.tags%>"/>
+  <meta name="description" content="<%= news.brief%>"/>
   <link rel="import" href="/widget/home-meta/meta.html?__inline">
   <link rel="stylesheet" href="/site/home/content/content.less">
 </head>
@@ -24,6 +27,7 @@
             <%- news.content%>
           </div>
         </div>
+        <%- tp%>
       </div>
     </div>
 </body>
