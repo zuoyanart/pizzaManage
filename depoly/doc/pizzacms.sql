@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50632
 File Encoding         : 65001
 
-Date: 2016-08-28 13:29:33
+Date: 2016-08-29 23:23:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -746,7 +746,7 @@ CREATE TABLE `pz_node` (
   KEY `id` (`id`) USING BTREE,
   KEY `nodepath` (`nodepath`),
   KEY `pid` (`pid`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pz_node
@@ -755,6 +755,8 @@ INSERT INTO `pz_node` VALUES ('1', '0', '首页', '', ',1,', '/', '0', null, '',
 INSERT INTO `pz_node` VALUES ('3', '1', '国际', '', ',1,3,', '/guoji_3m20', '0', '', '国际关键字', '国际描述', '0');
 INSERT INTO `pz_node` VALUES ('4', '1', '视频', '', ',1,4,', '/shipin_4', '0', 'video', '视频关键字', '视频描述', '0');
 INSERT INTO `pz_node` VALUES ('5', '1', '图片', '', ',1,5,', '/tupian_5', '0', 'photo', '组图关键字', '组图描述', '0');
+INSERT INTO `pz_node` VALUES ('6', '1', 'test', '', ',1,6,', 'test_6m20', '0', '', '', '', '0');
+INSERT INTO `pz_node` VALUES ('7', '1', '测试', '', ',1,7,', 'ceshi_7m50', '0', '', '', '', '0');
 
 -- ----------------------------
 -- Table structure for pz_pinpai
@@ -844,12 +846,13 @@ CREATE TABLE `pz_user_admin` (
   `userGroupId` int(11) DEFAULT '0' COMMENT '用户组id',
   `roleId` int(11) DEFAULT '0' COMMENT '角色id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pz_user_admin
 -- ----------------------------
 INSERT INTO `pz_user_admin` VALUES ('1', 'root', '左盐', 'bb2cafa845f2b405d8ccbd6e00b87f88', '0', '14FDUoW0(6', '0', '0');
+INSERT INTO `pz_user_admin` VALUES ('2', 'piiza', 'pizza', '97ea09ee09508908a166fb849f2eab5a', '0', 'Q[px.#3m:8', '0', '0');
 
 -- ----------------------------
 -- Table structure for pz_usergroup

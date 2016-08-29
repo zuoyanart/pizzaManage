@@ -12,7 +12,8 @@ export default class extends think.model.base {
 
     async page(kw, cp, mp) {
             let data = await this.where({
-                    username: ["like", "%" + kw + "%"]
+                    username: ["like", "%" + kw + "%"],
+                    id: ["!=", 1]
                 })
                 .limit((cp - 1) * mp, mp)
                 .select();
