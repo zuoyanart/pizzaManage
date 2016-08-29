@@ -1,7 +1,7 @@
 ## 这是什么？
  > 基于fis3和thinkjs搭建的后台管理系统（cms）
  > 数据库操作基于golang搭建的restful请求实现
- 
+
 ## 运行（开发环境）
 
 ```js
@@ -22,7 +22,9 @@ npm install
 npm start
 
 ```
-
+## TODO
+ > 1.swipe 控件
+ >
 ## 相关界面
 ![](http://zuoyanart.github.io/mdimg/mangge1.jpg)
 
@@ -30,9 +32,6 @@ npm start
 
 ![](http://zuoyanart.github.io/mdimg/20160308111006.jpg)
 
-## restful api
-
-[https://github.com/zuoyanart/go-restful](https://github.com/zuoyanart/go-restful "golang restful")
 
 ## fis3 and thinkjs
 
