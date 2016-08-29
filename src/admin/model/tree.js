@@ -95,7 +95,7 @@ export default class extends think.model.base {
                 id: id
             }).update({
                 nodepath: nodepath,
-                link: pinyin(node.name)
+                link: link
             });
             return {
                 state: true,
