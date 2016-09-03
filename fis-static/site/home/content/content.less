@@ -1,29 +1,81 @@
+@import "../common/variables.less";
 .main{
-  width: 1000px;
-  min-height: 500px;
-  margin: 100px auto;
-  clear: both;
-  & > ul{
-    width: 200px;
-    min-height: 100px;
-    float: left;
-    li{
-      height: 30px;
-      line-height: 30px;
-    }
-    a{
-      display: inline-block;
-      height: 30px;
-      width: 200px;
+  .newslist{
+    .left{
+      padding: 0 60px;
     }
   }
-  .right{
-    width: 780px;
-    min-height: 500px;
-    float: left;
-    margin-left: 20px;
-    .src{
-      height: 30px;
+  .h1title{
+    color: #212121;
+    text-align: center;
+    margin-top: 105px;
+    font-size: 22px;
+    height: 70px;
+    line-height: 70px;
+  }
+  .gap{
+    border-bottom: 1px solid #ccc;
+    height: 30px;
+    line-height: 30px;
+    color: #b9b9b9;
+    .bdsharebuttonbox{
+      display: inline-block;
+      width: 143px;
+      vertical-align: middle;
+      float: right;
+    }
+  }
+  .content{
+    b,strong{
+      font-style: normal;
+    }
+  }
+  .cmttitle{
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    border-top: 1px solid #ccc;
+    height: 30px;
+    line-height: 30px;
+    background-color: #2e2e2e;
+    color: #fff;
+    padding-left: 20px;
+  }
+  .cmtlist{
+    width: 100%;
+    min-height:100px;
+    li{
+      width: 100%;
+      min-height: 100px;
+      clear: both;
+      margin: 10px 0;
+      border-bottom: 1px dotted #666;
+      padding: 10px 0;
+      img,div.cmtdes{
+        float: left;
+      }
+      img{
+        border:1px solid #999;
+        margin-right: 10px;
+        width: 80px;
+        height: 80px;
+        display: inline-block;
+      }
+      div.cmtdes{
+        width: 553px;
+        min-height: 100px;
+        h5{
+          height: 20px;
+          line-height: 10px;
+          font-size: 14px;
+          span{
+            float: right;
+          }
+        }
+        p{
+          font-size: 16px;
+        }
+      }
     }
   }
 }
