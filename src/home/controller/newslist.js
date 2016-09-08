@@ -13,6 +13,9 @@ export default class extends Base {
             let tree = this.model("tree");
             let requests = [];
             let param = xss(this.get());
+
+            console.log(param);
+
             let nodeid = getInt(param.nodeid, 1);
             let cp = getInt(param.cp, 1);
             let mp = getInt(param.mp, 20);
