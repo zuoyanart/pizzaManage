@@ -282,7 +282,6 @@ global.checkMobile = function(agent) {
     let flag = false;
     agent = agent.toLowerCase();
     let keywords = ["android", "iphone", "ipod", "ipad", "windows phone", "mqqbrowser"];
-
     //排除 Windows 桌面系统
     if (!(agent.indexOf("windows nt") > -1) || (agent.indexOf("windows nt") > -1 && agent.indexOf("compatible; msie 9.0;") > -1)) {
         //排除苹果桌面系统
