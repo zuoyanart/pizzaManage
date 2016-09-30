@@ -19,7 +19,7 @@ export default class extends Base {
         } else {
             return this.json({
                 "error": 1,
-                "message": "上传失败,文件类型不正确"
+                "message": "上传失败"
             });
         }
     }

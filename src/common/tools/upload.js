@@ -1,6 +1,8 @@
 'use strict';
 
 import fs from 'fs';
+import objectid from 'objectid';
+import gm from "gm";
 /**
  * 上传相关操作
  */
@@ -19,13 +21,14 @@ export default class {
       }
    * @return {[type]}           [description]
    */
-   static async localImg(file) {
+   static async localImg(file, options) {
      let fileConfig = {//允许
-       exten: ';jpg;jpeg;png;',//扩展名
+       exten: ';jpg;jpeg;png;bmp;',//扩展名
        maxSize: 5242880,//文件最大大小，单位B
-       static: think.ROOT_PATH +'/www',//图片保存目录
-       toPath: '/upload/' + think.datetime().split(' ')[0].replace(/-/g, '/')//生成的文件路径：/upload/2016/02/01
+       static: think.RESOURCE_PATH,//图片保存目录
+       toPath: '/upload/' + think.datetime(new Date, "YYYY/MM/DD")//生成的文件路径：/upload/2016/02/01
      };
+
      let finalFileName = '';//最终的文件名称
      let fileExt = file.path.split('.')[1];
      if(fileConfig.exten.indexOf(';' + fileExt+';') == -1 || file.headers.size > fileConfig.maxSize) {//判断限制条件
@@ -33,11 +36,29 @@ export default class {
      }
 
      //处理后缀和文件名
-     finalFileName = '/' + think.uuid().toLowerCase() + '.' + fileExt;
+     finalFileName = '/' + objectid() + '.' + fileExt;
      think.mkdir(fileConfig.static + fileConfig.toPath);
+
+     fs.renameSync(file.path, fileConfig.static + fileConfig.toPath + finalFileName);
+     if(think.isFile(fileConfig.static + fileConfig.toPath + finalFileName)) {//移动成功
+       if(options){//生成缩略图
+          // gm.
+       }
+       return fileConfig.toPath + finalFileName;
+     }
+     return "";
      //读取文件
-     let fileData = await readFile(file.path);
-     let success = await writeFile(fileConfig.static + fileConfig.toPath + finalFileName, fileData);
-     return  fileConfig.toPath + finalFileName;
+    //  let fileData = await readFile(file.path);
+    //  let success = await writeFile(fileConfig.static + fileConfig.toPath + finalFileName, fileData);
+   }
+   /**
+    * 上传到七牛
+    * @method qiniuImg
+    * @param  {[type]} file [description]
+    * @return {[type]}      [description]
+    */
+   static async qiniuImg(file) {
+      think.npm("qiniu");//动态加载qiniu模块
+
    }
 }

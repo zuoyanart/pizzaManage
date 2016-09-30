@@ -57,6 +57,8 @@ export default class extends Base {
     let p = this.post();
     p.id = parseInt(p.id);
     p.weight = parseInt(p.weight);
+    p.mgwidth = parseInt(p.mgwidth);
+    p.mgheight = parseInt(p.mgheight);
     // let node = await httpAgent(this.config("api") + 'node', "put", p);
     let node = await this.model("tree").nodeUpdate(p);
     if (node.state == true) {

@@ -99,8 +99,21 @@ let tree = (function() {
           'maxLength': 200,
           focusMsg: "请输入描述",
           errMsg: '请输入描述，字数必须小于200个字符'
+        },
+        '#mgwidth': {
+          'must': true,
+          'minLength': 1,
+          'maxLength': 5,
+          focusMsg: "请输入宽度",
+          errMsg: '请输入宽度'
+        },
+        '#mgheight': {
+          'must': false,
+          'minLength': 1,
+          'maxLength': 5,
+          focusMsg: "请输入高度",
+          errMsg: '请输入高度'
         }
-
       },
       ajaxFun: function(data) {
         let id = tools.getPara("id");
