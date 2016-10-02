@@ -43,11 +43,11 @@ let article = (function() {
             common.checkAll('#checkall'); //checkall
             //绑定节点切换事件
             node.pageall(function(data) {
-                let no = $('#node')
+                let no = $('#node');
                 no.html(data);
                 no.pizzaSelect({
                     onChange: function(obj) {
-                        page(1);
+                      page(1);
                     }
                 });
                 page(1); //
@@ -71,7 +71,11 @@ let article = (function() {
                 node.pageall(function(data) {
                     let no = $('#nodeid');
                     no.html(data);
-                    no.pizzaSelect({});
+                    no.pizzaSelect({
+                      onChange: function(obj) {
+                        tools.setCookie("nodeid", obj.attr("data"));//缩略图使用，根据nodeid获取截图尺寸
+                      }
+                    });
                     my.edit();
                 });
                 return;
@@ -91,8 +95,13 @@ let article = (function() {
                         node.pageall(function(data) {
                             let no = $('#nodeid');
                             no.attr('val', msg.msg.nodeid);
+                            tools.setCookie("nodeid", msg.msg.nodeid);//缩略图使用，根据nodeid获取截图尺寸
                             no.html(data);
-                            no.pizzaSelect({});
+                            no.pizzaSelect({
+                              onChange: function(obj) {
+                                tools.setCookie("nodeid", obj.attr("data"));
+                              }
+                            });
                             my.edit();
                         });
                         editor.html(msg.msg.content);

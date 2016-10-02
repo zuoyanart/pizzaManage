@@ -14,5 +14,13 @@ global.Article = {
      */
     getLink: (link = "", articleid = 0) => {
         return link == "" ? "/content/" + articleid : link;
+    },
+    /**
+     * 获取缩略图路径
+     * @param  {[type]} path [description]
+     * @return {[type]}      [description]
+     */
+    getThum: (path, width, height) => {
+      return path.replace("/upload/", "/upload/thum/").replace(".", "_" + width + "x" + height + ".");
     }
 }
