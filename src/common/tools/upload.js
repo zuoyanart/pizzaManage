@@ -31,8 +31,8 @@ export default class {
             };
 
             let finalFileName = ''; //最终的文件名称
-            let fileExt = file.path.split('.')[1];
-            if (fileConfig.exten.toLowerCase().indexOf(';' + fileExt + ';') == -1 || file.headers.size > fileConfig.maxSize) { //判断限制条件
+            let fileExt = file.path.split('.')[1].toLowerCase();
+            if (fileConfig.exten.indexOf(';' + fileExt + ';') == -1 || file.headers.size > fileConfig.maxSize) { //判断限制条件
                 return finalFileName;
             }
 
