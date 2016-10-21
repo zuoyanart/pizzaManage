@@ -24,7 +24,7 @@ export default class {
      */
     static async localImg(file, options) {
             let fileConfig = { //允许
-                exten: ';jpg;jpeg;png;bmp;', //扩展名
+                exten: ';jpg;jpeg;png;bmp;gif;', //扩展名
                 maxSize: 5242880, //文件最大大小，单位B
                 static: think.RESOURCE_PATH, //图片保存目录
                 toPath: '/upload/' + think.datetime(new Date, "YYYY/MM/DD") //生成的文件路径：/upload/2016/02/01
@@ -32,7 +32,7 @@ export default class {
 
             let finalFileName = ''; //最终的文件名称
             let fileExt = file.path.split('.')[1];
-            if (fileConfig.exten.indexOf(';' + fileExt + ';') == -1 || file.headers.size > fileConfig.maxSize) { //判断限制条件
+            if (fileConfig.exten.toLowerCase().indexOf(';' + fileExt + ';') == -1 || file.headers.size > fileConfig.maxSize) { //判断限制条件
                 return finalFileName;
             }
 
