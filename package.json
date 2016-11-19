@@ -16,7 +16,9 @@
     "objectid": "^3.2.1",
     "qiniu": "^6.1.11",
     "source-map-support": "^0.4.0",
-    "thinkjs": "2.2.x"
+    "thinkjs": "2.2.x",
+    "vue": "^2.0.7",
+    "vue-server-renderer": "^2.0.7"
   },
   "devDependencies": {
     "babel-cli": "6.x.x",

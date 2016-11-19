@@ -28,7 +28,16 @@
 <%}%>
 
 <body>
-
+    <div id="app"></div>
+    <!-- <script src="//cdn.bootcss.com/vue/2.0.3/vue.min.js"></script> -->
+    <!-- <script id="ssr" src="/site/home/index/app.js"></script> -->
+    <!-- 此处根据id="ssr"获取服务端渲染脚本-->
+    <script>
+        // app.$mount("#app");asd
+        var index = require("site/home/index/index");
+        index.init();
+        var g = require("globle/globle");
+    </script>
 </body>
 
 </html>
