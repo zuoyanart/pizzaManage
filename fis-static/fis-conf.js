@@ -1,6 +1,6 @@
 //由于使用了bower，有很多非必须资源。通过set project.files对象指定需要编译的文件夹和引用的资源
 // fis.set('project.files', ['page/**', 'map.json', 'modules/**', 'lib']);
-fis.set('project.ignore', ['*.bat', '*.rar', 'node_modules/**', 'fis-conf.js', "package.json","*.sh"]);
+fis.set('project.ignore', ['*.bat', '*.rar', 'node_modules/**', 'fis-conf.js', "package.json", "*.sh"]);
 fis.set('project.fileType.text', 'es');
 
 fis.set('statics', '/www/static'); //static目录
@@ -9,11 +9,12 @@ fis.set('url', '/static');
 //FIS modjs模块化方案，您也可以选择amd/commonjs等
 fis.hook('commonjs', {
     mod: 'amd',
-    baseUrl:"../",
+    baseUrl: "../",
     extList: ['.js', '.jsx', '.es', '.ts', '.tsx'],
     paths: {
-      $: '/node_modules/jquery/dist/jquery.min.js',
-      vue: '/node_modules/vue/dist/vue.min.js',
+        $: '/node_modules/jquery/dist/jquery.min.js',
+        vue: '/node_modules/vue/dist/vue.min.js',
+        "process/browser": '/node_modules/process/browser.js',
     }
 });
 
@@ -24,15 +25,15 @@ fis.match("**/*", {
         release: '${statics}/$&'
     })
     .match('/node_modules/**.js', {
-      isMod: true,
-      useSameNameRequire: true,
-      wrap:true,
+        isMod: true,
+        useSameNameRequire: true,
+        wrap: true,
     })
     .match(/^\/site\/([^\/]+)\/(.*)\.(ejs)$/i, {
         isHtmlLike: true,
         release: false
     })
-    .match(/^\/(widget|site)\/(.*)\.(es)$/i, {
+    .match(/^\/(widget|site|vue)\/(.*)\.(es)$/i, {
         parser: fis.plugin('babel-5.x', {
             sourceMaps: true, //启用调试
             // blacklist: ['regenerator'],
@@ -67,10 +68,10 @@ fis.match("**/*", {
     })
     .match('*.{js,jsx,ts,tsx,es}', {
         preprocessor: [
-          fis.plugin('js-require-css'),
-          fis.plugin('js-require-file', {
-            useEmbedWhenSizeLessThan: 10 * 1024 // 小于10k用base64
-          })
+            fis.plugin('js-require-css'),
+            fis.plugin('js-require-file', {
+                useEmbedWhenSizeLessThan: 10 * 1024 // 小于10k用base64
+            })
         ]
     })
     .match("/widget/kindeditor-4.1.10/**.js", {
@@ -96,6 +97,36 @@ fis.match("**/*", {
     //页面模板不用编译缓存
     .match(/.*\.(html|jsp|tpl|vm|htm|asp|aspx|php)$/, {
         useCache: false
+    });
+
+
+fis.match("site/admin/**.vue", {
+        isMod: true,
+        rExt: 'js',
+        useSameNameRequire: true,
+        parser: fis.plugin('vue-component', {
+            cssScopeFlag: 'vuec'
+        })
+    })
+    // .match("site/admin/**.css", {
+    //     release: "css1/$1"
+    // })
+    .match("site/admin/**.vue:less", {
+        rExt: 'css',
+        parser: fis.plugin('less')
+    })
+    .match("site/admin/**.vue:scss", {
+        rExt: 'css',
+        parser: fis.plugin('node-sass'),
+    })
+    .match("site/admin/**.vue:js", {
+        parser: [fis.plugin('babel-5.x', {
+                sourceMaps: true, //启用调试
+                // blacklist: ['regenerator'],
+                stage: 3 //ES7不同阶段语法提案的转码规则（共有4个阶段）
+            }),
+            fis.plugin('translate-es3ify', null, 'append')
+        ]
     });
 
 
