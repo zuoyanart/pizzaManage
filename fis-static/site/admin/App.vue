@@ -9,7 +9,6 @@
 <template lang="html">
 
 <div id="app">
-
     <div id="header">
         <h1><i class="icon-pizza"></i>Pizza Admin</h1>
     </div>
@@ -32,21 +31,21 @@
                 <ul v-show="show.news">
                     <li><a href="/admin/tree">节点管理</a></li>
                     <li><router-link to="/news">文章管理</router-link></li>
-                    <li><a href="/admin/block">模块管理</a></li>
+                    <li><router-link to="/block">模块管理</router-link></a></li>
                 </ul>
             </li>
             <li>
                 <a href="#" class="submenu" data="hudong"><i class="icon-setting"></i>互动管理</a>
                 <ul  v-show="show.hudong">
-                    <li><a href="/admin/guestbook">留言板管理</a></li>
+                    <li><router-link to="/guestbook">留言板管理</router-link></a></li>
                     <!-- <li><a href="/admin/usergroup">用户组管理</a></li> -->
                     <!-- <li><a href="/admin/power">权限分配</a></li> -->
                 </ul>
             </li>
             <li>
-                <a href="#" class="submenu" data="system"><i class="icon-setting"></i>系统管理</a>
+                <a class="submenu" data="system"><i class="icon-setting"></i>系统管理</a>
                 <ul  v-show="show.system">
-                    <li><a href="/admin/user">管理员管理</a></li>
+                    <li><router-link to="/user">管理员管理</router-link></a></li>
                     <!-- <li><a href="/admin/usergroup">用户组管理</a></li> -->
                     <!-- <li><a href="/admin/power">权限分配</a></li> -->
                 </ul>
@@ -81,7 +80,7 @@ export default {
         let data = o.getAttribute("data");
         this.$data.show[data] = !this.$data.show[data];
       } else {
-        
+
       }
     },
   }

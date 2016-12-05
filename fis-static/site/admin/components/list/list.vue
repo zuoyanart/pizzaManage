@@ -1,71 +1,76 @@
 <style lang="css">
 
-
-
 </style>
 
 <template lang="html">
+
 <div>
     <div class="menu">
-        <pzcheckbox name="list" :change="checkAll">全选</pzcheckbox>|<a href="/admin/article/edit">添加</a>|<em class="pass">审核</em>|<em class="remove">删除</em>|
+        <pzcheckbox name="list" :change="checkAll">全选</pzcheckbox>|
+        <template v-for="b in docs.more">
+          <a :href="b.link" v-if="b.link && b.link != ''">{{b.text}}</a>
+          <i :class="b.cls" v-if="!b.link || b.link == ''">{{b.text}}</i> |
+        </template>
     </div>
     <ul class="list" id="list">
-      <li v-for="doc in docs">
+        <li v-for="doc in docs.rows">
           <pzcheckbox name="list" :checked="checked" :change="change" :value="doc.id"></pzcheckbox>
-          <a href="/content/16673?preview=true" target="_blank">[首页热点推荐]{{doc.title}}</a>
-          <span>
-            <a href="/admin/article/edit?id=16673">编辑</a><i class="comment">评论</i>
-            <i class="pass">取消审核</i>
-            <i class="remove">删除</i>
-        </span>
-      </li>
-        <!-- <li>
-            <pzcheckbox name="list" :checked="checked" :change="change" value="1"></pzcheckbox>
-            <a href="/content/16673?preview=true" target="_blank">[首页热点推荐] 中超-河南建业1-0河北华夏幸福</a>
-            <span><a href="/admin/article/edit?id=16673">编辑</a><i class="comment">评论</i>
-            <i class="pass">取消审核</i>
-            <i class="remove">删除</i></span>
-        </li> -->
-  </ul>
+          <a :href="doc.link" target="_blank">
+            <template v-for="(item, key) in doc">
+               {{key != "link" ? item : ""}}
+            </template>
+            </a>
+            <span @click="click">
+              <template v-for="b in docs.button">
+                <router-link :to="b.link +'/' + doc.id" v-if="b.link && b.link != ''">{{b.text}}</router-link>
+                <i :class="b.cls" v-if="!b.link || b.link == ''">{{b.text}}</i>
+              </template>
+            </span>
+        </li>
+    </ul>
 </div>
 
 </template>
 
 <script>
+
 import pzcheckbox from 'pzvue-checkbox';
 import column from './list-column.vue';
 export default {
-  data() {
-    return {
-        ids: [],//全选获取大的id，
-        checked: false,
-    }
-  },
-  props: {
-    docs: {
-      type: Array,
-      default:[]
-    }
-  },
-  methods:{
-    checkAll: function(value, ischecked) {//全选
-      this.checked = ischecked;
-    },
-    change: function(value, ischecked) {//checkbox change事件
-      var index = this.ids.indexOf(value);
-      if (ischecked) { //true
-          if (index === -1) {
-              this.ids.push(value);
-          }
-      } else {
-          this.ids.splice(index, 1);
-      }
-    },
-  },
-  components:{
-    pzcheckbox,
-    column
-  }
+    data() {
+            return {
+                ids: [], //全选获取大的id，
+                checked: false,
+            }
+        },
+        props: {
+            docs: {
+                type: Array,
+                default: []
+            }
+        },
+        methods: {
+            checkAll: function(value, ischecked) { //全选
+                this.checked = ischecked;
+            },
+            change: function(value, ischecked) { //checkbox change事件
+                var index = this.ids.indexOf(value);
+                if (ischecked) { //true
+                    if (index === -1) {
+                        this.ids.push(value);
+                    }
+                } else {
+                    this.ids.splice(index, 1);
+                }
+            },
+            click: function(event) {
+              // router.push("");
+            }
+        },
+        components: {
+            pzcheckbox,
+            column
+        }
 }
 
 </script>

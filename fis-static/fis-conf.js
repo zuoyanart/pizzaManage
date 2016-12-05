@@ -9,12 +9,12 @@ fis.set('url', '/static');
 //FIS modjs模块化方案，您也可以选择amd/commonjs等
 fis.hook('commonjs', {
     mod: 'amd',
-    baseUrl: "../",
     extList: ['.js', '.jsx', '.es', '.ts', '.tsx'],
     paths: {
         $: '/node_modules/jquery/dist/jquery.min.js',
         vue: '/node_modules/vue/dist/vue.min.js',
         "process/browser": '/node_modules/process/browser.js',
+        "kindeditor": '/widget/kindeditor/kindeditor-all.js',//4.1.1
     }
 });
 
@@ -29,13 +29,20 @@ fis.match("**/*", {
         useSameNameRequire: true,
         wrap: true,
     })
+    .match('/node_modules/kindeditor/**', {
+        url: '${url}/$&',
+        release: '${statics}/$&',
+        // isMod: true,
+        // useSameNameRequire: true,
+        // wrap: true,
+    })
     .match(/^\/site\/([^\/]+)\/(.*)\.(ejs)$/i, {
         isHtmlLike: true,
         release: false
     })
     .match(/^\/(widget|site|vue)\/(.*)\.(es)$/i, {
         parser: fis.plugin('babel-5.x', {
-            sourceMaps: true, //启用调试
+            sourceMaps: false, //启用调试
             // blacklist: ['regenerator'],
             stage: 3 //ES7不同阶段语法提案的转码规则（共有4个阶段）
         }),
@@ -165,5 +172,7 @@ fis.match('::packager', {
         margin: '15'
     })
 });
-// fis.unhook('components')
-fis.hook("node_modules");
+fis.unhook('components')
+fis.hook("node_modules", {
+  shutup:true,
+});

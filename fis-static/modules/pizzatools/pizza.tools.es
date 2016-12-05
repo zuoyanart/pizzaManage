@@ -6,7 +6,7 @@
  * @Date: 14-2-12 下午3:16
  * --------------------------------------------------------
  */
-import "babel-polyfill/dist/polyfill.js";
+import "babel-polyfill/dist/polyfill.min.js";
 import superagent from 'superagent/superagent';
 var $ = require('jquery');
 var pizzalayer = require('pizzalayer');
