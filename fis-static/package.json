@@ -19,6 +19,7 @@
     "pzvue-formitem": "^0.6.0",
     "pzvue-input": "^0.6.0",
     "pzvue-select": "^0.6.1",
+    "pzvue-select-option": "^0.6.0",
     "superagent": "^3.0.0",
     "vue": "^2.0.7",
     "vue-layer": "^0.5.10",

@@ -28,7 +28,7 @@ export default {
                     options: {},
                     more: [{
                         text: "添加",
-                        link: "http://www.baidu.com",
+                        link: "/news/create",
                     }, {
                         text: "审核",
                         cls: "pass"

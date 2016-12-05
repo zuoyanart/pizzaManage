@@ -25,6 +25,9 @@ const routes = [{
     path: "/news/edit/:id",
     component: newsedit
 }, {
+    path: "/news/create",
+    component: newsedit
+}, {
     path: "/block",
     component: block
 }, {

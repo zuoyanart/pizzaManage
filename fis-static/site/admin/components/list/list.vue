@@ -8,7 +8,7 @@
     <div class="menu">
         <pzcheckbox name="list" :change="checkAll">全选</pzcheckbox>|
         <template v-for="b in docs.more">
-          <a :href="b.link" v-if="b.link && b.link != ''">{{b.text}}</a>
+         <router-link :to="b.link" v-if="b.link && b.link != ''">{{b.text}}</router-link>
           <i :class="b.cls" v-if="!b.link || b.link == ''">{{b.text}}</i> |
         </template>
     </div>

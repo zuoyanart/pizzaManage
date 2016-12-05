@@ -425,7 +425,7 @@ form > div.form-group, .form > div.form-group {
     padding: 0;
     width: auto; }
 
-.btn-select {
+/*.btn-select {
   width: 240px;
   height: 25px;
   position: relative;
@@ -496,7 +496,7 @@ form > div.form-group, .form > div.form-group {
     text-overflow: ellipsis; }
   .btn-select .select-list ul li.selected,
   .btn-select .select-list ul li:hover {
-    background: #31b0d5; }
+    background: #31b0d5; }*/
 
 .validate-err {
   border-color: #d9534f !important; }
