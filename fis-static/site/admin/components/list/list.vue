@@ -9,7 +9,7 @@
         <pzcheckbox name="list" :change="checkAll">全选</pzcheckbox>|
         <template v-for="b in docs.more">
          <router-link :to="b.link" v-if="b.link && b.link != ''">{{b.text}}</router-link>
-          <i :class="b.cls" v-if="!b.link || b.link == ''">{{b.text}}</i> |
+          <em :class="b.cls" v-if="!b.link || b.link == ''" @click="click">{{b.text}}</em> |
         </template>
     </div>
     <ul class="list" id="list">
@@ -17,11 +17,15 @@
           <pzcheckbox name="list" :checked="checked" :change="change" :value="doc.id"></pzcheckbox>
           <a :href="doc.link" target="_blank">
             <template v-for="(item, key) in doc">
-               {{key != "link" ? item : ""}}
+               {{(key != "link" && key != "button") ? item : ""}}
             </template>
             </a>
-            <span @click="click">
+            <span @click="click" :id="doc.id">
               <template v-for="b in docs.button">
+                <router-link :to="b.link +'/' + doc.id" v-if="b.link && b.link != ''">{{b.text}}</router-link>
+                <i :class="b.cls" v-if="!b.link || b.link == ''">{{b.text}}</i>
+              </template>
+              <template v-for="b in doc.button">
                 <router-link :to="b.link +'/' + doc.id" v-if="b.link && b.link != ''">{{b.text}}</router-link>
                 <i :class="b.cls" v-if="!b.link || b.link == ''">{{b.text}}</i>
               </template>
@@ -35,7 +39,6 @@
 <script>
 
 import pzcheckbox from 'pzvue-checkbox';
-import column from './list-column.vue';
 export default {
     data() {
             return {
@@ -47,6 +50,10 @@ export default {
             docs: {
                 type: Array,
                 default: []
+            },
+            handle: {
+              type: Object,
+              default:{}
             }
         },
         methods: {
@@ -64,12 +71,28 @@ export default {
                 }
             },
             click: function(event) {
-              // router.push("");
+              // console.log("class=" + event.target.className);
+              let target = event.target;
+              let cls = target.className;
+              let targetParent = target.parentNode;
+              if(target.tagName == "A") {//a标签则返回，不执行任何操作
+                return;
+              }
+              let id = "";
+              if(targetParent.className == "menu") {
+                 id = this.ids.join(",");
+              } else {
+                id = targetParent.getAttribute("id");
+              }
+              console.log(id);
+              if(id.length == 0) {
+                return;
+              }
+              this.handle[event.target.className](id, target.innerText);
             }
         },
         components: {
-            pzcheckbox,
-            column
+            pzcheckbox
         }
 }
 

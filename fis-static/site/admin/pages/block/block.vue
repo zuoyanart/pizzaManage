@@ -6,7 +6,7 @@
 
 <template lang="html">
 <div id="main">
-    <pzlist :docs="datalist"></pzlist>
+    <pzlist :docs="datalist" :handle="handle"></pzlist>
 </div>
 </template>
 
@@ -36,6 +36,7 @@ export default {
                         cls: "del"
                     }],
                 },
+                handle: {}, //传递方法
             };
         },
         async mounted() {
@@ -51,10 +52,25 @@ export default {
                     title: data[i].title
                 });
             }
+            this.handle = {
+              "del": this.del
+            }
         },
         methods: {
-            pass: function(id) {
-                alert(1);
+            del: async function(id) {
+               await tools.httpAgent("/admin/block/remove","post", {
+                 id: id
+               });
+               let ids = id.split(',');
+               let self = this;
+               for (let i = 0, l = ids.length; i < l; i++) {
+                   this.datalist.rows.find(function(value, index) {
+                       if (value.id == ids[i]) {
+                           self.datalist.rows.splice(index, 1);
+                           return true;
+                       }
+                   });
+               }
             }
         },
         components: {

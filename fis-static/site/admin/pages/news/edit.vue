@@ -18,7 +18,7 @@
             <pzselect :options="nodeOptions" :default="nodeDefault" :change="nodeChange"></pzselect>
         </pz-formitem>
         <pz-formitem label="标题图片" :validate="rules.time">
-            <pzinput v-model="form.time" id="timg" style="width:700px;"></pzinput>
+            <pzinput v-model="form.timg" id="timg" style="width:700px;"></pzinput>
             <pzbutton id="timgup">上传</pzbutton>
         </pz-formitem>
         <pz-formitem label="文章连接" :validate="rules.link">

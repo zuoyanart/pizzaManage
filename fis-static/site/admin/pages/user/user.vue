@@ -5,9 +5,11 @@
 </style>
 
 <template lang="html">
+
 <div id="main">
-    <pzlist :docs="datalist"></pzlist>
+    <pzlist :docs="datalist" :handle="handle"></pzlist>
 </div>
+
 </template>
 
 <script>
@@ -22,23 +24,24 @@ export default {
                     options: {},
                     more: [{
                         text: "添加",
-                        link: "/block/edit",
-                    },{
+                        link: "/user/edit",
+                    }, {
                         text: "删除",
                         cls: "del"
-                    },{
+                    }, {
                         text: "冻结",
                         cls: "dongjie"
                     }],
                     rows: [],
                     button: [{
                         text: "编辑",
-                        link: "/block/edit",
+                        link: "/user/edit",
                     }, {
                         text: "删除",
                         cls: "del"
                     }],
                 },
+                handle: {}, //传递方法
             };
         },
         async mounted() {
@@ -54,10 +57,25 @@ export default {
                     name: data[i].username
                 });
             }
+            this.handle = {
+                "del": this.del
+            }
         },
         methods: {
-            pass: function(id) {
-                alert(1);
+            del: async function(id) {
+                await tools.httpAgent("/admin/user/remove", "post", {
+                    id: id
+                });
+                let ids = id.split(',');
+                let self = this;
+                for (let i = 0, l = ids.length; i < l; i++) {
+                    this.datalist.rows.find(function(value, index) {
+                        if (value.id == ids[i]) {
+                            self.datalist.rows.splice(index, 1);
+                            return true;
+                        }
+                    });
+                }
             }
         },
         components: {

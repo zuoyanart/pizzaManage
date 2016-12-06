@@ -7,11 +7,7 @@
 <template lang="html">
 
 <div id="main">
-    <pzlist :docs="datalist">
-        <template>
-            <column label="审核" cls="pass" :handle="pass"></column>
-        </template>
-    </pzlist>
+    <pzlist :docs="datalist" :handle="handle"></pzlist>
 </div>
 
 </template>
@@ -41,20 +37,19 @@ export default {
                         text: "编辑",
                         link: "/news/edit",
                     }, {
-                        text: "审核",
-                        cls: "pass"
-                    }, {
                         text: "删除",
                         cls: "del"
                     }, {
                         text: "评论",
-                        cls: "comment"
+                        link: "/news/comment"
                     }, ],
                 },
+                handle: {}, //传递方法
             };
         },
         async mounted() {
-            let doc = await tools.httpAgent("/admin/article/page", "post", { //获取数据
+            //获取数据
+            let doc = await tools.httpAgent("/admin/article/page", "post", {
                 cp: 1,
                 mp: 20,
                 kw: "",
@@ -66,13 +61,53 @@ export default {
                     id: data[i].id,
                     nodename: "[" + data[i].nodename + "]",
                     title: data[i].title,
-                    link: '/content/' + data[i].id + '?preview=true'
+                    link: '/content/' + data[i].id + '?preview=true',
+                    button: [{
+                        text: (data[i].pass == 0 ? "审核" : "取消审核"),
+                        cls: "pass"
+                    }],
                 });
             }
+            console.log(this.datalist.rows);
+            //设置方法
+            this.handle = {
+                "pass": this.pass,
+                "del": this.del,
+            }
+
         },
         methods: {
-            pass: function(id) {
-                alert(1);
+            pass: async function(id, node) {
+              let passState = (node == "取消审核" ? "false" : "true")
+                let res = await tools.httpAgent("/admin/article/pass", "post", { //审核
+                    id: id,
+                    ispass: passState
+                });
+                let ids = id.split(',');
+                let self = this;
+                for (let i = 0, l = ids.length; i < l; i++) {
+                    this.datalist.rows.find(function(value, index) {
+                        if (value.id == ids[i]) {
+                            self.datalist.rows[index].button[0].text = (node == "取消审核" ? "审核" : "取消审核");
+                            return true;
+                        }
+                    });
+                }
+            },
+            del: async function(id) { //删除
+                let res = await tools.httpAgent("/admin/article/remove", "post", {
+                    id: id
+                });
+                let ids = id.split(',');
+                let self = this;
+                for (let i = 0, l = ids.length; i < l; i++) {
+                    this.datalist.rows.find(function(value, index) {
+                        if (value.id == ids[i]) {
+                            self.datalist.rows.splice(index, 1);
+                            return true;
+                        }
+                    });
+                }
             }
         },
         components: {
