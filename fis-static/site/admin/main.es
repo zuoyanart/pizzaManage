@@ -6,6 +6,8 @@ import layer from 'vue-layer';
 Vue.use(VueRouter);
 Vue.prototype.$layer = layer;
 
+const tree = resolve => require(['./pages/tree/tree.vue'], resolve);
+const treeedit = resolve => require(['./pages/tree/edit.vue'], resolve);
 const news = resolve => require(['./pages/news/news.vue'], resolve); //实现懒加载
 const newsedit = resolve => require(['./pages/news/edit.vue'], resolve);
 const block = resolve => require(['./pages/block/block.vue'], resolve);
@@ -14,8 +16,7 @@ const guestbook = resolve => require(['./pages/guestbook/guestbook.vue'], resolv
 const guestbookEdit = resolve => require(['./pages/guestbook/edit.vue'], resolve);
 const user = resolve => require(['./pages/user/user.vue'], resolve);
 const useredit = resolve => require(['./pages/user/edit.vue'], resolve);
-const tree = resolve => require(['./pages/tree/tree.vue'], resolve);
-const treeedit = resolve => require(['./pages/tree/edit.vue'], resolve);
+
 
 const routes = [{
     path: '/',

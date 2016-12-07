@@ -1,11 +1,8 @@
 <style lang="css">
 
-
-
 </style>
 
 <template lang="html">
-
 <div id="main">
     <pztree :docs="datalist" :handle="handle"></pztree>
 </div>
@@ -23,7 +20,7 @@ export default {
                 datalist: {
                     options: {},
                     more: [{
-                        text: "添加",
+                        text: "添加1",
                         link: "/news/create",
                     }, {
                         text: "审核",

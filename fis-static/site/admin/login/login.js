@@ -1,5 +1,5 @@
 
-var $ = require('$');
+var $ = require("jquery");
 var jQuery = $;
 require('layer');
 require('pizzaui');

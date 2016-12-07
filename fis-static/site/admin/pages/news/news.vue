@@ -1,7 +1,5 @@
 <style lang="css">
 
-
-
 </style>
 
 <template lang="html">
