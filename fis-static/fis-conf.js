@@ -11,8 +11,9 @@ fis.hook('commonjs', {
     mod: 'amd',
     extList: ['.js', '.jsx', '.es', '.ts', '.tsx'],
     paths: {
-        $: '/node_modules/jquery/dist/jquery.min.js',
-        vue: '/node_modules/vue/dist/vue.js',
+        "jquery": '/node_modules/jquery/dist/jquery.min.js',
+        "$": '/node_modules/jquery/dist/jquery.min.js',
+        "vue": '/node_modules/vue/dist/vue.js',
         "process/browser": '/node_modules/process/browser.js',
         "kindeditor": '/widget/kindeditor/kindeditor-all.js',//4.1.1
     }
@@ -97,6 +98,11 @@ fis.match("**/*", {
     })
     .match('**/*.less', { //编译less
         parser: fis.plugin('less'),
+        rExt: '.css',
+        // optimizer: fis.plugin('optimizer-clean-css')
+    })
+    .match('**/*.scss', { //编译less
+        parser: fis.plugin('node-sass'),
         rExt: '.css',
         // optimizer: fis.plugin('optimizer-clean-css')
     })

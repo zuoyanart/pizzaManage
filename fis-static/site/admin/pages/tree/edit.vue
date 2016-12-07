@@ -1,5 +1,7 @@
 <style lang="css">
-  
+
+
+
 </style>
 
 <template lang="html">
@@ -9,11 +11,23 @@
         <a href="javascript:history.back();">返回</a>
     </div>
     <pz-form ref="form">
-        <pz-formitem label="标题" :validate="rules.title">
-            <pzinput v-model="form.title" placeholder="请输入活文章标题"></pzinput>
+        <pz-formitem label="标题" :validate="rules.name">
+            <pzinput v-model="form.name" placeholder="请输入节点名称"></pzinput>
         </pz-formitem>
-        <pz-formitem label="正文" :validate="rules.content">
-            <textarea id="content" v-model="form.content" style="height:500px;"></textarea>
+        <pz-formitem label="连接地址" :validate="rules.link">
+            <pzinput v-model="form.link" placeholder="请输入节点名称"></pzinput>
+        </pz-formitem>
+        <pz-formitem label="正文类型" :validate="rules.article_type">
+            <pzselect :options="articleTypeOption"></pzselect>
+        </pz-formitem>
+        <pz-formitem label="SEO keyword" :validate="rules.keyword">
+            <pzinput v-model="form.keyword" placeholder="请输入keyword"></pzinput>
+        </pz-formitem>
+        <pz-formitem label="SEO description" :validate="rules.seodes">
+            <textarea v-model="form.seodes" placeholder="请输入description"></textarea>
+        </pz-formitem>
+        <pz-formitem label="正文" :validate="rules.brief">
+            <textarea id="brief" v-model="form.brief" style="height:500px;"></textarea>
         </pz-formitem>
         <pz-formitem>
             <pzbutton @click.native="submitHandle">提交</pzbutton>
@@ -38,27 +52,17 @@ export default {
     data() {
             return {
                 form: {
-                    title: '',
-                    content: "",
+                  "link":""
                 },
-                nodeOptions: [{
-                    text: '不限',
-                    value: 0
-                }],
-                nodeDefault: 0,
-                passOption: [{
-                    text: '审核',
-                    value: 1
+                articleTypeOption: [{
+                    text: '普通',
+                    value: ""
                 }, {
-                    text: '未审核',
-                    value: 0
-                }],
-                recoOption: [{
-                    text: '不推荐',
-                    value: 0
-                }, {
-                    text: '1级推荐',
-                    value: 1
+                    text: '组图',
+                    value: "photo"
+                },{
+                  text:"视频",
+                  value:"video"
                 }],
                 rules: {
                     title: {
@@ -86,10 +90,12 @@ export default {
             submitHandle: async function() {
                 let ischeck = await this.$refs.form.validate();
                 if (ischeck || true) { //通过验证
+                  let url = document.location.href;
                     let id = this.$route.params.id;
-                    let op = id ? "update" : "create";
-                    this.form.content = escape(editor.html());
-                    await tools.httpAgent("/admin/block/" + op, "post", this.form);
+                    let op = (url.indexOf("/tree/add/") == -1) ? "update" : "create";
+                    this.form.brief = escape(editor.html());
+                    this.form.pid = id;
+                    await tools.httpAgent("/admin/tree/" + op, "post", this.form);
                 } else {
                     console.log("数据验证失败");
                     let id = this.$layer.alert("this is demo", {
@@ -99,30 +105,19 @@ export default {
             },
         },
         async mounted() {
-            window.editor = KindEditor.create('#content', {
+            window.editor = KindEditor.create('#brief', {
                 uploadJson: '/admin/upfile/local',
                 allowFileManager: false
             });
-            KindEditor('#timgup').click(function() {
-                editor.loadPlugin('image', function() {
-                    editor.plugin.imageDialog({
-                        imageUrl: KindEditor('#timg').val(),
-                        clickFn: function(url, title, width, height, border, align) {
-                            KindEditor('#timg').val(url);
-                            editor.hideDialog();
-                        }
-                    });
-                });
-            });
-            //获取block
+            //获取
+            let url = document.location.href;
             let id = this.$route.params.id;
-            if (id) {
-                let article = await tools.httpAgent("/admin/block/get", "post", {
+            if (url.indexOf("/tree/add/") == -1) {
+                let article = await tools.httpAgent("/admin/tree/get", "post", {
                     id: id
                 });
                 this.form = article.msg;
-                this.nodeDefault = article.msg.nodeid;
-                editor.html(article.msg.content);
+                editor.html(article.msg.brief);
             }
         },
 }

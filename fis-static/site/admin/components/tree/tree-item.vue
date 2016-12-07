@@ -5,19 +5,21 @@
 </style>
 
 <template lang="html">
-  <div>
-    <li @click="click">
+
+<div>
+    <li @click="click" :id="items.id" :path="items.path">
         <b class="indent" v-for="a in items.path.length-3"></b>
         <i class="icon-add"></i>
         <em>{{items.name}}</em>
         <span>
-          <a href="/admin/tree/edit?id=5">编辑</a>
-          <a href="/admin/tree/edit?pid=5">添加子节点</a>
+          <router-link :to="'/tree/edit/'+items.id">编辑</router-link>
+          <router-link :to="'/tree/add/'+items.pid">添加子节点</router-link>
           <i class="ishide">隐藏</i>
       </span>
     </li>
-    <treeitem  v-for="doc in items.children" :items="doc" v-if="doc" :handle="handle"></treeitem>
-  </div>
+    <treeitem v-for="doc in items.children" :items="doc" :handle="handle"></treeitem>
+</div>
+
 </template>
 
 <script>
@@ -26,19 +28,30 @@ export default {
     name: "treeitem",
     props: {
         items: {
-            default:[]
+            type: Object,
+            default: function() {
+                return {};
+            }
         },
         handle: {
-          type:Object,
-          default: function() {
-            return {};
-          }
+            type: Object,
+            default: function() {
+                return {};
+            }
         }
     },
     methods: {
-      click: function() {
-        this.handle["fold"]();
-      }
+        click: function(event) {
+            let target = event.target;
+            if (target.tagName != "I") {
+                return;
+            }
+            let parent = target.parentNode;
+            let id = parent.getAttribute("id");
+            let path = parent.getAttribute("path");
+            target.className = "icon-sub";
+            this.handle["fold"](id, path);
+        }
     }
 }
 

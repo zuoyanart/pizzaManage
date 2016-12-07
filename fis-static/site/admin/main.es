@@ -15,6 +15,7 @@ const guestbookEdit = resolve => require(['./pages/guestbook/edit.vue'], resolve
 const user = resolve => require(['./pages/user/user.vue'], resolve);
 const useredit = resolve => require(['./pages/user/edit.vue'], resolve);
 const tree = resolve => require(['./pages/tree/tree.vue'], resolve);
+const treeedit = resolve => require(['./pages/tree/edit.vue'], resolve);
 
 const routes = [{
     path: '/',
@@ -52,7 +53,13 @@ const routes = [{
 }, {
     path: "/tree",
     component: tree
-},];
+}, {
+    path: "/tree/add/:id",
+    component: treeedit
+}, {
+    path: "/tree/edit/:id",
+    component: treeedit
+}, ];
 
 
 const router = new VueRouter({
