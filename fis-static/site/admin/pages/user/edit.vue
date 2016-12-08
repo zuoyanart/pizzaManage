@@ -30,7 +30,6 @@
 
 <script>
 
-import validate from 'validate';
 import pzbutton from 'pzvue-button';
 import pzselect from 'pzvue-select';
 import pzinput from 'pzvue-input';
@@ -42,26 +41,26 @@ export default {
     data() {
             return {
                 form: {
-                    title: '',
-                    content: "",
+                    username: '',
+                    nickname: '',
+                    password: '',
                 },
                 rules: {
                     username: {
                         min: 1,
-                        max: 48,
-                        message: "请填写1-48位的标题"
+                        max: 10,
+                        message: "请填写1-10位的用户名"
                     },
                     nickname: {
-                        required: false,
                         min: 1,
-                        max: 300,
-                        message: "请填写1-20位的名称"
+                        max: 10,
+                        message: "请填写1-10位的昵称"
                     },
                     password: {
                         required: false,
-                        min: 1,
-                        max: 300,
-                        message: "请填写1-20位的名称"
+                        min: 6,
+                        max: 20,
+                        message: "请填写6-20位的密码"
                     },
                 }
             }
@@ -76,9 +75,10 @@ export default {
         methods: {
             submitHandle: async function() {
                 let ischeck = await this.$refs.form.validate();
-                if (ischeck || true) { //通过验证
+                if (ischeck) { //通过验证
                     let id = this.$route.params.id;
                     let op = id ? "update" : "create";
+                    this.form.id = id;
                     await tools.httpAgent("/admin/user/" + op, "post", this.form);
                 } else {
                     console.log("数据验证失败");

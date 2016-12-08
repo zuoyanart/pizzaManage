@@ -42,18 +42,22 @@ import pzcheckbox from 'pzvue-checkbox';
 export default {
     data() {
             return {
-                ids: [], //全选获取大的id，
+                ids: [], //全选获取选中的id，
                 checked: false,
             }
         },
         props: {
             docs: {
-                type: Array,
-                default: []
+                type: Object,
+                default: function() {
+                  return {};
+                }
             },
             handle: {
               type: Object,
-              default:{}
+              default:function(){
+                return {};
+              }
             }
         },
         methods: {
@@ -71,7 +75,6 @@ export default {
                 }
             },
             click: function(event) {
-              // console.log("class=" + event.target.className);
               let target = event.target;
               let cls = target.className;
               let targetParent = target.parentNode;
@@ -84,7 +87,6 @@ export default {
               } else {
                 id = targetParent.getAttribute("id");
               }
-              console.log(id);
               if(id.length == 0) {
                 return;
               }
