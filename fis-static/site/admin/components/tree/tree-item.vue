@@ -8,7 +8,7 @@
 
 <div>
     <li @click="click" :id="items.id" :path="items.path">
-        <b class="indent" v-for="a in items.path.length-3"></b>
+        <b class="indent" v-for="a in (items.path.length-3)"></b>
         <i class="icon-add"></i>
         <em>{{items.name}}</em>
         <span>
