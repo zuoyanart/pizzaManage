@@ -39,7 +39,6 @@
 
 <script>
 
-import validate from 'validate';
 import pzbutton from 'pzvue-button';
 import pzselect from 'pzvue-select';
 import pzinput from 'pzvue-input';
