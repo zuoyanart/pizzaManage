@@ -3,11 +3,7 @@
 </style>
 
 <template lang="html">
-
-<div id="main">
     <pzlist :docs="datalist" :handle="handle"></pzlist>
-</div>
-
 </template>
 
 <script>
@@ -47,7 +43,7 @@ export default {
     async mounted() {
         this.$on('list-page', this.page);
         //获取数据
-        await this.page("", 1, 1, 50);
+        await this.page("", 1, 1, 20);
         //设置方法
         this.handle = {
             "pass": this.pass,
@@ -55,8 +51,7 @@ export default {
         };
     },
     methods: {
-        page: async function(kw, nodeid, cp, mp) {
-          console.log("asd4da4sd45");
+        page: async function(kw,  cp, mp) {
             if (cp == 1) {
                 this.datalist.rows = [];
             }
@@ -64,7 +59,7 @@ export default {
                 cp: cp,
                 mp: mp,
                 kw: kw,
-                nodeid: nodeid
+                nodeid: 1
             });
             let data = doc.msg;
             for (var i = 0, l = data.length; i < l; i++) {

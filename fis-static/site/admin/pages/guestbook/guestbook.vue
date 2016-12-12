@@ -5,9 +5,7 @@
 </style>
 
 <template lang="html">
-<div id="main">
     <pzlist :docs="datalist"></pzlist>
-</div>
 </template>
 
 <script>
@@ -42,9 +40,21 @@ export default {
             };
         },
         async mounted() {
+          this.$on('list-page', this.page);
+          this.page("", 1, 20);
+          this.handle = {
+              "del": this.del,
+              "pass": this.pass,
+          }
+        },
+        methods: {
+          page: async function(kw, cp, mp) {
+            if (cp == 1) {
+                this.datalist.rows = [];
+            }
             let doc = await tools.httpAgent("/admin/guestbook/page", "post", { //获取数据
-                cp: 1,
-                mp: 20,
+                cp: cp,
+                mp: mp,
                 kw: "",
             });
             let data = doc.msg;
@@ -54,8 +64,7 @@ export default {
                     des: data[i].des
                 });
             }
-        },
-        methods: {
+          },
             pass: function(id) {
                 alert(1);
             }

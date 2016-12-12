@@ -8,6 +8,7 @@
  */
 import "babel-polyfill/dist/polyfill.min.js";
 import superagent from 'superagent/superagent';
+import layer from 'vue-layer';
 var $ = require('jquery');
 var pizzalayer = require('pizzalayer');
 var tools = (function() {
@@ -21,6 +22,7 @@ var tools = (function() {
      * @return {[type]}         [description]
      */
     self.httpAgent = (url, method = 'get', data = '') => {
+         layer.loading(1);
             method = method.toLowerCase();
             if (method == "get" || method == "del") {
                 return new Promise(function(resolve, reject) {

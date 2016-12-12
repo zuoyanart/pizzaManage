@@ -6,9 +6,9 @@
 
 <template lang="html">
 
-<div id="main">
+
     <pzlist :docs="datalist" :handle="handle"></pzlist>
-</div>
+
 
 </template>
 
@@ -45,10 +45,21 @@ export default {
             };
         },
         async mounted() {
+          this.$on('list-page', this.page);
+          this.page("", 1, 20);
+            this.handle = {
+                "del": this.del
+            }
+        },
+        methods: {
+          page: async function(kw, cp,mp) {
+            if (cp == 1) {
+                this.datalist.rows = [];
+            }
             let doc = await tools.httpAgent("/admin/user/page", "post", { //获取数据
-                cp: 1,
-                mp: 20,
-                kw: "",
+                cp: cp,
+                mp: mp,
+                kw: kw,
             });
             let data = doc.msg;
             for (var i = 0, l = data.length; i < l; i++) {
@@ -57,11 +68,7 @@ export default {
                     name: data[i].username
                 });
             }
-            this.handle = {
-                "del": this.del
-            }
-        },
-        methods: {
+          },
             del: async function(id) {
                 await tools.httpAgent("/admin/user/remove", "post", {
                     id: id

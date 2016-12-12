@@ -119,11 +119,11 @@ body {
 #main {
     margin-left: 220px;
     width: auto;
-    min-height: 1000px;
     margin-right: 0;
     background-color: #eee;
     margin-top: -37px;
-    padding: 10px 0 0 20px;
+    padding: 10px 0 100px 20px;
+    min-height:700px;
     & > div.menu {
       margin-bottom: 10px;
       & > em, select, a, div {
@@ -136,7 +136,7 @@ body {
     }
     ul.list{
       background-color: #fff;
-      min-height: 1000px;
+      min-height: 500px;
       padding-top: 1px;
       & > ul.list{
         min-height:50px;
