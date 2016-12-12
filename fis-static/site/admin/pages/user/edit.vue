@@ -80,6 +80,7 @@ export default {
                     let op = id ? "update" : "create";
                     this.form.id = id;
                     await tools.httpAgent("/admin/user/" + op, "post", this.form);
+                    history.back();
                 } else {
                     console.log("数据验证失败");
                     let id = this.$layer.alert("this is demo", {

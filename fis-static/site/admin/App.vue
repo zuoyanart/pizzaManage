@@ -22,14 +22,14 @@
     <div id="sidebar" @click="slider">
         <ul>
             <li>
-                <router-link to="/" class="active"><i class="icon-home"></i>主页</router-link>
+                <router-link to="/"><i class="icon-home"></i>主页</router-link>
             </li>
             <li>
                 <a class="submenu" data="news"><i class="icon-article"></i>信息管理</a>
                 <ul v-show="show.news">
-                    <li><router-link to="/tree">节点管理</router-link></li>
-                    <li><router-link to="/news">文章管理</router-link></li>
-                    <li><router-link to="/block">模块管理</router-link></a></li>
+                    <li><router-link to="/tree" class="tree">节点管理</router-link></li>
+                    <li><router-link to="/news" class="news">文章管理</router-link></li>
+                    <li><router-link to="/block" class="block">模块管理</router-link></a></li>
                 </ul>
             </li>
             <li>
@@ -77,6 +77,9 @@ export default {
 
       }
     },
+  },
+  mounted() {
+    
   }
 }
 

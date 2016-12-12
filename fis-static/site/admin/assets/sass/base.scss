@@ -100,7 +100,7 @@ body {
             background-color: #27a9e3;
             color: #fff;
         }
-        & > li > ul > li > a.active,
+        & > li > ul > li > a.router-link-active,
         & > li > ul > li > a:hover {
             background-color: #28b779;
             color: #fff;

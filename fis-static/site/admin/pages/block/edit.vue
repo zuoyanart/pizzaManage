@@ -40,25 +40,6 @@ export default {
                     title: '',
                     content: "",
                 },
-                nodeOptions: [{
-                    text: '不限',
-                    value: 0
-                }],
-                nodeDefault: 0,
-                passOption: [{
-                    text: '审核',
-                    value: 1
-                }, {
-                    text: '未审核',
-                    value: 0
-                }],
-                recoOption: [{
-                    text: '不推荐',
-                    value: 0
-                }, {
-                    text: '1级推荐',
-                    value: 1
-                }],
                 rules: {
                     title: {
                         min: 1,
@@ -89,6 +70,7 @@ export default {
                     let op = id ? "update" : "create";
                     this.form.content = escape(editor.html());
                     await tools.httpAgent("/admin/block/" + op, "post", this.form);
+                    history.back();
                 } else {
                     console.log("数据验证失败");
                     let id = this.$layer.alert("this is demo", {

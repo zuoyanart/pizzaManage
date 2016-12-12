@@ -64,17 +64,35 @@ export default {
                   value:"video"
                 }],
                 rules: {
-                    title: {
+                    name: {
                         min: 1,
                         max: 48,
                         message: "请填写1-48位的标题"
                     },
-                    content: {
+                    link: {
                         required: false,
                         min: 1,
                         max: 300,
                         message: "请填写1-20位的名称"
                     },
+                    keyword: {
+                      required: false,
+                      min: 1,
+                      max: 30,
+                      message: "请填写1-30位的名称"
+                    },
+                    seodes: {
+                      required: false,
+                      min: 1,
+                      max: 30,
+                      message: "请填写1-30位的名称"
+                    },
+                    brief: {
+                      required: false,
+                      min: 1,
+                      max: 30,
+                      message: "请填写1-30位的名称"
+                    }
                 }
             }
         },
@@ -95,6 +113,7 @@ export default {
                     this.form.brief = escape(editor.html());
                     this.form.pid = id;
                     await tools.httpAgent("/admin/tree/" + op, "post", this.form);
+                    history.back();
                 } else {
                     console.log("数据验证失败");
                     let id = this.$layer.alert("this is demo", {

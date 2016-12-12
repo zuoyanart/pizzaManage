@@ -79,6 +79,7 @@ export default {
                     level[data[i].id] = {
                         id: data[i].id,
                         name: data[i].name,
+                        pid: data[i].pid,
                         path: (data[i].nodepath).split(','),
                         fold: false, //是否展开
                     };

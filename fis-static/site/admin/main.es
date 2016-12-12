@@ -17,7 +17,6 @@ const guestbookEdit = resolve => require(['./pages/guestbook/edit.vue'], resolve
 const user = resolve => require(['./pages/user/user.vue'], resolve);
 const useredit = resolve => require(['./pages/user/edit.vue'], resolve);
 
-
 const routes = [{
     path: '/',
     component: require("./pages/index.vue")

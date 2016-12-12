@@ -13,7 +13,7 @@
         <em>{{items.name}}</em>
         <span>
           <router-link :to="'/tree/edit/'+items.id">编辑</router-link>
-          <router-link :to="'/tree/add/'+items.pid">添加子节点</router-link>
+          <router-link :to="'/tree/add/'+items.id">添加子节点</router-link>
           <i class="ishide">隐藏</i>
       </span>
     </li>

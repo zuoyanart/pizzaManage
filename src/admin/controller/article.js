@@ -51,6 +51,7 @@ export default class extends Base {
             up.pass = parseInt(up.pass);
             up.reco = parseInt(up.reco);
             up.id = parseInt(up.id);
+            console.log(up);
             // let article = await tools.httpAgent(this.config("api") + 'article', "put", up);
             let article = await this.model("article").articleUpdate(up);
             return this.json({
