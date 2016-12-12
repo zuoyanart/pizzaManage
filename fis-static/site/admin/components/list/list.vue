@@ -11,6 +11,7 @@
          <router-link :to="b.link" v-if="b.link && b.link != ''">{{b.text}}</router-link>
           <em :class="b.cls" v-if="!b.link || b.link == ''" @click="click">{{b.text}}</em> |
         </template>
+        <input type="search" id="searchkw" @keyup.enter="enter">
     </div>
     <ul class="list" id="list">
         <li v-for="doc in docs.rows">
@@ -44,6 +45,8 @@ export default {
             return {
                 ids: [], //全选获取选中的id，
                 checked: false,
+                cp:1,
+                mp:50
             }
         },
         props: {
@@ -58,9 +61,13 @@ export default {
               default:function(){
                 return {};
               }
-            }
+            },
         },
         methods: {
+            enter: function(event) {
+                this.cp = 1;
+               this.$parent.$emit("list-page", event.target.value, 1, 1, 50);
+            },
             checkAll: function(value, ischecked) { //全选
                 this.checked = ischecked;
             },
