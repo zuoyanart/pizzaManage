@@ -3,7 +3,7 @@
  * config
  */
 export default {
-  port: 8360,
+  port: 8361,
   host: "",
   timeout: 60, //60s
   route_on: true,//开始自定义路由

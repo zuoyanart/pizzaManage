@@ -1,16 +1,21 @@
-let index = (()=>{
-  let self = {};
- require("vue");
- let $ = require("$");
- require("/css/variables.css");
+let index = (() => {
+    let self = {};
+    let $ = require("jquery");
+    let jQuery = $;
+    require("../../../modules/flex/flexslider.css");
+    require('flex');
 
 
-  self.init = ()=>{
-      alert(1);
-      console.log($("body").html());
-  }
+    self.init = () => {
+        $('.flexslider').flexslider({
+            animation: "slide",
+            controlNav: true,
+            directionNav: false,
+            slideshowSpeed: 5000,
+        });
+    }
 
-  return self;
+    return self;
 }());
 
 module.exports = index;

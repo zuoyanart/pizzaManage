@@ -2,43 +2,35 @@
 <html>
 
 <head>
+  <title>OPPO手机，手机中的战斗机</title>
     <link rel="import" href="/widget/home-meta/meta.html?__inline">
     <link rel="stylesheet" href="/site/home/index/index.less">
 </head>
-<ul class="menu">
-    <%for(var i=0;i<node.length;i++) {%>
-        <li>
-            <a href="<%= node[i].link%>">
-                <%= node[i].name%>
-            </a>
-        </li>
-        <%}%>
-</ul>
-
-<%for(var i=0;i<node.length;i++) {%>
-<div class="articlelist">
-  <h2><%= node[i].name%></h2>
-  <ul>
-    <% var data = article[i+1].msg;%>
-    <%for(var j=0; j < data.length; j++) {%>
-      <li><a href="<%= data[j].link%>"><%= data[j].title%></a></li>
-    <%}%>
-  </ul>
-</div>
-<%}%>
 
 <body>
-    <div id="app"></div>
-    <!-- <script src="//cdn.bootcss.com/vue/2.0.3/vue.min.js"></script> -->
-    <!-- <script id="ssr" src="/site/home/index/app.js"></script> -->
-    <!-- 此处根据id="ssr"获取服务端渲染脚本-->
+    <link rel="import" href="/widget/home-header/header.html?__inline">
+    <div class="flexslider">
+        <ul class="slides">
+            <li><img src="/site/home/index/img/1.jpg" /></li>
+            <li><img src="/site/home/index/img/2.jpg" /></li>
+            <li><img src="/site/home/index/img/3.jpg" /></li>
+        </ul>
+    </div>
+    <div class="item">
+      <div>
+        <a href="#"><img src="http://static.oppo.com/archives/201612/201612300212245865fb4009681.jpg" alt=""></a>
+      </div>
+      <div>
+        <a href="#"><img src="http://static.oppo.com/archives/201701/2017011106014958760701d13c4.jpg" alt=""></a>
+      </div>
+      <div>
+        <a href="#"><img src="http://static.oppo.com/archives/201701/20170105060105586e22c1aa2cd.jpg" alt=""></a>
+      </div>
+    </div>
+    <link rel="import" href="/widget/home-footer/footer.html?__inline">
     <script>
-        // app.$mount("#app");asd
         var index = require("site/home/index/index");
         index.init();
-        var g = require("globle/globle");
-
-      require("main");
     </script>
 </body>
 

@@ -8,8 +8,8 @@
     <div class="menu">
         <pzcheckbox name="list" :change="checkAll">全选</pzcheckbox>|
         <template v-for="b in docs.more">
-         <router-link :to="b.link" v-if="b.link && b.link != ''">{{b.text}}</router-link>
-          <em :class="b.cls" v-if="!b.link || b.link == ''" @click="click">{{b.text}}</em> |
+          <router-link :to="b.link" v-if="b.link && b.link != ''">{{b.text}}</router-link>
+          <em v-else :class="b.cls"  @click="click">{{b.text}}</em> |
         </template>
         <input type="search" id="searchkw" @keyup.enter="enter" v-model="kw">
     </div>
@@ -17,21 +17,19 @@
         <li v-for="doc in docs.rows">
           <pzcheckbox name="list" :checked="checked" :change="change" :value="doc.id"></pzcheckbox>
           <a :href="doc.link" target="_blank">
-            <template v-for="(item, key) in doc">
- {{(key != "link" && key != "button") ? item : ""}}
-</template>
+              <template v-for="(item, key) in doc">
+                {{(key != "link" && key != "button") ? item : ""}}
+              </template>
             </a>
             <span @click="click" :id="doc.id">
               <template v-for="b in docs.button">
-<router-link :to="b.link +'/' + doc.id" v-if="b.link && b.link != ''">
-    {{b.text}}</router-link>
-<i :class="b.cls" v-if="!b.link || b.link == ''">{{b.text}}</i>
-</template>
+                <router-link :to="b.link +'/' + doc.id" v-if="b.link && b.link != ''">{{b.text}}</router-link>
+                <i :class="b.cls" v-if="!b.link || b.link == ''">{{b.text}}</i>
+             </template>
               <template v-for="b in doc.button">
-<router-link :to="b.link +'/' + doc.id" v-if="b.link && b.link != ''">
-    {{b.text}}</router-link>
-<i :class="b.cls" v-if="!b.link || b.link == ''">{{b.text}}</i>
-</template>
+                <router-link :to="b.link +'/' + doc.id" v-if="b.link && b.link != ''">{{b.text}}</router-link>
+                <i :class="b.cls" v-if="!b.link || b.link == ''">{{b.text}}</i>
+              </template>
             </span>
         </li>
     </ul>
@@ -49,8 +47,8 @@ export default {
             cp: 1,
             mp: 20,
             kw: "",
-            scroll:true,//滚动可以加载
-            lastScrollBottom:0,
+            scroll: true, //滚动可以加载
+            lastScrollBottom: 0,
         }
     },
     props: {
@@ -79,18 +77,18 @@ export default {
                 scrollTop = document.body.scrollTop;
             }
             let bottomHeight = docHeight - scrollTop - $(window).height();
-            if(self.lastScrollBottom < bottomHeight) {
-              self.lastScrollBottom = bottomHeight;
-              return;
+            if (self.lastScrollBottom < bottomHeight) {
+                self.lastScrollBottom = bottomHeight;
+                return;
             }
             self.lastScrollBottom = bottomHeight;
             if (bottomHeight <= 10 && bottomHeight >= 5 && self.scroll) {
-               self.scroll = false;
+                self.scroll = false;
                 self.cp++;
-                self.$parent.$emit("list-page", self.kw,  self.cp, self.mp);
+                self.$parent.$emit("list-page", self.kw, self.cp, self.mp);
                 setTimeout(function() {
-                  self.scroll = true;
-                },500);
+                    self.scroll = true;
+                }, 500);
             }
         }, false);
     },
