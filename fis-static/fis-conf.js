@@ -13,6 +13,7 @@ fis.hook('commonjs', {
     paths: {
         "jquery": '/node_modules/jquery/dist/jquery.min.js',
         "vue": '/node_modules/vue/dist/vue.js',
+        "xss": '/node_modules/xss/dist/xss.min.js',
         "process/browser": '/node_modules/process/browser.js',
         "kindeditor": '/widget/kindeditor/kindeditor-all.js',//4.1.1
     }
