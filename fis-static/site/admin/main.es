@@ -4,7 +4,7 @@ import VueRouter from 'vue-router';
 import layer from 'vue-layer';
 
 Vue.use(VueRouter);
-Vue.prototype.$layer = layer;
+Vue.prototype.$layer = layer(Vue);
 
 const tree = resolve => require(['./pages/tree/tree.vue'], resolve);
 const treeedit = resolve => require(['./pages/tree/edit.vue'], resolve);

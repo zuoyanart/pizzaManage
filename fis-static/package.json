@@ -24,7 +24,7 @@
     "pzvue-select-option": "^0.6.0",
     "superagent": "^3.0.0",
     "vue": "^2.0.7",
-    "vue-layer": "^0.5.10",
+    "vue-layer": "*",
     "vue-router": "^2.0.3",
     "xss": "^0.3.3"
   },
