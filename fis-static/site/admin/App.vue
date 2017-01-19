@@ -82,7 +82,6 @@ export default {
         },
         methods: {
             slider: function(event) {
-              this.$layer.alert("asd");
                 let o = event.target;
                 let style = o.getAttribute("class");
                 if (style.indexOf("submenu") > -1) { //带子菜单的父对象
