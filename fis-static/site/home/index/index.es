@@ -2,7 +2,7 @@ let index = (() => {
     let self = {};
     let $ = require("jquery");
     let jQuery = $;
-    require("/node_modules/flexslider/flexslider.css");
+    require("flexslider/flexslider.css");
     require('flexslider');
     require("layer");
 

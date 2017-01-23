@@ -8,7 +8,7 @@ fis.set('url', '/static');
 
 //FIS modjs模块化方案，您也可以选择amd/commonjs等
 fis.hook('commonjs', {
-    mod: 'amd',
+    mod: 'cmd2',
     extList: ['.js', '.jsx', '.es', '.ts', '.tsx'],
     paths: {
         "jquery": '/node_modules/jquery/dist/jquery.min.js',
@@ -25,10 +25,11 @@ fis.hook('commonjs', {
 fis.match("**/*", {
         release: '${statics}/$&'
     })
-    .match('/node_modules/**.js', {
+    .match(/^\/node_modules\/([^\/]+)\/(.*)\.(js)$/i, {//'/node_modules/**.js'
         isMod: true,
         useSameNameRequire: true,
         wrap: true,
+        id:'$1'
     })
     .match('/node_modules/kindeditor/**', {
         url: '${url}/$&',
@@ -151,6 +152,36 @@ fis.match("site/admin/**.vue", {
             fis.plugin('translate-es3ify', null, 'append')
         ]
     });
+
+
+    fis.match("site/home/**.vue", {
+            isMod: false,
+            rExt: 'js',
+            useSameNameRequire: true,
+            parser: fis.plugin('vue-component', {
+                cssScopeFlag: 'vuec'
+            })
+        })
+        // .match("site/home/**.css", {
+        //     release: "css1/$1"
+        // })
+        .match("site/home/**.vue:less", {
+            rExt: 'css',
+            parser: fis.plugin('less')
+        })
+        .match("site/home/**.vue:scss", {
+            rExt: 'css',
+            parser: fis.plugin('node-sass'),
+        })
+        .match("site/home/**.vue:js", {
+            parser: [fis.plugin('babel-5.x', {
+                    sourceMaps: true, //启用调试
+                    // blacklist: ['regenerator'],
+                    stage: 3 //ES7不同阶段语法提案的转码规则（共有4个阶段）
+                }),
+                fis.plugin('translate-es3ify', null, 'append')
+            ]
+        });
 
 
 

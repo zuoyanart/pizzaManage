@@ -10,7 +10,7 @@ import "babel-polyfill/dist/polyfill.min.js";
 import superagent from 'superagent/superagent';
 import vueLayer from 'vue-layer';
 import Vue from 'vue';
-const layer = vueLayer(Vue);
+// const layer = vueLayer(Vue);
 
 var tools = (function() {
     let self = {};
@@ -23,12 +23,12 @@ var tools = (function() {
      * @return {[type]}         [description]
      */
     self.httpAgent = (url, method = 'get', data = '') => {
-        let id = layer.loading(1);
+        // let id = layer.loading(1);
         method = method.toLowerCase();
         if (method == "get" || method == "del") {
             return new Promise(function(resolve, reject) {
                 superagent[method].call(this, url).query(data).end(function(err, res) {
-                  layer.close(id);
+                  // layer.close(id);
                     if (err || !res.ok) {
                         reject(err || res.ok);
                     }
@@ -38,7 +38,7 @@ var tools = (function() {
         } else {
             return new Promise(function(resolve, reject) {
                 superagent[method].call(this, url).send(data).end(function(err, res) {
-                    layer.close(id);
+                    // layer.close(id);
                     if (err || !res.ok) {
                         reject(err || res.ok);
                     }

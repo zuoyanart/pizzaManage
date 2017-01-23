@@ -6,7 +6,7 @@
 export default {
     db: {
         type: "mysql",
-        log_sql: true,
+        log_sql: false,
         log_connect: true,
         adapter: {
             mysql: {

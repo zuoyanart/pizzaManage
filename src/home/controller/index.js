@@ -22,9 +22,9 @@ export default class extends Base {
         requests.push(article.page("", 10, 1, 10));
         let results = await Promise.all(requests);
         this.assign({
+            title:"78787878我的标题1",
             node: results[0].msg,
             article: results,
-            title:"asd"
                 //  a2: results[2].msg,
                 //  a3: results[3].msg,
                 //  a4: results[4].msg,
