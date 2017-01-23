@@ -1,6 +1,4 @@
-//由于使用了bower，有很多非必须资源。通过set project.files对象指定需要编译的文件夹和引用的资源
-// fis.set('project.files', ['page/**', 'map.json', 'modules/**', 'lib']);
-fis.set('project.ignore', ['*.bat', '*.rar', 'node_modules/**', 'fis-conf.js', "package.json", "*.sh"]);
+fis.set('project.ignore', ['*.bat', '*.rar', 'node_modules/**', 'fis-conf.js', "package.json", "*.sh","site","components"]);
 fis.set('project.fileType.text', 'es');
 
 fis.set('statics', '/www/static'); //static目录
@@ -9,13 +7,13 @@ fis.set('url', '/static');
 //FIS modjs模块化方案，您也可以选择amd/commonjs等
 fis.hook('commonjs', {
     mod: 'amd',
-    extList: ['.js', '.jsx', '.es', '.ts', '.tsx'],
+    extList: ['.js', '.jsx', '.es', '.ts', '.tsx','vue'],
     paths: {
         "jquery": '/node_modules/jquery/dist/jquery.min.js',
         "vue": '/node_modules/vue/dist/vue.js',
         "xss": '/node_modules/xss/dist/xss.min.js',
         "process/browser": '/node_modules/process/browser.js',
-        "kindeditor": '/widget/kindeditor/kindeditor-all.js',//4.1.1
+        "kindeditor": '/plugin/kindeditor/kindeditor-all.js',//4.1.1
     }
 });
 
@@ -30,18 +28,7 @@ fis.match("**/*", {
         useSameNameRequire: true,
         wrap: true,
     })
-    .match('/node_modules/kindeditor/**', {
-        url: '${url}/$&',
-        release: '${statics}/$&',
-        // isMod: true,
-        // useSameNameRequire: true,
-        // wrap: true,
-    })
-    .match(/^\/site\/([^\/]+)\/(.*)\.(ejs)$/i, {
-        isHtmlLike: true,
-        release: false
-    })
-    .match(/^\/(widget|site|vue)\/(.*)\.(es)$/i, {
+    .match(/^\/(components|site)\/(.*)\.(es|js)$/i, {
         parser: fis.plugin('babel-5.x', {
             sourceMaps: false, //启用调试
             // blacklist: ['regenerator'],
@@ -51,38 +38,12 @@ fis.match("**/*", {
         id: "$2",
         rExt: 'js'
     })
-    //modules下面都是模块化资源
-    .match(/^\/modules\/([^\/]+)\/(.*)\.(js)$/i, {
-        isMod: true,
-        id: '$1', //id支持简写，去掉modules和.js后缀中间的部分
-        release: '${statics}/$&',
-        url: '${url}/$&',
-        // optimizer: fis.plugin('uglify-js')
+    .match("/plugins/**.js", {//plugs不打包
+      isMod: false
     })
-    .match(/^\/modules\/([^\/]+)\/(.*)\.(es)$/i, {
-        parser: fis.plugin('babel-5.x', {
-            sourceMaps: true, //启用调试
-            // blacklist: ['regenerator'],
-            stage: 3 //ES7不同阶段语法提案的转码规则（共有4个阶段）
-        }),
-        isMod: true,
-        id: "$1",
-        rExt: 'js'
-    })
-    //page下面的页面发布时去掉page文件夹
-    .match(/^\/view\/(common|master|admin)\/(.*)\.(html)$/i, {
-        parser: fis.plugin('swigt'),
+    .match('/view/**.html', {
         useCache: false,
         release: '/$&'
-    })
-    .match(/^\/view\/(vue|home)\/(.*)\.(html)$/i, {
-        useCache: false,
-        release: '/$&'
-    })
-    .match(/^\/(widget|site)\/(.*)\.(js)$/i, {
-        isMod: true,
-        id: '$2',
-        url: '${url}/$&'
     })
     .match('*.{js,jsx,ts,tsx,es}', {
         preprocessor: [
@@ -91,10 +52,6 @@ fis.match("**/*", {
                 useEmbedWhenSizeLessThan: 10 * 1024 // 小于10k用base64
             })
         ]
-    })
-    .match("/widget/kindeditor-4.1.10/**.js", {
-        isMod: false,
-        url: '${url}/$&'
     })
     .match('**/*.less', { //编译less
         parser: fis.plugin('less'),
@@ -123,7 +80,7 @@ fis.match("**/*", {
     });
 
 
-fis.match("site/admin/**.vue", {
+fis.match("**/*.vue", {
         isMod: true,
         rExt: 'js',
         useSameNameRequire: true,
@@ -134,15 +91,15 @@ fis.match("site/admin/**.vue", {
     // .match("site/admin/**.css", {
     //     release: "css1/$1"
     // })
-    .match("site/admin/**.vue:less", {
+    .match("**/*.vue:less", {
         rExt: 'css',
         parser: fis.plugin('less')
     })
-    .match("site/admin/**.vue:scss", {
+    .match("**/*.vue:scss", {
         rExt: 'css',
         parser: fis.plugin('node-sass'),
     })
-    .match("site/admin/**.vue:js", {
+    .match("**/*.vue:js", {
         parser: [fis.plugin('babel-5.x', {
                 sourceMaps: true, //启用调试
                 // blacklist: ['regenerator'],
@@ -180,5 +137,5 @@ fis.match('::packager', {
 });
 fis.unhook('components')
 fis.hook("node_modules", {
-  shutup:true,
+  shutup:false,//是否提示node_modules找不到
 });

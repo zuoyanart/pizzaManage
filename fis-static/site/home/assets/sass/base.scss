@@ -1,4 +1,4 @@
-@import "../../assets/sass/variables.scss";
+@import "../../../../sass/variables.scss";
 body {
     background-color: #2E363F;
 }
@@ -61,6 +61,15 @@ body {
     }
 }
 
+#searchkw {
+    position: absolute;
+    right: 20px;
+    width: 200px;
+    top: 3px;
+    background-color: #47515b;
+    color: #fff;
+}
+
 #sidebar {
     width: 220px;
     float: left;
@@ -100,7 +109,7 @@ body {
             background-color: #27a9e3;
             color: #fff;
         }
-        & > li > ul > li > a.active,
+        & > li > ul > li > a.router-link-active,
         & > li > ul > li > a:hover {
             background-color: #28b779;
             color: #fff;
@@ -110,11 +119,11 @@ body {
 #main {
     margin-left: 220px;
     width: auto;
-    min-height: 1000px;
     margin-right: 0;
     background-color: #eee;
     margin-top: -37px;
-    padding: 10px 0 0 20px;
+    padding: 10px 0 100px 20px;
+    min-height:700px;
     & > div.menu {
       margin-bottom: 10px;
       & > em, select, a, div {
@@ -127,7 +136,7 @@ body {
     }
     ul.list{
       background-color: #fff;
-      min-height: 1000px;
+      min-height: 500px;
       padding-top: 1px;
       & > ul.list{
         min-height:50px;

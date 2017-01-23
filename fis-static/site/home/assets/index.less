@@ -1,0 +1,84 @@
+@import "../../../sass/mixin.less";
+.item{
+  width: 100%;
+  .flex-cont();
+  div{
+    .flex-item();
+    img{
+      width: 100%;
+    }
+  }
+  div:first-child{
+    margin-right: 4px;
+  }
+  div:last-child{
+    margin-left: 4px;
+  }
+}
+
+.header-user {
+    width: 100%;
+    height: 32px;
+    line-height: 32px;
+    background-color: #009B72;
+
+    .userop {
+        width: 1200px;
+        height: 100%;
+        margin: 0 auto;
+        clear: both;
+
+        a {
+            width: 50px;
+            height: 100%;
+            float: right;
+            color: #fff;
+            text-align: center;
+            border-left: 1px solid #47b488;
+        }
+
+        a:first-child {
+            border-right: 1px solid #47b488;
+        }
+    }
+}
+
+.header-menu {
+    width: 100%;
+    height: 78px;
+    line-height: 78px;
+
+    .header-menu-c {
+        width: 1200px;
+        height: 100%;
+        margin: 0 auto;
+        position: relative;
+
+        div {
+            position: absolute;
+            width: auto;
+            height: 100%;
+            right: 0;
+            top: 0;
+
+            a {
+                padding: 0 20px 29px;
+                color: #7b7b7b;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.footer{
+  width: 100%;
+  height: 50px;
+  padding: 40px 0 100px 0;
+  .footer-c{
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+    color: #7b7b7b;
+  }
+}

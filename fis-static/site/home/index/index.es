@@ -4,7 +4,6 @@ let index = (() => {
     let jQuery = $;
     require("/node_modules/flexslider/flexslider.css");
     require('flexslider');
-    require("layer");
 
 
     self.init = () => {
@@ -14,8 +13,6 @@ let index = (() => {
             directionNav: false,
             slideshowSpeed: 5000,
         });
-        layer.alert("111");
-
     }
 
     return self;
