@@ -1,5 +1,5 @@
-<style lang="scss">
-   @import "../assets/sass/index.scss";
+<style lang="less">
+   @import "../assets/index.less";
 </style>
 
 <template lang="html">

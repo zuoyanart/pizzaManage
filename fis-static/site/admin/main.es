@@ -67,7 +67,7 @@ const router = new VueRouter({
 });
 
 const app = new Vue({
-    el: '#app',
+    // el: '#app',
     render: h => h(App),
     router //使用路由器
-});
+}).$mount("#app");

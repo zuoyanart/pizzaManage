@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import $ from 'jquery';
 import pzcheckbox from 'pzvue-checkbox';
 export default {
     data() {

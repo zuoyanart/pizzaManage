@@ -34,7 +34,6 @@
         </pz-formitem>
     </pz-form>
 </div>
-
 </template>
 
 <script>
@@ -44,7 +43,9 @@ import pzselect from 'pzvue-select';
 import pzinput from 'pzvue-input';
 import pzform from 'pzvue-form';
 import pzformitem from 'pzvue-formitem';
-import kindeditor from "kindeditor";
+import kindeditor from 'kindeditor';
+// import kindeditor from "/plugins/kindeditor/kindeditor-all-min";
+// require("kindeditor");
 import tools from 'pizzatools';
 
 export default {

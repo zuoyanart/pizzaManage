@@ -12,7 +12,6 @@
     "babel-polyfill": "^6.16.0",
     "flexslider": "^2.6.3",
     "jquery": "1.11.3",
-    "kindeditor": "^4.1.10",
     "layer-ce": "^3.0.1",
     "process": "^0.11.9",
     "pzvue-button": "^0.6.0",

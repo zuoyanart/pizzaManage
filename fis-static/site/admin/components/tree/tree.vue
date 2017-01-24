@@ -1,6 +1,6 @@
-<style lang="scss">
+<style lang="less">
 
-@import "./tree.scss";
+@import "./tree.less";
 
 </style>
 
@@ -13,9 +13,7 @@
 </template>
 
 <script>
-
 import treeitem from "./tree-item.vue";
-
 export default {
     data() {
         return {

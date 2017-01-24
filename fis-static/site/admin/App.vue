@@ -1,9 +1,9 @@
 <style lang="css">
-
-@import "../../assets/css/pizza.css";
+  @import "../../assets/css/pizza.css";
+  @import "../../assets/css/iconfont.css";
 </style>
-<style lang="scss">
-@import "./assets/sass/base.scss";
+<style lang="less">
+    @import "./assets/base.less";
 </style>
 
 <template lang="html">

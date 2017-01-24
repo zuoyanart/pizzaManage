@@ -1,4 +1,4 @@
-fis.set('project.ignore', ['*.bat', '*.rar', 'node_modules/**', 'fis-conf.js', "package.json", "*.sh","site","components"]);
+fis.set('project.ignore', ['*.bat', '*.rar', 'node_modules/**', 'fis-conf.js', "package.json", "*.sh"]);
 fis.set('project.fileType.text', 'es');
 
 fis.set('statics', '/www/static'); //static目录
@@ -9,26 +9,41 @@ fis.hook('commonjs', {
     mod: 'amd',
     extList: ['.js', '.jsx', '.es', '.ts', '.tsx','vue'],
     paths: {
-        "jquery": '/node_modules/jquery/dist/jquery.min.js',
+        "jquery": '/node_modules/jquery/dist/jquery.js',
         "vue": '/node_modules/vue/dist/vue.js',
         "xss": '/node_modules/xss/dist/xss.min.js',
         "process/browser": '/node_modules/process/browser.js',
-        "kindeditor": '/plugin/kindeditor/kindeditor-all.js',//4.1.1
+        // "kindeditor": '/plugins/kindeditor/kindedito.js',//4.1.1
+        // "layer": '/plugins/layer/layer.js',
     }
 });
-
+fis.unhook('components')
+fis.hook("node_modules", {
+  shutup:true,//是否提示node_modules找不到
+});
 
 
 /*************************目录规范*****************************/
 fis.match("**/*", {
-        release: '${statics}/$&'
+        release: '${statics}/$&',
+        url:'${url}$&'
     })
     .match('/node_modules/**.js', {
         isMod: true,
         useSameNameRequire: true,
         wrap: true,
     })
-    .match(/^\/(components|site)\/(.*)\.(es|js)$/i, {
+    .match(/^\/components\/([^\/]+)\/(.*)\.(es|js)$/i, {
+        parser: fis.plugin('babel-5.x', {
+            sourceMaps: false, //启用调试
+            // blacklist: ['regenerator'],
+            stage: 3 //ES7不同阶段语法提案的转码规则（共有4个阶段）
+        }),
+        isMod: true,
+        id: "$1",
+        rExt: 'js'
+    })
+    .match(/^\/(site)\/(.*)\.(es|js)$/i, {
         parser: fis.plugin('babel-5.x', {
             sourceMaps: false, //启用调试
             // blacklist: ['regenerator'],
@@ -38,8 +53,12 @@ fis.match("**/*", {
         id: "$2",
         rExt: 'js'
     })
-    .match("/plugins/**.js", {//plugs不打包
-      isMod: false
+    .match(/^\/plugins\/(.*)\.(es|js)$/i, {//plugs不打包
+      isMod: false,
+    })
+    .match("/plugins/kindeditor/kindeditor-all.js",{
+        isMod: true,
+        id:"kindeditor"
     })
     .match('/view/**.html', {
         useCache: false,
@@ -72,7 +91,7 @@ fis.match("**/*", {
         isJsLike: true,
         release: false
     }).match("**/*", {
-        url: '/static$&'
+        url:'${url}$&'
     })
     //页面模板不用编译缓存
     .match(/.*\.(html|jsp|tpl|vm|htm|asp|aspx|php)$/, {
@@ -88,9 +107,6 @@ fis.match("**/*.vue", {
             cssScopeFlag: 'vuec'
         })
     })
-    // .match("site/admin/**.css", {
-    //     release: "css1/$1"
-    // })
     .match("**/*.vue:less", {
         rExt: 'css',
         parser: fis.plugin('less')
@@ -134,8 +150,4 @@ fis.match('::packager', {
         layout: 'matrix',
         margin: '15'
     })
-});
-fis.unhook('components')
-fis.hook("node_modules", {
-  shutup:false,//是否提示node_modules找不到
 });

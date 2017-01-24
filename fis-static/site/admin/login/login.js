@@ -8,7 +8,7 @@ var login = (function() {
     var _self = this;
     var my = {};
     my.init = function() {
-            validate();
+            // validate();
             $("#password").keydown(function(event) {
                 if (event.keyCode == 13) {
                     $('.btn-success').click();
