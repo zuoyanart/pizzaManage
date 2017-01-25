@@ -21,6 +21,7 @@
     "pzvue-input": "^0.6.0",
     "pzvue-select": "^0.6.1",
     "pzvue-select-option": "^0.6.0",
+    "pzvue-timeline": "^0.4.1",
     "superagent": "^3.0.0",
     "vue": "^2.0.7",
     "vue-layer": "*",

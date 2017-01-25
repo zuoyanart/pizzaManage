@@ -21,13 +21,9 @@
         <div class="header-menu-c">
             <a href="/"><img src="./assets/img/logo.png" alt=""></a>
             <div>
-                 <router-link to="/">首页</router-link>
-                <a href="#">首页</a>
-                <a href="#">首页</a>
-                <a href="#">首页</a>
-                <a href="#">首页</a>
-                <a href="#">首页</a>
-                <a href="#">首页</a>
+                 <router-link to="/" exact>首页</router-link>
+                 <router-link to="/about-1node">关于</router-link>
+                 <router-link to="/news">资讯</router-link>
             </div>
         </div>
     </div>

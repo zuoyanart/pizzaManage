@@ -64,6 +64,10 @@ fis.match("**/*", {
         useCache: false,
         release: '/$&'
     })
+    .match(/^\/view\/spage\/(.*)\.(html)$/i, {
+        useCache: false,
+        release: '/www/spage/$1'
+    })
     .match('*.{js,jsx,ts,tsx,es}', {
         preprocessor: [
             fis.plugin('js-require-css'),
