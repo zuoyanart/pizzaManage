@@ -23,7 +23,7 @@
             <div>
                  <router-link to="/" exact>首页</router-link>
                  <router-link to="/about-1node">关于</router-link>
-                 <router-link to="/news">资讯</router-link>
+                 <router-link to="/news-1-20list">资讯</router-link>
             </div>
         </div>
     </div>

@@ -6,8 +6,9 @@ import layer from 'vue-layer';
 Vue.use(VueRouter);
 Vue.prototype.$layer = layer(Vue);
 
-const about = resolve => require(['./pages/about.vue'], resolve);
-const news = resolve => require(['./pages/news.vue'], resolve); //实现懒加载
+const node = resolve => require(['./pages/node.vue'], resolve);
+const list = resolve => require(['./pages/list.vue'], resolve); //实现懒加载
+const content = resolve => require(['./pages/content.vue'], resolve); //实现懒加载
 
 
 const routes = [{
@@ -15,22 +16,22 @@ const routes = [{
     component: require("./pages/index.vue")
 }, {
     path: '/:path-:nodeid(\\d+)-:mp(\\d+)list',//普通列表页
-    component: news
+    component: list
 }, {
     path: '/:path-:nodeid(\\d+)-:mp(\\d+)list/:cp(\\d+)',//普通列表页
-    component: news
+    component: list
 },{
     path: '/:path-:nodeid(\\d+)node',//节点型列表页
-    component: about
+    component: node
 },{
     path: '/:path-:nodeid(\\d+)-:mp(\\d+)img',//图片列表页
-    component: news
+    component: list
 },{
     path: '/:path-:nodeid(\\d+)-:mp(\\d+)img\:cp(\\d+)',//图片列表页
-    component: news
+    component: list
 },{
     path: '/content-:id(\\d+)',//正文页
-    component: news
+    component: content
 }];
 
 
