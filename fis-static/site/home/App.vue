@@ -11,19 +11,13 @@
 <template lang="html">
 
 <div id="app">
-    <div class="header-user">
-        <div class="userop">
-            <a href="#">登录</a>
-            <a href="#">注册</a>
-        </div>
-    </div>
     <div class="header-menu">
         <div class="header-menu-c">
             <a href="/"><img src="./assets/img/logo.png" alt=""></a>
             <div>
                  <router-link to="/" exact>首页</router-link>
-                 <router-link to="/about-1node">关于</router-link>
-                 <router-link to="/news-4-20list">资讯</router-link>
+                 <router-link to="/about-1node">关于我们</router-link>
+                 <router-link to="/news-4-20list">摄星漏洞态势感知系统</router-link>
             </div>
         </div>
     </div>
