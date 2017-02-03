@@ -16,7 +16,7 @@
             <textarea id="content" v-model="form.content" style="height:500px;"></textarea>
         </pz-formitem>
         <pz-formitem>
-            <pzbutton @click.native="submitHandle">提交</pzbutton>
+            <pzbutton @click="submitHandle">提交</pzbutton>
         </pz-formitem>
     </pz-form>
 </div>

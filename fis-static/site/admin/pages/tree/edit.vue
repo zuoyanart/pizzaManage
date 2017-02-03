@@ -30,7 +30,7 @@
             <textarea id="brief" v-model="form.brief" style="height:500px;"></textarea>
         </pz-formitem>
         <pz-formitem>
-            <pzbutton @click.native="submitHandle">提交</pzbutton>
+            <pzbutton @click="submitHandle">提交</pzbutton>
         </pz-formitem>
     </pz-form>
 </div>
@@ -44,8 +44,6 @@ import pzinput from 'pzvue-input';
 import pzform from 'pzvue-form';
 import pzformitem from 'pzvue-formitem';
 import kindeditor from 'kindeditor';
-// import kindeditor from "/plugins/kindeditor/kindeditor-all-min";
-// require("kindeditor");
 import tools from 'pizzatools';
 
 export default {

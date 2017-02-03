@@ -118,6 +118,7 @@ export default class extends think.model.base {
             let row = await this.field("password,id,salt").where({
                 "username": username
             }).find();
+            console.log(row);
 
             if (think.isEmpty(row)) {
                 return {

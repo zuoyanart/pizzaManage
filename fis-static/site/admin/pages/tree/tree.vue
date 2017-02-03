@@ -20,7 +20,7 @@ export default {
                 datalist: {
                     options: {},
                     more: [{
-                        text: "添加1",
+                        text: "添加",
                         link: "/news/create",
                     }, {
                         text: "审核",
