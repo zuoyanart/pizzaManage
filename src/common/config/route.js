@@ -1,5 +1,5 @@
 export default [
-    [/^(?!.*(admin|sp|article))(.*)$/,"home/index/index"],
+    [/^(?!.*(admin|sp|ajax))(.*)$/,"home/index/index"],
     // [/^content\/(\d+)(_(\d+))?$/, "home/content/index?id=:1&cp=:3"],//文章正文页
     // [/^content_photo\/(\d+)(_(\d+))?$/, "home/content/photo?id=:1&cp=:3"],//组图正文页
     // [/^content_video\/(\d+)(_(\d+))?$/, "home/content/video?id=:1&cp=:3"],//视频正文页

@@ -30,7 +30,7 @@ const routes = [{
     path: '/:path-:nodeid(\\d+)-:mp(\\d+)img\:cp(\\d+)',//图片列表页
     component: list
 },{
-    path: '/content-:id(\\d+)',//正文页
+    path: '/content/:id(\\d+)',//正文页
     component: content
 }];
 

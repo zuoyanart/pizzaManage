@@ -19,7 +19,7 @@ fis.hook('commonjs', {
 });
 fis.unhook('components')
 fis.hook("node_modules", {
-  shutup:true,//是否提示node_modules找不到
+  shutup:false,//是否提示node_modules找不到
 });
 
 

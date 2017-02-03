@@ -1,8 +1,11 @@
 <template lang="html">
     <div id="main">
-        <ul>
-            <li v-for="a in getArticles">
-                <a :href="a.link" target="_blank">{{a.title}}</a>
+        <div class="list-left">
+            <nav1 :data="data"></nav1>
+        </div>
+        <ul class="list-right">
+            <li v-for="a in articles">
+                <a :href="a.link">{{a.title}}</a>
             </li>
         </ul>
     </div>
@@ -10,26 +13,44 @@
 
 <script>
 import tools from 'pizzatools';
+import nav from '../components/nav/nav.vue';
 export default {
     data() {
         return {
-            articles:[]
+            articles: [],
+            data:[]
         }
-    },
-    computed:{
-        getArticles: function() {
-            return this.articles;
-        },
     },
     async mounted() {
         let param = this.$route.params;
         let nodeid = param.nodeid;
         let cp = param.cp ? param.cp : 1;
-        let article = await tools.httpAgent("/article/page","post",param);
-        this.articles = article.news;
+        await this.getData(nodeid, cp, 20);
     },
+    methods: {
+        getData: async function(nodeid, cp, mp) {
+            let article = await tools.httpAgent("/ajax/article/page", "post", {
+                nodeid: nodeid,
+                cp:cp,
+                mp:mp
+            });
+            this.articles = article.news;
+            this.data = article.nodelist;
+        }
+    },
+    components: {
+        nav1:nav
+    }
 }
 </script>
 
-<style lang="css">
+<style lang="less">
+.list-right{
+    width: 1100px;
+    float: left;
+}
+.list-left{
+    width:100px;
+    float: left;
+}
 </style>
