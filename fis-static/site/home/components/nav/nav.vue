@@ -1,14 +1,14 @@
 <style lang="less">
 
-@import "./nav.less";
+@import "./menu.less";
 
 </style>
 
 <template lang="html">
 
-<ul class="pz-nav">
-    <li v-for="d in data">
-         <router-link :to="d.link" >{{d.name}}</router-link>
+<ul class="pz-nav" @click="menuclick">
+    <li v-for="(d,index) in data">
+        <router-link :to="d.link" :index="index">{{d.name}}1</router-link>
         <ul v-if="d.data && d.data.length > 0">
             <li v-for="dd in d.data"><a :href="dd.link">{{dd.name}}</a></li>
         </ul>
@@ -26,7 +26,17 @@ export default {
             default: function() {
                 return []
             }
+        },
+        click: {
+          type:Function,
+          default: function(){}
         }
+    },
+    methods: {
+      menuclick: function(event) {
+        console.log(event.target);
+        this.click(event, event.target.getAttribute("index"));
+      }
     }
 
 }

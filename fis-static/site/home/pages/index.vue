@@ -91,7 +91,7 @@
            </div>
            <div class="right">
              <h2>关注我们</h2>
-             <pzbutton btn="success" size="block" icon="user-md">QQ客服</pzbutton>
+             <pzbutton  icon="pzicon-qq"  btn="success" size="block">QQ客服</pzbutton>
            </div>
        </div>
     </div>

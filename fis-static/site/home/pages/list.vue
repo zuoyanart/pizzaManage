@@ -1,13 +1,14 @@
 <template lang="html">
     <div id="main">
         <div class="list-left">
-            <nav1 :data="data"></nav1>
+            <nav1 :data="data" :click="getDataEvent"></nav1>
         </div>
         <ul class="list-right">
             <li v-for="a in articles">
                 <a :href="a.link">{{a.title}}</a>
             </li>
         </ul>
+        <div style="clear:both;"></div>
     </div>
 </template>
 
@@ -36,6 +37,11 @@ export default {
             });
             this.articles = article.news;
             this.data = article.nodelist;
+        },
+        getDataEvent: function(event,index) {
+          let href = event.target.getAttribute("href");
+          let item = href.split('-');
+          this.getData(item[1], 1, item[2].replace('list',''));
         }
     },
     components: {
@@ -46,7 +52,7 @@ export default {
 
 <style lang="less">
 .list-right{
-    width: 1100px;
+    width: 1000px;
     float: left;
 }
 .list-left{

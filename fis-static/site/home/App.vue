@@ -1,7 +1,27 @@
 <style lang="css">
 
 @import "../../assets/css/pizza.css";
+/*@import "../../assets/css/iconfont.css";*/
+[class^="pzicon-"],
+[class*="pzicon-"] {
+    font-family:"pzcms" !important;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: inherit;
+    -webkit-font-smoothing: antialiased;
+    *margin-right: .3em;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
 
+[class^="pzicon-"]:before,
+[class*="pzicon-"]:before {
+    text-decoration: inherit;
+    display: inline-block;
+    speak: none;
+}
 </style>
 <style lang="less">
 

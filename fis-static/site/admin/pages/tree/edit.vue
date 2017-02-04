@@ -105,12 +105,14 @@ export default {
         methods: {
             submitHandle: async function() {
                 let ischeck = await this.$refs.form.validate();
-                if (ischeck || true) { //通过验证
+                if (ischeck) { //通过验证
                   let url = document.location.href;
                     let id = this.$route.params.id;
                     let op = (url.indexOf("/tree/add/") == -1) ? "update" : "create";
                     this.form.brief = escape(editor.html());
-                    this.form.pid = id;
+                    if(op == 'create') {
+                      this.form.pid = id;
+                    }
                     await tools.httpAgent("/admin/tree/" + op, "post", this.form);
                     history.back();
                 } else {
