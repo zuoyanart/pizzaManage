@@ -6,7 +6,7 @@
 
 <template lang="html">
 <ul class="treelist" id="treelist">
-    <li id="1" path="path,1,"><b class="icon-setting"></b>&nbsp;&nbsp;<em>首页</em><span><router-link to="/tree/edit?pid=1">添加子节点</router-link></span></li>
+    <li id="1" path="path,1,"><b class="pzicon-setting"></b>&nbsp;&nbsp;<em>首页</em><span><router-link to="/tree/edit?pid=1">添加子节点</router-link></span></li>
     <treeitem v-for="doc in docs.rows" :items="doc" :handle="handle"></treeitem>
 </ul>
 

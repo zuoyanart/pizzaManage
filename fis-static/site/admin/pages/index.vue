@@ -6,10 +6,10 @@
 
 <div id="main">
     <ul class="indexlist" id="indexlist">
-        <li class="li1"><router-link to="/news" ><i class="icon-article"></i>文章管理</router-link></li>
-        <li class="li2"><a href="#"><i class="icon-chat"></i><span class="tip">5</span>统计图表</a></li>
-        <li class="li3"><a href="#"><i class="icon-setting"></i>系统设置</a></li>
-        <li class="li4"><a href="#"><i class="icon-noti"></i><span class="tip">320</span>系统通知</a></li>
+        <li class="li1"><router-link to="/news" ><i class="pzicon-liebiao"></i>文章管理</router-link></li>
+        <li class="li2"><a href="#"><i class="pzicon-chart"></i><span class="tip">5</span>统计图表</a></li>
+        <li class="li3"><a href="#"><i class="pzicon-setting"></i>系统设置</a></li>
+        <li class="li4"><a href="#"><i class="pzicon-tongzhi"></i><span class="tip">320</span>系统通知</a></li>
     </ul>
     <div style="margin:20px;line-height:30px;">
         <h2>关于</h2> 当前版本号：1.5.4

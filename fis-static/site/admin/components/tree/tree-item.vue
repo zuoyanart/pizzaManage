@@ -6,7 +6,7 @@
 <div>
     <li @click="click" :id="items.id" :path="items.path">
         <b class="indent" v-for="a in (items.path.length-3)"></b>
-        <i class="icon-add"></i>
+        <i class="pzicon-add"></i>
         <em>{{items.name}}</em>
         <span>
           <router-link :to="'/tree/edit/'+items.id">编辑</router-link>
@@ -45,7 +45,7 @@ export default {
             let parent = target.parentNode;
             let id = parent.getAttribute("id");
             let path = parent.getAttribute("path");
-            target.className = "icon-sub";
+            target.className = "pzicon-sub";
             this.handle["fold"](id, path);
         }
     }

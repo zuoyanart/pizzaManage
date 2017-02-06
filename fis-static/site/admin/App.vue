@@ -1,6 +1,25 @@
 <style lang="css">
   @import "../../assets/css/pizza.css";
-  @import "../../assets/css/iconfont.css";
+  [class^="pzicon-"],
+  [class*="pzicon-"] {
+      font-family:"pzcms" !important;
+      font-weight: normal;
+      font-style: normal;
+      text-decoration: inherit;
+      -webkit-font-smoothing: antialiased;
+      *margin-right: .3em;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-stroke-width: 0.2px;
+      -moz-osx-font-smoothing: grayscale;
+  }
+
+  [class^="pzicon-"]:before,
+  [class*="pzicon-"]:before {
+      text-decoration: inherit;
+      display: inline-block;
+      speak: none;
+  }
 </style>
 <style lang="less">
     @import "./assets/base.less";
@@ -10,11 +29,11 @@
 
 <div id="app">
     <div id="header">
-        <h1><i class="icon-pizza"></i>Pizza Admin</h1>
+        <h1><i class="pzicon-pizza"></i>Pizza Admin</h1>
     </div>
     <div id="user-nav">
         <ul>
-            <li><i class="icon-person"></i><span id="userinfo">{{username}}</span></li>
+            <li><i class="pzicon-accountfilling"></i><span id="userinfo">{{username}}</span></li>
             <li><a href="javascript:void(0);" id="loginout" @click="loginout"><i class="icon-loginout"></i>退出</a></li>
         </ul>
     </div>
@@ -24,10 +43,10 @@
     <div id="sidebar" @click="slider">
         <ul>
             <li>
-                <router-link to="/"><i class="icon-home"></i>主页</router-link>
+                <router-link to="/"><i class="pzicon-home"></i>主页</router-link>
             </li>
             <li>
-                <a class="submenu" data="news"><i class="icon-article"></i>信息管理</a>
+                <a class="submenu" data="news"><i class="pzicon-liebiao"></i>信息管理</a>
                 <ul v-show="show.news">
                     <li>
                         <router-link to="/tree" class="tree">节点管理</router-link>
@@ -42,7 +61,7 @@
                 </ul>
             </li>
             <li>
-                <a class="submenu" data="hudong"><i class="icon-setting"></i>互动管理</a>
+                <a class="submenu" data="hudong"><i class="pzicon-hudong"></i>互动管理</a>
                 <ul v-show="show.hudong">
                     <li>
                         <router-link to="/guestbook">留言板管理</router-link>
@@ -51,7 +70,7 @@
                 </ul>
             </li>
             <li>
-                <a class="submenu" data="system"><i class="icon-setting"></i>系统管理</a>
+                <a class="submenu" data="system"><i class="pzicon-setting"></i>系统管理</a>
                 <ul v-show="show.system">
                     <li>
                         <router-link to="/user">管理员管理</router-link>
