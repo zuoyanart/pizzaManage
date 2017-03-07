@@ -1,0 +1,15 @@
+node_modules
+*.json.gizp
+tmp
+temp
+/build/
+logs
+*.log
+app/
+runtime/
+/fis-static/_gsdata_
+/_gsdata_
+/view
+/www/static
+/www/upload
+/update.md
